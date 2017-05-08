@@ -1,5 +1,75 @@
 package com.br.jdbc;
 
-public class AlunoDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.br.entidade.Aluno;
+import com.sun.javafx.scene.layout.region.Margins.Converter;
+
+public class AlunoDAO {
+	
+	private Connection con = Conexao.getConnection();
+	
+	public void insert(Aluno aluno){
+		
+		String sql = "insert into alunos values (?,?,?,?)";
+		
+		try{
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setString(1, aluno.getCodMatricula().toString());
+			preparador.setString(2, aluno.getNome());
+			preparador.setString(3, aluno.getEndereco());
+			preparador.setString(4, aluno.getSituacao().toString());
+			
+			preparador.execute();
+			preparador.close();
+		}
+		catch(SQLException ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public void update(Aluno aluno, Integer id){
+		
+		String sql = "update alunos set nome = '?', endereco = '?', situacao = ?";
+		
+		try{
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setString(1, aluno.getNome());
+			preparador.setString(2, aluno.getEndereco());
+			preparador.setString(3, aluno.getSituacao().toString());
+			
+			preparador.execute();
+			preparador.close();
+		}
+		catch(SQLException ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public ArrayList<Aluno> select(boolean situacao){
+		
+		String sql = "select * from alunos where situacao = ?";
+		ArrayList<Aluno> alunoList = new ArrayList<Aluno>();
+		
+		try{
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setBoolean(1, situacao);
+			
+			ResultSet rst = preparador.executeQuery();
+			
+			while(rst.next()){
+				Aluno aluno = new Aluno(rst.getInt("codMatricula"), rst.getString("nome"), rst.getString("endereco"), rst.getBoolean("situacao"));
+				alunoList.add(aluno);
+			}
+		}
+		catch(SQLException ex){
+			ex.printStackTrace();
+		}
+		
+		return alunoList;
+	}
 }

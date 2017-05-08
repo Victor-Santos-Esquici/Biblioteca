@@ -20,4 +20,51 @@ public class Empresta {
 		this.dataEntrega = dataEntrega;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getCodMatricula() {
+		return codMatricula;
+	}
+
+	public void setCodMatricula(Integer codMatricula) {
+		this.codMatricula = codMatricula;
+	}
+
+	public Integer getCodLivro() {
+		return codLivro;
+	}
+
+	public void setCodLivro(Integer codLivro) {
+		this.codLivro = codLivro;
+	}
+
+	public Date getDataRetirada() {
+		return dataRetirada;
+	}
+
+	public void setDataRetirada(Date dataRetirada) {
+		this.dataRetirada = dataRetirada;
+	}
+
+	public Date getDataPrevisao() {
+		return dataPrevisao;
+	}
+
+	public void setDataPrevisao(Date dataPrevisao) {
+		this.dataPrevisao = dataPrevisao;
+	}
+
+	public Date getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(Date dataEntrega) {
+		this.dataEntrega = dataEntrega;
+	}
 }
