@@ -34,13 +34,14 @@ public class AlunoDAO {
 	
 	public void update(Aluno aluno, Integer id){
 		
-		String sql = "update alunos set nome = '?', endereco = '?', situacao = ?";
+		String sql = "update alunos set nome = '?', endereco = '?', situacao = ? where codMatricula = ?";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, aluno.getNome());
 			preparador.setString(2, aluno.getEndereco());
 			preparador.setString(3, aluno.getSituacao().toString());
+			preparador.setInt(4, aluno.getCodMatricula());
 			
 			preparador.execute();
 			preparador.close();
