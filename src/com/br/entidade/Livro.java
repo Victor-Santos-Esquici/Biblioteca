@@ -1,6 +1,6 @@
 package com.br.entidade;
 
-public class Livros {
+public class Livro {
 
 	public Integer codLivro;
 	public String titulo;
@@ -10,7 +10,7 @@ public class Livros {
 	public Integer codBib;
 	public Boolean situacao;
 	
-	public Livros(Integer codLivro, String titulo, String editora, Double valor, Integer codCategoria, Integer codBib, Boolean situacao){
+	public Livro(Integer codLivro, String titulo, String editora, Double valor, Integer codCategoria, Integer codBib, Boolean situacao){
 		this.codLivro = codLivro;
 		this.titulo = titulo;
 		this.editora = editora;

@@ -1,5 +1,5 @@
 package com.br.jdbc;
 
-public class LivrosDAO {
+public class LivroDAO {
 
 }
