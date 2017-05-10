@@ -8,11 +8,9 @@
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <meta name="description" content="">
-	    <meta name="author" content="">
-	
-	    <title>Modern Business - Start Bootstrap Template</title>
-	
+	    <meta name="description" content="Sistema de biblioteca.">
+	    <meta name="author" content="Victor Santos">
+	    <title>Biblioteca</title>
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -31,73 +29,19 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+	                <a class="navbar-brand" href="index.jsp">Biblioteca</a>
 	            </div>
 	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	                <ul class="nav navbar-nav navbar-right">
 	                    <li>
-	                        <a href="about.html">About</a>
+	                        <a href="">Livros</a>
 	                    </li>
 	                    <li>
-	                        <a href="services.html">Services</a>
+	                        <a href="">Unidades</a>
 	                    </li>
 	                    <li>
-	                        <a href="contact.html">Contact</a>
-	                    </li>
-	                    <li class="dropdown">
-	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-	                        <ul class="dropdown-menu">
-	                            <li>
-	                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
-	                            </li>
-	                            <li>
-	                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
-	                            </li>
-	                            <li>
-	                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
-	                            </li>
-	                            <li>
-	                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
-	                            </li>
-	                            <li>
-	                                <a href="portfolio-item.html">Single Portfolio Item</a>
-	                            </li>
-	                        </ul>
-	                    </li>
-	                    <li class="dropdown">
-	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-	                        <ul class="dropdown-menu">
-	                            <li>
-	                                <a href="blog-home-1.html">Blog Home 1</a>
-	                            </li>
-	                            <li>
-	                                <a href="blog-home-2.html">Blog Home 2</a>
-	                            </li>
-	                            <li>
-	                                <a href="blog-post.html">Blog Post</a>
-	                            </li>
-	                        </ul>
-	                    </li>
-	                    <li class="dropdown">
-	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-	                        <ul class="dropdown-menu">
-	                            <li>
-	                                <a href="full-width.html">Full Width Page</a>
-	                            </li>
-	                            <li>
-	                                <a href="sidebar.html">Sidebar Page</a>
-	                            </li>
-	                            <li>
-	                                <a href="faq.html">FAQ</a>
-	                            </li>
-	                            <li>
-	                                <a href="404.html">404</a>
-	                            </li>
-	                            <li>
-	                                <a href="pricing.html">Pricing Table</a>
-	                            </li>
-	                        </ul>
+	                    	<a href="login.jsp">Login</a>
 	                    </li>
 	                </ul>
 	            </div>
@@ -152,42 +96,9 @@
 	        <!-- Marketing Icons Section -->
 	        <div class="row">
 	            <div class="col-lg-12">
-	                <h1 class="page-header">
-	                    Welcome to Modern Business
+	                <h1 class="page-header text-center">
+	                    Bem vindo a Biblioteca
 	                </h1>
-	            </div>
-	            <div class="col-md-4">
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.3.7</h4>
-	                    </div>
-	                    <div class="panel-body">
-	                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-	                        <a href="#" class="btn btn-default">Learn More</a>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-md-4">
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
-	                    </div>
-	                    <div class="panel-body">
-	                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-	                        <a href="#" class="btn btn-default">Learn More</a>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-md-4">
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                        <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
-	                    </div>
-	                    <div class="panel-body">
-	                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-	                        <a href="#" class="btn btn-default">Learn More</a>
-	                    </div>
-	                </div>
 	            </div>
 	        </div>
 	        <!-- /.row -->
@@ -195,7 +106,7 @@
 	        <!-- Portfolio Section -->
 	        <div class="row">
 	            <div class="col-lg-12">
-	                <h2 class="page-header">Portfolio Heading</h2>
+	                <h2 class="page-header">Acervo</h2>
 	            </div>
 	            <div class="col-md-4 col-sm-6">
 	                <a href="portfolio-item.html">
@@ -271,8 +182,8 @@
 	        <hr>
 	
 	        <!-- Footer -->
-	        <footer>
-	            <div class="row">
+	        <footer class="container navbar-fixed-bottom">
+	            <div>
 	                <div class="col-lg-12">
 	                    <p>Copyright &copy; Your Website 2014</p>
 	                </div>
