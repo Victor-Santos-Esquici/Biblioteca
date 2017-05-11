@@ -3,7 +3,7 @@
     
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="pt-br">
 	<head>
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -182,7 +182,7 @@
 	        <hr>
 	
 	        <!-- Footer -->
-	        <footer class="container navbar-fixed-bottom">
+	        <footer class="container">
 	            <div>
 	                <div class="col-lg-12">
 	                    <p>Copyright &copy; Your Website 2014</p>
