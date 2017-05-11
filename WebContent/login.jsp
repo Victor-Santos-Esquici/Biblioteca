@@ -58,19 +58,25 @@
 	        <!-- Marketing Icons Section -->
 	        <div class="row">
 	            <div class="col-lg-12">
-	                <h1 class="page-header text-center">
-	                    Login
-	                </h1>
+	                <h1 class="page-header text-center">Login</h1>
 	            </div>
 	        </div>
 	        <!-- /.row -->
 	
 	        <div class="row">
 	        	<div class="col-lg-12 text-center">
-	        		<label>Usuário</label>
-	        		<input type="text" name="user">
-	        		<label>Senha</label>
-	        		<input type="password" name="pass">
+		        	<form method="post" action="">
+		        		<label for="user">Usuário</label>
+		        		<br>
+		        		<input type="text" id="user" name="user">
+		        		<br>
+		        		<label for="pass">Senha</label>
+		        		<br>
+		        		<input type="password" id="pass" name="pass">
+		        		<br>
+		        		<br>
+		        		<button id="btnLogin" type="button">Logar</button>
+		        	</form>
 	        	</div>
 	        </div>
 	        
@@ -87,6 +93,26 @@
 	
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
+	    
+	    <script>
+	    	$(document).ready(function(){
+	    		
+	    		$("#btnLogin").click(function(){
+	    			
+	    			$(".formError").remove();
+	    			
+		    		if(!$("#user").val()){
+		    			$("label[for='user']").append("<p class='formError' style='color: red;'>É obrigatório preencher o login.</p>");
+		    		}
+		    		
+		    		if(!$("#pass").val()){
+		    			$("label[for='pass']").append("<p class='formError' style='color: red;'>É obrigatório preencher a senha.</p>");
+		    		}
+		    		
+		    		
+	    		});
+	    	});	
+	    </script>
 	
 	</body>
 </html>
