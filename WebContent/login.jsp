@@ -14,6 +14,29 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    
+	    
+	    <style>
+			.form-login {
+			    background-color: #EDEDED;
+			    padding-top: 10px;
+			    padding-bottom: 20px;
+			    padding-left: 20px;
+			    padding-right: 20px;
+			    border-radius: 15px;
+			    border-color:#d2d2d2;
+			    border-width: 5px;
+			    box-shadow:0 1px 0 #cfcfcf;
+			    margin-top: 50px;
+			}
+			
+			h4 { 
+			 border:0 solid #fff; 
+			 border-bottom-width:1px;
+			 padding-bottom:10px;
+			 text-align: center;
+			}
+	    </style>
 	</head>
 
 	<body>
@@ -50,38 +73,30 @@
 	        <!-- /.container -->
 	    </nav>
 	
-	    
-	
 	    <!-- Page Content -->
 	    <div class="container">
-	
-	        <!-- Marketing Icons Section -->
+	    	<!-- Login -->
 	        <div class="row">
-	            <div class="col-lg-12">
-	                <h1 class="page-header text-center">Login</h1>
-	            </div>
-	        </div>
-	        <!-- /.row -->
-	
-	        <div class="row">
-	        	<div class="col-lg-12 text-center">
-		        	<form method="post" action="">
-		        		<label for="user">Usuário</label>
-		        		<br>
-		        		<input type="text" id="user" name="user">
-		        		<br>
-		        		<label for="pass">Senha</label>
-		        		<br>
-		        		<input type="password" id="pass" name="pass">
-		        		<br>
-		        		<br>
-		        		<button id="btnLogin" type="button">Logar</button>
-		        	</form>
+	        	<div class="col-md-offset-5 col-md-3">
+	        		<div class="form-login">
+			        	<form method="post" action="">
+			        		<h4>Login</h4>
+			        		<input class="form-control input-sm chat-input" type="text" id="user" name="user" placeholder="Usuário" required>
+			        		<br>
+			        		<input class="form-control input-sm chat-input" type="password" id="pass" name="pass" placeholder="Senha" required>
+			        		<br>
+			        		<div class="text-center">
+					            <span class="group-btn text-center">     
+					                <button type="submit" class="btn btn-primary btn-md">Login <i class="fa fa-sign-in"></i></button>
+					            </span>
+			        		</div>
+			        	</form>	        		
+	        		</div>
 	        	</div>
 	        </div>
 	        
 	        <!-- Footer -->
-	        <footer class="container navbar-fixed-bottom" style="border: solid 1px;">
+	        <footer class="container navbar-fixed-bottom">
 	            <div class="row">
 	                <div class="col-lg-12">
 	                    <p>Copyright &copy; Your Website 2014</p>
@@ -93,26 +108,6 @@
 	
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
-	    
-	    <script>
-	    	$(document).ready(function(){
-	    		
-	    		$("#btnLogin").click(function(){
-	    			
-	    			$(".formError").remove();
-	    			
-		    		if(!$("#user").val()){
-		    			$("label[for='user']").append("<p class='formError' style='color: red;'>É obrigatório preencher o login.</p>");
-		    		}
-		    		
-		    		if(!$("#pass").val()){
-		    			$("label[for='pass']").append("<p class='formError' style='color: red;'>É obrigatório preencher a senha.</p>");
-		    		}
-		    		
-		    		
-	    		});
-	    	});	
-	    </script>
-	
+   
 	</body>
 </html>
