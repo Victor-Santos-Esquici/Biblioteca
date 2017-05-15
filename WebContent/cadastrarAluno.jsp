@@ -10,11 +10,10 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta name="description" content="Sistema de biblioteca.">
 	    <meta name="author" content="Victor Santos">
-	    <title>Admin - Criar Aluno</title>
+	    <title>Admin - Cadastrar Aluno</title>
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	    
 	    <style>
 	    	#contact_form{
 	    		margin-top: 50px;
@@ -48,7 +47,7 @@
 		
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" >Sobrenome</label> 
+					<label class="col-md-4 control-label">Sobrenome</label> 
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -63,7 +62,18 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-							<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+							<input name="email" placeholder="Endereço de e-mail" class="form-control"  type="text">
+						</div>
+					</div>
+				</div>
+				
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label">Endereço</label>  
+					<div class="col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+							<input name="endereco" placeholder="Endereço físico" class="form-control"  type="text">
 						</div>
 					</div>
 				</div>
@@ -72,7 +82,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
-						<button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+						<button type="submit" class="btn btn-warning" >Enviar <span class="glyphicon glyphicon-send"></span></button>
 					</div>
 				</div>
 				
@@ -128,6 +138,13 @@
 			                        message: 'Este endereço de e-mail está inválido.'
 			                    }
 			                }
+			            },
+			            endereco: {
+			            	validators: {
+			            		notEmpty: {
+			            			message: 'Preencha o endereço do aluno.'
+			            		}
+			            	}
 			            }
 	            	}
 		        })

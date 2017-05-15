@@ -35,6 +35,7 @@ create table alunos (
 	codMatricula int not null primary key,
 	nome varchar(100) not null,
 	endereco varchar(100) not null,
+	email varchar(100) not null,
 	situacao tinyint(1) not null
 )
 
@@ -67,10 +68,10 @@ insert into livros values (300, "O Cortico", "ABC", 50.00, 45, 1, 1);
 insert into livros values (400, "Aprenda Quimica", "DEF", 70.00, 55, 1, 1);
 insert into livros values (500, "Outro Lado da Meia Noite", "FGH", 80.00, 35, 1, 0);
 
-insert into alunos values (300, "Maria Paula", "Assis Brasil, 110", 1);
-insert into alunos values (310, "Mauro Eduardo", "Carlos Gomes, 150", 1);
-insert into alunos values (320, "Joao Gilberto", "Andradas, 1200", 0);
-insert into alunos values (340, "Paulo Gomes", "Jose do Patrocinio, 500", 1);
+insert into alunos values (300, "Maria Paula", "Assis Brasil, 110", "maria_paula@email.com",1);
+insert into alunos values (310, "Mauro Eduardo", "Carlos Gomes, 150", "mauro_eduardo@email.com",1);
+insert into alunos values (320, "Joao Gilberto", "Andradas, 1200", "joao_gilberto@email.com",0);
+insert into alunos values (340, "Paulo Gomes", "Jose do Patrocinio, 500", "paulo_gomes@email.com",1);
 
 insert into empresta values (300, 100, "10/11/2016", "20/11/2016", "20/11/2016");
 insert into empresta values (300, 200, "10/11/2016", "20/11/2016", "18/11/2016");
