@@ -10,7 +10,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta name="description" content="Sistema de biblioteca.">
 	    <meta name="author" content="Victor Santos">
-	    <title>Admin - Atualizar Livro</title>
+	    <title>Admin - Listar Categorias</title>
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

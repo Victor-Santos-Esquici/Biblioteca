@@ -14,6 +14,14 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    
+	    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+	    
+	    <style>
+	    	#tableData{
+	    		margin-top: 50px;
+	    	}
+	    </style>
 	</head>
 
 	<body>
@@ -22,9 +30,29 @@
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div class="container">
+	    <div id="tableData" class="container">
 	    
-	    	<!-- content -->
+	    	<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	    		<thead>
+	    			<tr>
+	    				<th>Nome</th>
+	    				<th>E-mail</th>
+	    				<th>Endereço</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			<tr>
+	    				<td>Victor</td>
+	    				<td>victor_santos@email.com</td>
+	    				<td>Av. Lorem Ipsum</td>
+	    			</tr>
+	    			<tr>
+	    				<td>Luan</td>
+	    				<td>luan_souza@email.com</td>
+	    				<td>Rua Lorem Ipsum</td>
+	    			</tr>
+	    		</tbody>
+	    	</table>
 	
 	        <!-- Footer -->
 			<jsp:include page="includes/footer.jsp"/>
@@ -33,5 +61,11 @@
 	
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
+	    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	    <script>
+	    	$(document).ready(function(){
+	    		$("#example").DataTable();
+	    	});
+	    </script>
 	</body>
 </html>

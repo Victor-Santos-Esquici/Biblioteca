@@ -15,7 +15,7 @@
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
    	    <style>
-	    	#contact_form{
+	    	#registerForm{
 	    		margin-top: 50px;
 	    	}
 	    	
@@ -34,7 +34,7 @@
 
 	    <!-- Page Content -->
 	    <div class="container">
-			<form class="well form-horizontal" action=" " method="post"  id="contact_form">
+			<form class="well form-horizontal" action=" " method="post"  id="registerForm">
 				<fieldset>
 		
 				<!-- Form Name -->
@@ -142,7 +142,7 @@
 	    <script src="js/bootstrapValidator.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('#contact_form').bootstrapValidator({
+				$('#registerForm').bootstrapValidator({
 			        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
 			        feedbackIcons: {
 			            valid: 'glyphicon glyphicon-ok',
@@ -214,7 +214,7 @@
 		        })
 		        .on('success.form.bv', function(e) {
 		            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-		                $('#contact_form').data('bootstrapValidator').resetForm();
+		                $('#registerForm').data('bootstrapValidator').resetForm();
 		
 		            // Prevent form submission
 		            e.preventDefault();
