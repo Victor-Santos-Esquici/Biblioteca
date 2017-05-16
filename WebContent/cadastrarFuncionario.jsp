@@ -90,7 +90,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-							<input name="phone" placeholder="Número do telefone" class="form-control"  type="number">
+							<input id="phone" name="phone" placeholder="(55) 99999-9999" class="form-control"  type="text" maxlength="15">
 						</div>
 					</div>
 				</div>
@@ -140,6 +140,7 @@
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
 	    <script src="js/bootstrapValidator.min.js"></script>
+	    <script src="js/jquery.maskedinput.min.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('#registerForm').bootstrapValidator({
@@ -230,6 +231,23 @@
 		                console.log(result);
 		            }, 'json');
 		        });
+			});
+		</script>
+		<script>
+			$("#phone").mask("(99) 9999?9-9999");
+	
+	
+			$("#phone").on("blur", function() {
+			    var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
+			    
+			    if( last.length == 3 ) {
+			        var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
+			        var lastfour = move + last;
+			        
+			        var first = $(this).val().substr( 0, 9 );
+			        
+			        $(this).val( first + '-' + lastfour );
+			    }
 			});
 		</script>
 	</body>

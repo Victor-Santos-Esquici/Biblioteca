@@ -14,14 +14,7 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	    
-	    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-	    
-	    <style>
-	    	#tableData{
-	    		margin-top: 50px;
-	    	}
-	    </style>
+	    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -30,9 +23,9 @@
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div id="tableData" class="container">
+	    <div class="container dataTable">
 	    
-	    	<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	    	<table id="alunos" class="table table-striped table-bordered" cellspacing="0" width="100%">
 	    		<thead>
 	    			<tr>
 	    				<th>Nome</th>
@@ -61,10 +54,14 @@
 	
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
-	    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	    <script src="js/jquery.dataTables.min.js"></script>
 	    <script>
 	    	$(document).ready(function(){
-	    		$("#example").DataTable();
+	    		$("#alunos").DataTable({
+	    			"language": {
+	    				"url": "json/Portuguese-Brasil.json"
+	    			}
+	    		});
 	    	});
 	    </script>
 	</body>

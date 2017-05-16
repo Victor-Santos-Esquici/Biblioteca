@@ -14,6 +14,7 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -33,5 +34,6 @@
 	
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
+	    <script src="js/jquery.dataTables.min.js"></script>
 	</body>
 </html>
