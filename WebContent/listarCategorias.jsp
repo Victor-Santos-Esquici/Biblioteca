@@ -23,9 +23,23 @@
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div class="container">
+	    <div class="container dataTable">
 	    
-	    	<!-- content -->
+	    	<table id="categorias" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	    		<thead>
+	    			<tr>
+	    				<th>Descrição</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			<tr>
+	    				<td>Aventura</td>
+	    			</tr>
+	    			<tr>
+	    				<td>Drama</td>
+	    			</tr>
+	    		</tbody>
+	    	</table>
 	
 	        <!-- Footer -->
 			<jsp:include page="includes/footer.jsp"/>
@@ -35,5 +49,14 @@
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
 	    <script src="js/jquery.dataTables.min.js"></script>
+ 	    <script>
+	    	$(document).ready(function(){
+	    		$("#categorias").DataTable({
+	    			"language": {
+	    				"url": "json/Portuguese-Brasil.json"
+	    			}
+	    		});
+	    	});
+    	</script>
 	</body>
 </html>

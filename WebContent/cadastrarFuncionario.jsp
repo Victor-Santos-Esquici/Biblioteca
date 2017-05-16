@@ -14,17 +14,6 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-   	    <style>
-	    	#registerForm{
-	    		margin-top: 50px;
-	    	}
-	    	
-	    	input::-webkit-outer-spin-button,
-			input::-webkit-inner-spin-button {
-			    -webkit-appearance: none;
-			    margin: 0;
-			}
-	    </style>
 	</head>
 
 	<body>
@@ -34,7 +23,7 @@
 
 	    <!-- Page Content -->
 	    <div class="container">
-			<form class="well form-horizontal" action=" " method="post"  id="registerForm">
+			<form class="well form-horizontal" method="post"  id="registerForm">
 				<fieldset>
 		
 				<!-- Form Name -->
@@ -101,7 +90,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-							<input name="salary" placeholder="Valor do salário" class="form-control"  type="number">
+							<input id="salary" name="salary" placeholder="00.000,00" class="form-control"  type="text" maxlength="9">
 						</div>
 					</div>
 				</div>
@@ -140,7 +129,7 @@
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
 	    <script src="js/bootstrapValidator.min.js"></script>
-	    <script src="js/jquery.maskedinput.min.js"></script>
+	    <script src="js/jquery.mask.min.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('#registerForm').bootstrapValidator({
@@ -234,21 +223,10 @@
 			});
 		</script>
 		<script>
-			$("#phone").mask("(99) 9999?9-9999");
-	
-	
-			$("#phone").on("blur", function() {
-			    var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
-			    
-			    if( last.length == 3 ) {
-			        var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
-			        var lastfour = move + last;
-			        
-			        var first = $(this).val().substr( 0, 9 );
-			        
-			        $(this).val( first + '-' + lastfour );
-			    }
-			});
+			$(document).ready(function(){
+				$("#phone").mask("(00) 00000-0000");
+				$("#salary").mask("00.000,00", {reverse: true});
+			});	
 		</script>
 	</body>
 </html>

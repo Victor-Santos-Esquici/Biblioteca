@@ -14,17 +14,6 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-   	    <style>
-	    	#registerForm{
-	    		margin-top: 50px;
-	    	}
-	    	
- 		    input::-webkit-outer-spin-button,
-			input::-webkit-inner-spin-button {
-			    -webkit-appearance: none;
-			    margin: 0;
-			}
-	    </style>
 	</head>
 
 	<body>
@@ -34,7 +23,7 @@
 
 	    <!-- Page Content -->
 	    <div class="container">
-			<form class="well form-horizontal" action=" " method="post"  id="registerForm">
+			<form class="well form-horizontal" method="post"  id="registerForm">
 				<fieldset>
 		
 				<!-- Form Name -->
@@ -68,7 +57,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-							<input name="price" placeholder="Valor" class="form-control"  type="number">
+							<input id="price" name="price" placeholder="00.000,00" class="form-control" type="text" maxlength="9">
 						</div>
 					</div>
 				</div>
@@ -122,6 +111,7 @@
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
 	    <script src="js/bootstrapValidator.min.js"></script>
+	    <script src="js/jquery.mask.min.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('#registerForm').bootstrapValidator({
@@ -149,7 +139,7 @@
 			            price: {
 			                validators: {
 			                    notEmpty: {
-			                        message: 'Preencha preço do livro.'
+			                        message: 'Preencha o preço do livro.'
 			                    }
 			                }
 			            },
@@ -187,6 +177,11 @@
 		                console.log(result);
 		            }, 'json');
 		        });
+			});
+		</script>
+		<script>			
+			$(document).ready(function() {
+				$("#price").mask("00.000,00", {reverse: true});
 			});
 		</script>
 	</body>

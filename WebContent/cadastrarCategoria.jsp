@@ -14,11 +14,6 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	    <style>
-	    	#registerForm{
-	    		margin-top: 50px;
-	    	}
-	    </style>
 	</head>
 
 	<body>
@@ -28,7 +23,7 @@
 
 	    <!-- Page Content -->
 	    <div class="container">
-			<form class="well form-horizontal" action=" " method="post"  id="registerForm">
+			<form class="well form-horizontal" method="post"  id="registerForm">
 				<fieldset>
 		
 				<!-- Form Name -->

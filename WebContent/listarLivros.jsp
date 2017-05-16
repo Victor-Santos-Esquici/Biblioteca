@@ -28,21 +28,24 @@
 	    	<table id="livros" class="table table-striped table-bordered" cellspacing="0" width="100%">
 	    		<thead>
 	    			<tr>
-	    				<th>Nome</th>
-	    				<th>E-mail</th>
-	    				<th>Endereço</th>
+	    				<th>Título</th>
+	    				<th>Editora</th>
+	    				<th>Valor</th>
+	    				<th>Categoria</th>
 	    			</tr>
 	    		</thead>
 	    		<tbody>
 	    			<tr>
-	    				<td>Victor</td>
-	    				<td>victor_santos@email.com</td>
-	    				<td>Av. Lorem Ipsum</td>
+	    				<td>O Senhor dos Anéis</td>
+	    				<td>Lorem Ipsum</td>
+	    				<td>R$ 50,00</td>
+	    				<td>Aventura</td>
 	    			</tr>
 	    			<tr>
-	    				<td>Luan</td>
-	    				<td>luan_souza@email.com</td>
-	    				<td>Rua Lorem Ipsum</td>
+	    				<td>O Hobbit</td>
+	    				<td>Lorem Ipsum</td>
+	    				<td>R$ 20,00</td>
+	    				<td>Aventura</td>
 	    			</tr>
 	    		</tbody>
 	    	</table>
@@ -56,7 +59,13 @@
 	    <script src="js/bootstrap.min.js"></script>
 	    <script src="js/jquery.dataTables.min.js"></script>
 	    <script>
-	    	
+    	$(document).ready(function(){
+    		$("#livros").DataTable({
+    			"language": {
+    				"url": "json/Portuguese-Brasil.json"
+    			}
+    		});
+    	});
 	    </script>
 	</body>
 </html>

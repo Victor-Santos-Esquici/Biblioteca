@@ -34,8 +34,8 @@ create table livros (
 create table alunos (
 	codMatricula int not null primary key,
 	nome varchar(100) not null,
-	endereco varchar(100) not null,
 	email varchar(100) not null,
+	endereco varchar(100) not null,
 	situacao tinyint(1) not null
 )
 

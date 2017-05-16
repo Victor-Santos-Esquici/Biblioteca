@@ -29,6 +29,7 @@
 	    		<thead>
 	    			<tr>
 	    				<th>Nome</th>
+	    				<th>E-mail</th>
 	    				<th>Endereço</th>
 	    				<th>Telefone</th>
 	    				<th>Salário</th>
@@ -38,6 +39,7 @@
 	    		<tbody>
 	    			<tr>
 	    				<td>Victor</td>
+	    				<td>victor@victor.com</td>
 	    				<td>Av. Lorem Ipsum</td>
 	    				<td>(55) 99999-9999</td>
 	    				<td>R$ 10.000</td>
@@ -45,6 +47,7 @@
 	    			</tr>
 	    			<tr>
 	    				<td>Luan</td>
+	    				<td>luan@luan.com</td>
 	    				<td>Av. puta que Ipsum</td>
 	    				<td>(55) 77777-7777</td>
 	    				<td>R$ 15.000</td>
