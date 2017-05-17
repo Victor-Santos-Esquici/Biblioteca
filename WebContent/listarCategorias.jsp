@@ -25,7 +25,7 @@
 	    <!-- Page Content -->
 	    <div class="container dataTable">
 	    
-	    	<table id="categorias" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	    	<table id="categorias" class="table table-striped table-bordered">
 	    		<thead>
 	    			<tr>
 	    				<th>Descrição</th>
