@@ -23,7 +23,7 @@
 
 	    <!-- Page Content -->
 	    <div class="container">
-			<form class="well form-horizontal" method="post"  id="registerForm">
+			<form class="well form-horizontal" method="post" id="registerForm">
 				<fieldset>
 		
 				<!-- Form Name -->
@@ -35,7 +35,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input  name="firstName" placeholder="Nome" class="form-control"  type="text">
+							<input name="firstName" placeholder="Nome" class="form-control" type="text">
 						</div>
 					</div>
 				</div>
@@ -46,7 +46,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input name="lastName" placeholder="Sobrenome" class="form-control"  type="text">
+							<input name="lastName" placeholder="Sobrenome" class="form-control" type="text">
 						</div>
 					</div>
 				</div>
@@ -57,7 +57,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-							<input name="email" placeholder="Endereço de e-mail" class="form-control"  type="text">
+							<input name="email" placeholder="Endereço de e-mail" class="form-control" type="text">
 						</div>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-							<input name="endereco" placeholder="Endereço físico" class="form-control"  type="text">
+							<input name="endereco" placeholder="Endereço físico" class="form-control" type="text">
 						</div>
 					</div>
 				</div>

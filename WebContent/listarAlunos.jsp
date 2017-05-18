@@ -31,6 +31,7 @@
 	    		<thead>
 	    			<tr>
 	    				<th>Nome</th>
+	    				<th>Sobrenome</th>
 	    				<th>E-mail</th>
 	    				<th>Endereço</th>
 	    				<th>Gerenciar</th>
@@ -39,17 +40,19 @@
 	    		<tbody>
 	    			<tr>
 	    				<td>Victor</td>
+	    				<td>Santos</td>
 	    				<td>victor_santos@email.com</td>
 	    				<td>Av. Lorem Ipsum</td>
 	    				<td>
-	    					<button type="button" class="btn btn-sm btn-warning">Editar</button>
-	    					<button type="button" class="btn btn-sm btn-danger">Deletar</button>
+	    					<a type="button" class="btn btn-sm btn-warning">Editar</a>
+	    					<a type="button" class="btn btn-sm btn-danger">Deletar</a>
 	    				</td>
 	    			</tr>
 	    			<tr>
-	    				<td>Luan</td>
-	    				<td>luan_souza@email.com</td>
-	    				<td>Rua Lorem Ipsum</td>
+	    				<td class="tableName">Luan</td>
+	    				<td class="tableSobrenome">Souza</td>
+	    				<td class="tableEmail">luan_souza@email.com</td>
+	    				<td class="tableAddress">Rua Lorem Ipsum</td>
 	    				<td>
 	    					<a href="#modal" type="button" class="btn btn-sm btn-warning">Editar</a>
 	    					<a type="button" class="btn btn-sm btn-danger">Deletar</a>
@@ -60,8 +63,66 @@
 	    	
 			<div class="remodal" data-remodal-id="modal">
 				<button data-remodal-action="close" class="remodal-close"></button>
-				<h1>Remodal</h1>
-				<p>Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.</p>
+				<form class="well form-horizontal" method="post" id="registerForm">
+					<fieldset>
+			
+					<!-- Form Name -->
+					<legend class="text-center">Editar Aluno</legend>
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Nome</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input name="firstName" placeholder="Nome" class="form-control" type="text">
+							</div>
+						</div>
+					</div>
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Sobrenome</label> 
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input name="lastName" placeholder="Sobrenome" class="form-control" type="text">
+							</div>
+						</div>
+					</div>
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">E-Mail</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+								<input name="email" placeholder="Endereço de e-mail" class="form-control" type="text">
+							</div>
+						</div>
+					</div>
+					
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Endereço</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+								<input name="endereco" placeholder="Endereço físico" class="form-control" type="text">
+							</div>
+						</div>
+					</div>
+			
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4 control-label"></label>
+						<div class="col-md-4">
+							<button type="submit" class="btn btn-warning" >Enviar <span class="glyphicon glyphicon-send"></span></button>
+						</div>
+					</div>
+					
+					</fieldset>
+				</form>
 				<br>
 				<button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
 				<button data-remodal-action="confirm" class="remodal-confirm">OK</button>
@@ -76,6 +137,78 @@
 	    <script src="js/bootstrap.min.js"></script>
 	    <script src="js/jquery.dataTables.min.js"></script>
 	    <script src="js/remodal.js"></script>
+	    <script src="js/bootstrapValidator.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#registerForm').bootstrapValidator({
+			        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+			        feedbackIcons: {
+			            valid: 'glyphicon glyphicon-ok',
+			            invalid: 'glyphicon glyphicon-remove',
+			            validating: 'glyphicon glyphicon-refresh'
+			        },
+			        fields: {
+			            firstName: {
+			                validators: {
+			                        stringLength: {
+		                        	message: 'O nome deve conter no mínimo 2 caracteres.',
+			                        min: 2,
+			                    },
+			                        notEmpty: {
+			                        message: 'Preencha o nome do aluno.'
+			                    }
+			                }
+			            },
+			             lastName: {
+			                validators: {
+			                     stringLength: {
+			                    	message: 'O sobrenome deve conter no mínimo 2 caracteres.',
+			                        min: 2,
+			                    },
+			                    notEmpty: {
+			                        message: 'Preencha o sobrenome do aluno.'
+			                    }
+			                }
+			            },
+			            email: {
+			                validators: {
+			                    notEmpty: {
+			                        message: 'Preencha o e-mail do aluno.'
+			                    },
+			                    emailAddress: {
+			                        message: 'Este endereço de e-mail está inválido.'
+			                    }
+			                }
+			            },
+			            endereco: {
+			            	validators: {
+			            		notEmpty: {
+			            			message: 'Preencha o endereço do aluno.'
+			            		}
+			            	}
+			            }
+	            	}
+		        })
+		        .on('success.form.bv', function(e) {
+		            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+		                $('#registerForm').data('bootstrapValidator').resetForm();
+		
+		            // Prevent form submission
+		            e.preventDefault();
+		
+		            // Get the form instance
+		            var $form = $(e.target);
+		
+		            // Get the BootstrapValidator instance
+		            var bv = $form.data('bootstrapValidator');
+		
+		            // Use Ajax to submit form data
+		            $.post($form.attr('action'), $form.serialize(), function(result) {
+		                console.log(result);
+		            }, 'json');
+		        });
+			});
+		</script>
 	    <script>
 	    	$(document).ready(function(){
 	    		$("#alunos").DataTable({
@@ -83,6 +216,14 @@
 	    				"url": "json/Portuguese-Brasil.json"
 	    			}
 	    		});
+	    		
+	    		$(".btn").click(function(){
+	    			$("input[name='firstName']").val($(".tableName").html());
+	    			$("input[name='lastName']").val($(".tableSobrenome").html());
+	    			$("input[name='email']").val($(".tableEmail").html());
+	    			$("input[name='endereco']").val($(".tableAddress").html());
+	    		});
+	    		
 	    	});
 	    </script>
 	</body>
