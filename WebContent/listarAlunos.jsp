@@ -17,6 +17,7 @@
 	    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 	    <link href="css/remodal.css" rel="stylesheet" type="text/css">
 	    <link href="css/remodal-default-theme.css" rel="stylesheet" type="text/css">
+	    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
 	</head>
 
 	<body>
@@ -39,29 +40,29 @@
 	    		</thead>
 	    		<tbody>
 	    			<tr>
-	    				<td>Victor</td>
-	    				<td>Santos</td>
-	    				<td>victor_santos@email.com</td>
-	    				<td>Av. Lorem Ipsum</td>
+	    				<td class="studentName">Victor</td>
+	    				<td class="studentLastName">Santos</td>
+	    				<td class="studentEmail">victor_santos@email.com</td>
+	    				<td class="studentAddress">Av. Lorem Ipsum</td>
 	    				<td>
-	    					<a type="button" class="btn btn-sm btn-warning">Editar</a>
-	    					<a type="button" class="btn btn-sm btn-danger">Deletar</a>
+	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
+	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
 	    				</td>
 	    			</tr>
 	    			<tr>
-	    				<td class="tableName">Luan</td>
-	    				<td class="tableSobrenome">Souza</td>
-	    				<td class="tableEmail">luan_souza@email.com</td>
-	    				<td class="tableAddress">Rua Lorem Ipsum</td>
+	    				<td class="studentName">Luan</td>
+	    				<td class="studentLastName">Souza</td>
+	    				<td class="studentEmail">luan_souza@email.com</td>
+	    				<td class="studentAddress">Rua Lorem Ipsum</td>
 	    				<td>
-	    					<a href="#modal" type="button" class="btn btn-sm btn-warning">Editar</a>
-	    					<a type="button" class="btn btn-sm btn-danger">Deletar</a>
+	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
+	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
 	    				</td>
 	    			</tr>
 	    		</tbody>
 	    	</table>
 	    	
-			<div class="remodal" data-remodal-id="modal">
+			<div class="remodal" data-remodal-id="editModal">
 				<button data-remodal-action="close" class="remodal-close"></button>
 				<form class="well form-horizontal" method="post" id="registerForm">
 					<fieldset>
@@ -71,8 +72,8 @@
 			
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-md-4 control-label">Nome</label>  
-						<div class="col-md-4 inputGroupContainer">
+						<label class="col-md-12">Nome</label>  
+						<div class="col-md-12 center-block text-center pagination-centered inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 								<input name="firstName" placeholder="Nome" class="form-control" type="text">
@@ -82,8 +83,8 @@
 			
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-md-4 control-label">Sobrenome</label> 
-						<div class="col-md-4 inputGroupContainer">
+						<label class="col-md-12">Sobrenome</label> 
+						<div class="col-md-12 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 								<input name="lastName" placeholder="Sobrenome" class="form-control" type="text">
@@ -93,8 +94,8 @@
 			
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-md-4 control-label">E-Mail</label>  
-						<div class="col-md-4 inputGroupContainer">
+						<label class="col-md-12">E-Mail</label>  
+						<div class="col-md-12 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 								<input name="email" placeholder="Endereço de e-mail" class="form-control" type="text">
@@ -104,8 +105,8 @@
 					
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-md-4 control-label">Endereço</label>  
-						<div class="col-md-4 inputGroupContainer">
+						<label class="col-md-12">Endereço</label>  
+						<div class="col-md-12 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 								<input name="endereco" placeholder="Endereço físico" class="form-control" type="text">
@@ -115,17 +116,24 @@
 			
 					<!-- Button -->
 					<div class="form-group">
-						<label class="col-md-4 control-label"></label>
-						<div class="col-md-4">
-							<button type="submit" class="btn btn-warning" >Enviar <span class="glyphicon glyphicon-send"></span></button>
+						<div class="col-md-12">
+							<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
 						</div>
 					</div>
 					
 					</fieldset>
 				</form>
 				<br>
-				<button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-				<button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+				<button data-remodal-action="cancel" class="remodal-cancel">Cancelar</button>
+			</div>
+			
+			<div class="remodal" data-remodal-id="deleteModal">
+				<button data-remodal-action="close" class="remodal-close"></button>
+				<h2>Deseja deletar este aluno?</h2>
+				<p class="deleteStudent"></p>
+				<br>
+				<button data-remodal-action="cancel" class="remodal-cancel">Não</button>
+				<button data-remodal-action="confirm" class="remodal-confirm">Sim</button>
 			</div>
 	
 	        <!-- Footer -->
@@ -217,13 +225,25 @@
 	    			}
 	    		});
 	    		
-	    		$(".btn").click(function(){
-	    			$("input[name='firstName']").val($(".tableName").html());
-	    			$("input[name='lastName']").val($(".tableSobrenome").html());
-	    			$("input[name='email']").val($(".tableEmail").html());
-	    			$("input[name='endereco']").val($(".tableAddress").html());
+	    		$(".btnEdit").click(function(){
+	    			var $item = $(this).closest("tr");
+	    			var studentName = $($item).find(".studentName").html();
+	    			var studentLastName = $($item).find(".studentLastName").html();
+	    			var studentEmail = $($item).find(".studentEmail").html();
+	    			var studentAddress = $($item).find(".studentAddress").html();
+	    			
+	    			$("input[name='firstName']").val(studentName);
+	    			$("input[name='lastName']").val(studentLastName);
+	    			$("input[name='email']").val(studentEmail);
+	    			$("input[name='endereco']").val(studentAddress);
 	    		});
 	    		
+	    		$(".btnDelete").click(function(){
+	    			var $item = $(this).closest("tr");
+	    			var studentName = $($item).find(".studentName").html();
+	    			var studentLastName = $($item).find(".studentLastName").html();
+	    			$(".deleteStudent").empty().append(studentName + " " + studentLastName);
+	    		});
 	    	});
 	    </script>
 	</body>

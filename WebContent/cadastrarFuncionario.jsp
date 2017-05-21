@@ -14,6 +14,7 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
 	</head>
 
 	<body>
@@ -35,7 +36,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input  name="first_name" placeholder="Nome" class="form-control"  type="text">
+							<input  name="firstName" placeholder="Nome" class="form-control"  type="text">
 						</div>
 					</div>
 				</div>
@@ -46,7 +47,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input name="last_name" placeholder="Sobrenome" class="form-control"  type="text">
+							<input name="lastName" placeholder="Sobrenome" class="form-control"  type="text">
 						</div>
 					</div>
 				</div>
@@ -68,7 +69,7 @@
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-							<input name="endereco" placeholder="Endereço físico" class="form-control"  type="text">
+							<input name="address" placeholder="Endereço físico" class="form-control"  type="text">
 						</div>
 					</div>
 				</div>
@@ -112,9 +113,8 @@
 		
 				<!-- Button -->
 				<div class="form-group">
-					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
-						<button type="submit" class="btn btn-warning" >Enviar <span class="glyphicon glyphicon-send"></span></button>
+						<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
 					</div>
 				</div>
 				
@@ -140,7 +140,7 @@
 			            validating: 'glyphicon glyphicon-refresh'
 			        },
 			        fields: {
-			            first_name: {
+			            firstName: {
 			                validators: {
 			                        stringLength: {
 		                        	message: 'O nome deve conter no mínimo 2 caracteres.',
@@ -151,7 +151,7 @@
 			                    }
 			                }
 			            },
-			             last_name: {
+			             lastName: {
 			                validators: {
 			                     stringLength: {
 			                    	message: 'O sobrenome deve conter no mínimo 2 caracteres.',
@@ -172,7 +172,7 @@
 			                    }
 			                }
 			            },
-			            endereco: {
+			            address: {
 			            	validators: {
 			            		notEmpty: {
 			            			message: 'Preencha o endereço do funcionário.'

@@ -14,6 +14,7 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
 	</head>
 
 	<body>
@@ -42,9 +43,8 @@
 		
 				<!-- Button -->
 				<div class="form-group">
-					<label class="col-md-4 control-label"></label>
 					<div class="col-md-4">
-						<button type="submit" class="btn btn-warning" >Enviar <span class="glyphicon glyphicon-send"></span></button>
+						<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
 					</div>
 				</div>
 				
