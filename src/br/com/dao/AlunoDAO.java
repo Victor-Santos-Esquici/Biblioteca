@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.model.Aluno;
-import br.com.util.Conexao;
+import br.com.util.DbUtil;
 
 public class AlunoDAO {
 	
-	private Connection con = Conexao.getConnection();
+	private Connection con = DbUtil.getConnection();
 	
 	public void insert(Aluno aluno){
 		

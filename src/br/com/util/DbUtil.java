@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexao 
+public class DbUtil 
 {
 	public static Connection getConnection()
 	{
@@ -12,6 +12,7 @@ public class Conexao
 		
 		try	
 		{
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bibliotecaDB", "postgres", "admin");
 			System.out.println("Conectado com sucesso");
 		} 
@@ -19,6 +20,15 @@ public class Conexao
 		{
 			e.printStackTrace();
 			System.out.println("Falha na conexão");
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return con;
