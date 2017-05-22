@@ -14,6 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/ALU201522086/Desktop/Biblioteca/WebContent/WEB-INF/lib/postgresql-9.4.1208.jre6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ALU201522086/Desktop/Biblioteca/WebContent/WEB-INF/lib/postgresql-42.1.1.jre6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALU201522086/Desktop/Biblioteca/WebContent/WEB-INF/lib/mysql-connector-java-5.1.42-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

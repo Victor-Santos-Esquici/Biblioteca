@@ -13,7 +13,7 @@ public class DbUtil
 		try	
 		{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bibliotecaDB", "postgres", "admin");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotecaDB", "root", "");
 			System.out.println("Conectado com sucesso");
 		} 
 		catch(SQLException e) 

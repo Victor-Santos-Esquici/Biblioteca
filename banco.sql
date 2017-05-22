@@ -2,7 +2,7 @@ create table biblioteca (
 	codLib int not null primary key,
 	nome varchar(100) not null,
 	endereco varchar(200) not null
-)
+);
 
 create table funcionario (
 	codFunc int not null primary key,
@@ -12,12 +12,12 @@ create table funcionario (
 	salario decimal(15,2) not null,
 	codBib int not null,
 	foreign key (codBib) references biblioteca (codLib)
-)
+);
 
 create table categoria (
 	codCategoria int not null primary key,
 	descricao varchar(100) not null
-)
+);
 
 create table livros (
 	codLivro int not null primary key,
@@ -29,7 +29,7 @@ create table livros (
 	situacao boolean not null,
 	foreign key (codCategoria) references categoria (codCategoria),
 	foreign key (codLib) references biblioteca (codLib)
-)
+);
 
 create table alunos (
 	codMatricula int not null primary key,
@@ -38,7 +38,7 @@ create table alunos (
 	email varchar(100) not null,
 	endereco varchar(100) not null,
 	situacao boolean not null
-)
+);
 
 create table empresta (
 	id int not null primary key,
@@ -49,7 +49,7 @@ create table empresta (
 	dataEntrega date not null,
 	foreign key (codLivro) references livros (codLivro),
 	foreign key (codMatricula) references alunos (codMatricula)
-)
+);
 
 insert into biblioteca values (1, 'Biblioteca Municipal de Canoas', 'XV de Janeiro, 270');
 
