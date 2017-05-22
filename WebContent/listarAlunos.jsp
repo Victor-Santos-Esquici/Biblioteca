@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -39,26 +39,19 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-	    			<tr>
-	    				<td class="studentName">Victor</td>
-	    				<td class="studentLastName">Santos</td>
-	    				<td class="studentEmail">victor_santos@email.com</td>
-	    				<td class="studentAddress">Av. Lorem Ipsum</td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
-	    				</td>
-	    			</tr>
-	    			<tr>
-	    				<td class="studentName">Luan</td>
-	    				<td class="studentLastName">Souza</td>
-	    				<td class="studentEmail">luan_souza@email.com</td>
-	    				<td class="studentAddress">Rua Lorem Ipsum</td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
-	    				</td>
-	    			</tr>
+	    			<jsp:useBean id="dao" class="br.com.dao.AlunoDAO"/>
+		    		<c:forEach items="$(dao.select)" var="aluno">
+		    			<tr>
+		    				<td class="studentName"><c:out value="$(aluno.nome)" /></td>
+		    				<td class="studentLastName"><c:out value="$(aluno.sobrenome)"/></td>
+		    				<td class="studentEmail"><c:out value="$(aluno.email)"/></td>
+		    				<td class="studentAddress"><c:out value="$(aluno.endereco)"/></td>
+		    				<td>
+		    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
+		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
+		    				</td>
+		    			</tr>
+		    		</c:forEach>
 	    		</tbody>
 	    	</table>
 	    	

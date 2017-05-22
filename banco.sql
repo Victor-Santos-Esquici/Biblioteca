@@ -25,18 +25,19 @@ create table livros (
 	editora varchar(50) not null,
 	valor decimal(15,2) not null,
 	codCategoria int not null,
-	codBib int not null,
-	situacao tinyint(1) not null,
+	codLib int not null,
+	situacao boolean not null,
 	foreign key (codCategoria) references categoria (codCategoria),
-	foreign key (codBib) references biblioteca (codBib)
+	foreign key (codLib) references biblioteca (codLib)
 )
 
 create table alunos (
 	codMatricula int not null primary key,
 	nome varchar(100) not null,
+	sobrenome varchar(100) not null,
 	email varchar(100) not null,
 	endereco varchar(100) not null,
-	situacao tinyint(1) not null
+	situacao boolean not null
 )
 
 create table empresta (
@@ -47,33 +48,33 @@ create table empresta (
 	dataPrevisao date not null,
 	dataEntrega date not null,
 	foreign key (codLivro) references livros (codLivro),
-	foreign key (codMatricula) references categoria (codMatricula)
+	foreign key (codMatricula) references alunos (codMatricula)
 )
 
-insert into biblioteca values (1, "Biblioteca Municipal de Canoas", "XV de Janeiro, 270");
+insert into biblioteca values (1, 'Biblioteca Municipal de Canoas', 'XV de Janeiro, 270');
 
-insert into funcionario values (10, "Marta", "Silva So, 350", "123456", 150.00, 1);
-insert into funcionario values (20, "Paula", "Dom Pedro II, 200", "890123", 450.00, 1);
-insert into funcionario values (30, "Carlos", "Ipiranga, 700", "456789", 300.00, 1);
-insert into funcionario values (40, "Jonas", "Protasio Alves, 450", "1234567", 450.00, 1);
+insert into funcionario values (10, 'Marta', 'Silva So, 350', '123456', 150.00, 1);
+insert into funcionario values (20, 'Paula', 'Dom Pedro II, 200', '890123', 450.00, 1);
+insert into funcionario values (30, 'Carlos', 'Ipiranga, 700', '456789', 300.00, 1);
+insert into funcionario values (40, 'Jonas', 'Protasio Alves, 450', '1234567', 450.00, 1);
 
-insert into categoria values (25, "Ficcao");
-insert into categoria values (35, "Romance");
-insert into categoria values (45, "Literatura");
-insert into categoria values (55, "Cientifico");
+insert into categoria values (25, 'Ficcao');
+insert into categoria values (35, 'Romance');
+insert into categoria values (45, 'Literatura');
+insert into categoria values (55, 'Cientifico');
 
-insert into livros values (100, "Senhor dos Aneis", "XYZ", 75.00, 25, 1, 1);
-insert into livros values (200, "Harry Potter", "XYZ", 35.00, 25, 1, 1);
-insert into livros values (300, "O Cortico", "ABC", 50.00, 45, 1, 1);
-insert into livros values (400, "Aprenda Quimica", "DEF", 70.00, 55, 1, 1);
-insert into livros values (500, "Outro Lado da Meia Noite", "FGH", 80.00, 35, 1, 0);
+insert into livros values (100, 'Senhor dos Aneis', 'XYZ', 75.00, 25, 1, true);
+insert into livros values (200, 'Harry Potter', 'XYZ', 35.00, 25, 1, true);
+insert into livros values (300, 'O Cortico', 'ABC', 50.00, 45, 1, true);
+insert into livros values (400, 'Aprenda Quimica', 'DEF', 70.00, 55, 1, true);
+insert into livros values (500, 'Outro Lado da Meia Noite', 'FGH', 80.00, 35, 1, false);
 
-insert into alunos values (300, "Maria Paula", "Assis Brasil, 110", "maria_paula@email.com",1);
-insert into alunos values (310, "Mauro Eduardo", "Carlos Gomes, 150", "mauro_eduardo@email.com",1);
-insert into alunos values (320, "Joao Gilberto", "Andradas, 1200", "joao_gilberto@email.com",0);
-insert into alunos values (340, "Paulo Gomes", "Jose do Patrocinio, 500", "paulo_gomes@email.com",1);
+insert into alunos values (300, 'Maria', 'Paula', 'Assis Brasil, 110', 'maria_paula@email.com', true);
+insert into alunos values (310, 'Mauro', 'Eduardo', 'Carlos Gomes, 150', 'mauro_eduardo@email.com', true);
+insert into alunos values (320, 'Joao', 'Gilberto', 'Andradas, 1200', 'joao_gilberto@email.com', false);
+insert into alunos values (340, 'Paulo', 'Gomes', 'Jose do Patrocinio, 500', 'paulo_gomes@email.com', true);
 
-insert into empresta values (300, 100, "10/11/2016", "20/11/2016", "20/11/2016");
-insert into empresta values (300, 200, "10/11/2016", "20/11/2016", "18/11/2016");
-insert into empresta values (300, 100, "11/11/2016", "21/11/2016", "14/11/2016");
-insert into empresta values (330, 500, "21/11/2016", "01/02/2016", "24/12/2016");
+insert into empresta values (1, 300, 100, 	to_date('10 Nov 2016', 'DD Mon YYYY'), to_date('20 Nov 2016', 'DD Mon YYYY'), to_date('20 Nov 2016', 'DD Mon YYYY'));
+insert into empresta values (2, 300, 200, to_date('10 Nov 2016', 'DD Mon YYYY'), to_date('20 Nov 2016', 'DD Mon YYYY'), to_date('18 Nov 2016', 'DD Mon YYYY'));
+insert into empresta values (3, 300, 100, to_date('11 Nov 2016', 'DD Mon YYYY'), to_date('21 Nov 2016', 'DD Mon YYYY'), to_date('14 Nov 2016', 'DD Mon YYYY'));
+insert into empresta values (4, 300, 500, to_date('21 Nov 2016', 'DD Mon YYYY'), to_date('01 Feb 2016', 'DD Mon YYYY'), to_date('24 Dec 2016', 'DD Mon YYYY'));
