@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.14
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Maio-2017 às 09:07
--- Versão do servidor: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Generation Time: 24-Maio-2017 às 01:21
+-- Versão do servidor: 5.6.26
+-- PHP Version: 5.5.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,14 +26,14 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `alunos`
 --
 
-CREATE TABLE `alunos` (
+CREATE TABLE IF NOT EXISTS `alunos` (
   `codMatricula` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `sobrenome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `endereco` varchar(100) NOT NULL,
   `situacao` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `alunos`
@@ -51,11 +51,11 @@ INSERT INTO `alunos` (`codMatricula`, `nome`, `sobrenome`, `email`, `endereco`, 
 -- Estrutura da tabela `biblioteca`
 --
 
-CREATE TABLE `biblioteca` (
+CREATE TABLE IF NOT EXISTS `biblioteca` (
   `codLib` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `endereco` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `biblioteca`
@@ -70,10 +70,10 @@ INSERT INTO `biblioteca` (`codLib`, `nome`, `endereco`) VALUES
 -- Estrutura da tabela `categoria`
 --
 
-CREATE TABLE `categoria` (
+CREATE TABLE IF NOT EXISTS `categoria` (
   `codCategoria` int(11) NOT NULL,
   `descricao` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `categoria`
@@ -91,14 +91,14 @@ INSERT INTO `categoria` (`codCategoria`, `descricao`) VALUES
 -- Estrutura da tabela `empresta`
 --
 
-CREATE TABLE `empresta` (
+CREATE TABLE IF NOT EXISTS `empresta` (
   `id` int(11) NOT NULL,
   `codMatricula` int(11) NOT NULL,
   `codLivro` int(11) NOT NULL,
   `dataRetirada` date NOT NULL,
   `dataPrevisao` date NOT NULL,
   `dataEntrega` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `empresta`
@@ -116,24 +116,26 @@ INSERT INTO `empresta` (`id`, `codMatricula`, `codLivro`, `dataRetirada`, `dataP
 -- Estrutura da tabela `funcionario`
 --
 
-CREATE TABLE `funcionario` (
+CREATE TABLE IF NOT EXISTS `funcionario` (
   `codFunc` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
+  `sobrenome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `endereco` varchar(200) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `salario` decimal(15,2) NOT NULL,
   `codBib` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `funcionario`
 --
 
-INSERT INTO `funcionario` (`codFunc`, `nome`, `endereco`, `telefone`, `salario`, `codBib`) VALUES
-(1, 'Marta', 'Silva So, 350', '123456', '150.00', 1),
-(2, 'Paula', 'Dom Pedro II, 200', '890123', '450.00', 1),
-(3, 'Carlos', 'Ipiranga, 700', '456789', '300.00', 1),
-(4, 'Jonas', 'Protasio Alves, 450', '1234567', '450.00', 1);
+INSERT INTO `funcionario` (`codFunc`, `nome`, `sobrenome`, `email`, `endereco`, `telefone`, `salario`, `codBib`) VALUES
+(1, 'Marta', 'Santos', 'marta@marta.com', 'Silva So, 350', '123456', '150.00', 1),
+(2, 'Paula', 'Soares', 'paula@paula.com', 'Dom Pedro II, 200', '890123', '450.00', 1),
+(3, 'Carlos', 'Souza', 'carlos@carlos.com', 'Ipiranga, 700', '456789', '300.00', 1),
+(4, 'Jonas', 'Silva', 'jonas@jonas.com', 'Protasio Alves, 450', '1234567', '450.00', 1);
 
 -- --------------------------------------------------------
 
@@ -141,7 +143,7 @@ INSERT INTO `funcionario` (`codFunc`, `nome`, `endereco`, `telefone`, `salario`,
 -- Estrutura da tabela `livros`
 --
 
-CREATE TABLE `livros` (
+CREATE TABLE IF NOT EXISTS `livros` (
   `codLivro` int(11) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `editora` varchar(50) NOT NULL,
@@ -149,7 +151,7 @@ CREATE TABLE `livros` (
   `codCategoria` int(11) NOT NULL,
   `codLib` int(11) NOT NULL,
   `situacao` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `livros`
@@ -215,32 +217,32 @@ ALTER TABLE `livros`
 -- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `codMatricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `codMatricula` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `biblioteca`
 --
 ALTER TABLE `biblioteca`
-  MODIFY `codLib` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codLib` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `codCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `codCategoria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `empresta`
 --
 ALTER TABLE `empresta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `codFunc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `codFunc` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `codLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `codLivro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --

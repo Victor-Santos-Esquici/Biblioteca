@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="br.com.model.Categoria" %>
+<%@ page import="java.util.ArrayList" %>
     
 <!DOCTYPE html>
 
@@ -35,21 +36,23 @@
 	    				<th>Gerenciar</th>
 	    			</tr>
 	    		</thead>
-	    		<tbody>
+	    		<tbody>	    		
+	    			<jsp:useBean id="dao" class="br.com.dao.CategoriaDAO"/>
+	    			<%
+		    			ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	    				categorias = dao.select();
+	    				for(Categoria categoria: categorias){
+	    			%>
 	    			<tr>
-	    				<td class="categoryName">Aventura</td>
+	    				<td class="categoryName"><% out.print(categoria.getDescricao()); %></td>
 	    				<td>
 	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
 	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
 	    				</td>
 	    			</tr>
-	    			<tr>
-	    				<td class="categoryName">Drama</td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
-	    				</td>
-	    			</tr>
+	    			<%
+	    				}
+	    			%>
 	    		</tbody>
 	    	</table>
 	

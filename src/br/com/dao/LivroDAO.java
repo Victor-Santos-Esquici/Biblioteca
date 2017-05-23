@@ -58,15 +58,15 @@ public class LivroDAO {
 	public ArrayList<Livro> select() {
 		
 		String sql = "select * from livros";
-		ArrayList<Livro> livroList = new ArrayList<Livro>();
+		ArrayList<Livro> livrosList = new ArrayList<Livro>();
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			ResultSet rst = preparador.executeQuery();
 			
 			while(rst.next()){
-				Funcionario funcionario = new Funcionario(rst.getInt("codFunc"), rst.getString("nome"), rst.getString("endereco"), rst.getString("telefone"), rst.getDouble("salario"), rst.getInt("codBib"));
-				funcionarioList.add(funcionario);
+				Livro livro = new Livro(rst.getInt("codLivro"), rst.getString("titulo"), rst.getString("editora"), rst.getDouble("valor"), rst.getInt("codCategoria"), rst.getInt("codLib"), rst.getBoolean("situacao"));
+				livrosList.add(livro);
 			}
 			
 			rst.close();
@@ -76,6 +76,6 @@ public class LivroDAO {
 			ex.printStackTrace();
 		}
 		
-		return funcionarioList;
+		return livrosList;
 	}
 }

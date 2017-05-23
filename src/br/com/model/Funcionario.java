@@ -4,14 +4,18 @@ public class Funcionario {
 
 	public Integer codFunc;
 	public String nome;
+	public String sobrenome;
+	public String email;
 	public String endereco;
 	public String telefone;
 	public Double salario;
 	public Integer codBib;
 	
-	public Funcionario(Integer codFunc, String nome, String endereco, String telefone, Double salario, Integer codBib){
+	public Funcionario(Integer codFunc, String nome, String sobrenome, String email, String endereco, String telefone, Double salario, Integer codBib){
 		this.codFunc = codFunc;
 		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.email = email;
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.salario = salario;
@@ -32,6 +36,22 @@ public class Funcionario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getEndereco() {

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="br.com.model.Funcionario" %>
+<%@ page import="java.util.ArrayList" %>
     
 <!DOCTYPE html>
 
@@ -42,32 +43,28 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
+	    			<jsp:useBean id="dao" class="br.com.dao.FuncionarioDAO"/>
+	    			<%
+		    			ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+	    				funcionarios = dao.select();
+	    				for(Funcionario funcionario: funcionarios){
+	    			%>
 	    			<tr>
-	    				<td class="workerName">Victor</td>
-	    				<td class="workerLastName">Santos</td>
-	    				<td class="workerEmail">victor@victor.com</td>
-	    				<td class="workerAddress">Av. Lorem Ipsum</td>
-	    				<td class="workerPhone">(55) 99999-9999</td>
-	    				<td class="workerSalary">10.000,00</td>
-	    				<td class="workerLibrary">Alabama</td>
+	    				<td class="workerName"><% out.print(funcionario.getNome()); %></td>
+	    				<td class="workerLastName"><% out.print(funcionario.getSobrenome()); %></td>
+	    				<td class="workerEmail"><% out.print(funcionario.getEmail()); %></td>
+	    				<td class="workerAddress"><% out.print(funcionario.getEndereco()); %></td>
+	    				<td class="workerPhone"><% out.print(funcionario.telefone); %></td>
+	    				<td class="workerSalary"><% out.print(funcionario.getSalario()); %></td>
+	    				<td class="workerLibrary"><% out.print(funcionario.getCodBib()); %></td>
 	    				<td>
 	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
 	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
 	    				</td>
 	    			</tr>
-	    			<tr>
-	    				<td class="workerName">Luan</td>
-	    				<td class="workerLastName">Souza</td>
-	    				<td class="workerEmail">luan@luan.com</td>
-	    				<td class="workerAddress">Av. puta que Ipsum</td>
-	    				<td class="workerPhone">(55) 77777-7777</td>
-	    				<td class="workerSalary">15.000,00</td>
-	    				<td class="workerLibrary">Alaska</td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
-	    				</td>
-	    			</tr>
+	    			<%
+	    				}
+	    			%>
 	    		</tbody>
 	    	</table>
 	    	

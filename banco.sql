@@ -7,6 +7,8 @@ create table biblioteca (
 create table funcionario (
 	codFunc int not null primary key AUTO_INCREMENT,
 	nome varchar(100) not null,
+	sobrenome varchar(100) not null,
+	email varchar(100) not null,
 	endereco varchar(200) not null,
 	telefone varchar(20),
 	salario decimal(15,2) not null,

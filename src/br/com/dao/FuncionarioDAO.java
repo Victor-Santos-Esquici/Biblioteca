@@ -63,7 +63,7 @@ public class FuncionarioDAO {
 			ResultSet rst = preparador.executeQuery();
 			
 			while(rst.next()){
-				Funcionario funcionario = new Funcionario(rst.getInt("codFunc"), rst.getString("nome"), rst.getString("endereco"), rst.getString("telefone"), rst.getDouble("salario"), rst.getInt("codBib"));
+				Funcionario funcionario = new Funcionario(rst.getInt("codFunc"), rst.getString("nome"), rst.getString("sobrenome"), rst.getString("email"), rst.getString("endereco"), rst.getString("telefone"), rst.getDouble("salario"), rst.getInt("codBib"));
 				funcionarioList.add(funcionario);
 			}
 			
