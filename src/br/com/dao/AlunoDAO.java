@@ -6,10 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
-
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 import br.com.model.Aluno;
 import br.com.util.DbUtil;
 
@@ -17,18 +13,20 @@ public class AlunoDAO {
 	
 	private static Connection con = DbUtil.getConnection();
 	
-	public void insert(Aluno aluno){
+	public void insert(Aluno aluno) {
 		
-		String sql = "insert into alunos values (?,?,?,?)";
+		String sql = "insert into alunos values (?,?,?,?,?,?)";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
-			preparador.setString(1, aluno.getCodMatricula().toString());
+			preparador.setInt(1, aluno.getCodMatricula());
 			preparador.setString(2, aluno.getNome());
-			preparador.setString(3, aluno.getEndereco());
-			preparador.setString(4, aluno.getSituacao().toString());
+			preparador.setString(3, aluno.getSobrenome());
+			preparador.setString(4, aluno.getEmail());
+			preparador.setString(5, aluno.getEndereco());
+			preparador.setBoolean(6, aluno.getSituacao());
 			
-			preparador.execute();
+			preparador.executeQuery();
 			preparador.close();
 		}
 		catch(SQLException ex){
@@ -36,16 +34,18 @@ public class AlunoDAO {
 		}
 	}
 	
-	public void update(Aluno aluno){
+	public void update(Aluno aluno) {
 		
-		String sql = "update alunos set nome = ?, endereco = ?, situacao = ? where codMatricula = ?";
+		String sql = "update alunos set nome = ?, sobrenome = ?, email = ?, endereco = ?, situacao = ? where codMatricula = ?";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, aluno.getNome());
-			preparador.setString(2, aluno.getEndereco());
-			preparador.setString(3, aluno.getSituacao().toString());
-			preparador.setInt(4, aluno.getCodMatricula());
+			preparador.setString(2, aluno.getSobrenome());
+			preparador.setString(3, aluno.getEmail());
+			preparador.setString(4, aluno.getEndereco());
+			preparador.setString(5, aluno.getSituacao().toString());
+			preparador.setInt(6, aluno.getCodMatricula());
 			
 			preparador.execute();
 			preparador.close();
@@ -55,13 +55,13 @@ public class AlunoDAO {
 		}
 	}
 	
-	public ArrayList<Aluno> select(){
-		String sql = "select * from alunos";
+	public ArrayList<Aluno> select(boolean situacao) {
+		String sql = "select * from alunos where situacao = ?";
 		ArrayList<Aluno> alunoList = new ArrayList<Aluno>();
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
-			
+			preparador.setBoolean(1, situacao);
 			ResultSet rst = preparador.executeQuery();
 			
 			while(rst.next()){
