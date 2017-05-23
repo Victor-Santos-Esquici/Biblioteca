@@ -48,7 +48,8 @@ public class AlunoController extends HttpServlet {
         
         if(action.equalsIgnoreCase("select")){
         	forward = LIST_USER;
-        	request.setAttribute("alunos", dao.select(true));
+        	request.setAttribute("alunos", dao.select(
+        			));
         }
 
         RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -64,7 +65,7 @@ public class AlunoController extends HttpServlet {
         dao.insert(aluno);
         
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-        request.setAttribute("alunos", dao.select(true));
+        request.setAttribute("alunos", dao.select());
         view.forward(request, response);
     }
 }
