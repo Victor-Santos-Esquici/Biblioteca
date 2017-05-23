@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
 <%@ page import="br.com.model.Aluno" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -44,7 +42,7 @@
 	    			<jsp:useBean id="dao" class="br.com.dao.AlunoDAO"/>
 	    			<%
 	    				ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-	    				alunos = dao.select();
+	    				alunos = dao.select(true);
 	    				for(Aluno aluno: alunos){
 	    			%>
 		    			<tr>
@@ -57,7 +55,9 @@
 		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
 		    				</td>
 		    			</tr>
-	    			<%}%>
+	    			<%
+	    				}
+	    			%>
 	    		</tbody>
 	    	</table>
 	    	

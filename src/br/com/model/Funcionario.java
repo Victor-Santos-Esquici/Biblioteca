@@ -18,51 +18,51 @@ public class Funcionario {
 		this.codBib = codBib;
 	}
 
-	private Integer getCodFunc() {
+	public Integer getCodFunc() {
 		return codFunc;
 	}
 
-	private void setCodFunc(Integer codFunc) {
+	public void setCodFunc(Integer codFunc) {
 		this.codFunc = codFunc;
 	}
 
-	private String getNome() {
+	public String getNome() {
 		return nome;
 	}
 
-	private void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	private String getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	private void setEndereco(String endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 
-	private String getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	private void setTelefone(String telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
-	private Double getSalario() {
+	public Double getSalario() {
 		return salario;
 	}
 
-	private void setSalario(Double salario) {
+	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
 
-	private Integer getCodBib() {
+	public Integer getCodBib() {
 		return codBib;
 	}
 
-	private void setCodBib(Integer codBib) {
+	public void setCodBib(Integer codBib) {
 		this.codBib = codBib;
 	}
 }

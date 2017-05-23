@@ -20,59 +20,59 @@ public class Livro {
 		this.situacao = situacao;
 	}
 
-	private Integer getCodLivro() {
+	public Integer getCodLivro() {
 		return codLivro;
 	}
 
-	private void setCodLivro(Integer codLivro) {
+	public void setCodLivro(Integer codLivro) {
 		this.codLivro = codLivro;
 	}
 
-	private String getTitulo() {
+	public String getTitulo() {
 		return titulo;
 	}
 
-	private void setTitulo(String titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-	private String getEditora() {
+	public String getEditora() {
 		return editora;
 	}
 
-	private void setEditora(String editora) {
+	public void setEditora(String editora) {
 		this.editora = editora;
 	}
 
-	private Double getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
-	private void setValor(Double valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
-	private Integer getCodCategoria() {
+	public Integer getCodCategoria() {
 		return codCategoria;
 	}
 
-	private void setCodCategoria(Integer codCategoria) {
+	public void setCodCategoria(Integer codCategoria) {
 		this.codCategoria = codCategoria;
 	}
 
-	private Integer getCodBib() {
+	public Integer getCodBib() {
 		return codBib;
 	}
 
-	private void setCodBib(Integer codBib) {
+	public void setCodBib(Integer codBib) {
 		this.codBib = codBib;
 	}
 
-	private Boolean getSituacao() {
+	public Boolean getSituacao() {
 		return situacao;
 	}
 
-	private void setSituacao(Boolean situacao) {
+	public void setSituacao(Boolean situacao) {
 		this.situacao = situacao;
 	}
 }

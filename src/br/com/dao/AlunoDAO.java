@@ -15,16 +15,15 @@ public class AlunoDAO {
 	
 	public void insert(Aluno aluno) {
 		
-		String sql = "insert into alunos values (?,?,?,?,?,?)";
+		String sql = "insert into alunos (nome, sobrenome, email, endereco, situacao) values (?,?,?,?,?)";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
-			preparador.setInt(1, aluno.getCodMatricula());
-			preparador.setString(2, aluno.getNome());
-			preparador.setString(3, aluno.getSobrenome());
-			preparador.setString(4, aluno.getEmail());
-			preparador.setString(5, aluno.getEndereco());
-			preparador.setBoolean(6, aluno.getSituacao());
+			preparador.setString(1, aluno.getNome());
+			preparador.setString(2, aluno.getSobrenome());
+			preparador.setString(3, aluno.getEmail());
+			preparador.setString(4, aluno.getEndereco());
+			preparador.setBoolean(5, aluno.getSituacao());
 			
 			preparador.executeQuery();
 			preparador.close();
@@ -47,7 +46,7 @@ public class AlunoDAO {
 			preparador.setString(5, aluno.getSituacao().toString());
 			preparador.setInt(6, aluno.getCodMatricula());
 			
-			preparador.execute();
+			preparador.executeQuery();
 			preparador.close();
 		}
 		catch(SQLException ex){
@@ -56,6 +55,7 @@ public class AlunoDAO {
 	}
 	
 	public ArrayList<Aluno> select(boolean situacao) {
+		
 		String sql = "select * from alunos where situacao = ?";
 		ArrayList<Aluno> alunoList = new ArrayList<Aluno>();
 		
@@ -78,17 +78,4 @@ public class AlunoDAO {
 		
 		return alunoList;
 	}
-	
-	/*public static void main(String[] args) {
-		ArrayList<Aluno> listaTeste = new ArrayList<>();
-		listaTeste = selectTest();
-		
-		listaTeste.forEach(aluno -> 
-							System.out.println("\nNome: " + aluno.getNome() + 
-							"\nSobrenome: " + aluno.getSobrenome()+
-							"\nEmail: " + aluno.getEmail()+
-							"\nEndereço: " + aluno.getEndereco()+
-							"\nCodMatricula: " + aluno.getCodMatricula()+
-							"\nSituacao: "+aluno.getSituacao()));
-	}*/
 }

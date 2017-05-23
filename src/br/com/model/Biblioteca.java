@@ -2,37 +2,37 @@ package br.com.model;
 
 public class Biblioteca {
 	
-	public Integer codBib;
+	public Integer codLib;
 	public String nome;
 	public String endereco;
 	
-	public Biblioteca(Integer codBib, String nome, String endereco){
-		this.codBib = codBib;
+	public Biblioteca(Integer codLib, String nome, String endereco){
+		this.codLib = codLib;
 		this.nome = nome;
 		this.endereco = endereco;
 	}
 
-	private Integer getCodBib() {
-		return codBib;
+	public Integer getCodBib() {
+		return codLib;
 	}
 
-	private void setCodBib(Integer codBib) {
-		this.codBib = codBib;
+	public void setCodBib(Integer codLib) {
+		this.codLib = codLib;
 	}
 
-	private String getNome() {
+	public String getNome() {
 		return nome;
 	}
 
-	private void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	private String getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	private void setEndereco(String endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 }
