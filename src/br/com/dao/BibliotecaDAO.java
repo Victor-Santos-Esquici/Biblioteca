@@ -15,7 +15,7 @@ public class BibliotecaDAO {
 	
 	public void insert(Biblioteca biblioteca) {
 		
-		String sql = "insert into biblioteca (nome, endereco) values (?,?)";
+		String sql = "insert into bibliotecas (nome, endereco) values (?,?)";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
@@ -32,7 +32,7 @@ public class BibliotecaDAO {
 	
 	public void update(Biblioteca biblioteca) {
 		
-		String sql = "update biblioteca set nome = ?, endereco= ? where codLib = ?";
+		String sql = "update bibliotecas set nome = ?, endereco= ? where codLib = ?";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class BibliotecaDAO {
 	
 	public ArrayList<Biblioteca> select() {
 		
-		String sql = "select * from biblioteca";
+		String sql = "select * from bibliotecas";
 		ArrayList<Biblioteca> bibliotecaList = new ArrayList<Biblioteca>();
 		
 		try{

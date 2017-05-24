@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="br.com.model.Livro" %>
+<%@ page import="java.util.ArrayList" %>
     
 <!DOCTYPE html>
 
@@ -40,28 +41,26 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
+	    			<jsp:useBean id="dao" class="br.com.dao.LivroDAO"/>
+	    			<%    			
+		    			ArrayList<Livro> livros = new ArrayList<Livro>();
+	    				livros = dao.select();
+	    				for(Livro livro: livros){
+	    			%>
 	    			<tr>
-	    				<td class="bookTitle">O Senhor dos Anéis</td>
-	    				<td class="bookPublisher">Lorem Ipsum</td>
-	    				<td class="bookPrice">50,00</td>
-	    				<td class="bookCategory">Aventura</td>
-	    				<td class="bookLibrary">Alabama</td>
+	    				<td class="bookTitle"><% out.print(livro.getTitulo()); %></td>
+	    				<td class="bookPublisher"><% out.print(livro.getEditora()); %></td>
+	    				<td class="bookPrice"><% out.print(livro.getValor()); %></td>
+	    				<td class="bookCategory"><% out.print(livro.getCodCategoria()); %></td>
+	    				<td class="bookLibrary"><% out.print(livro.getCodBib()); %></td>
 	    				<td>
 	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
 	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
 	    				</td>
 	    			</tr>
-	    			<tr>
-	    				<td class="bookTitle">O Hobbit</td>
-	    				<td class="bookPublisher">Lorem Ipsum</td>
-	    				<td class="bookPrice">20,00</td>
-	    				<td class="bookCategory">Drama</td>
-	    				<td class="bookLibrary">Alaska</td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
-	    				</td>
-	    			</tr>
+	    			<%
+	    				}
+	    			%>
 	    		</tbody>
 	    	</table>
 	    	

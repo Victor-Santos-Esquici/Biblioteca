@@ -15,7 +15,7 @@ public class CategoriaDAO {
 	
 	public void insert(Categoria categoria) {
 		
-		String sql = "insert into categoria (descricao) values (?)";
+		String sql = "insert into categorias (descricao) values (?)";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
@@ -31,7 +31,7 @@ public class CategoriaDAO {
 	
 	public void update(Categoria categoria) {
 		
-		String sql = "update categoria set descricao = ? where codCategoria = ?";
+		String sql = "update categorias set descricao = ? where codCategoria = ?";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class CategoriaDAO {
 	
 	public ArrayList<Categoria> select() {
 		
-		String sql = "select * from categoria";
+		String sql = "select * from categorias";
 		ArrayList<Categoria> categoriaList = new ArrayList<Categoria>();
 		
 		try{

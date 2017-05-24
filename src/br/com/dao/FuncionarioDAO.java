@@ -15,7 +15,7 @@ public class FuncionarioDAO {
 	
 	public void insert(Funcionario funcionario) {
 		
-		String sql = "insert into funcionario (nome, endereco, telefone, salario, codBib) values (?, ?, ?, ?, ?)";
+		String sql = "insert into funcionarios (nome, endereco, telefone, salario, codBib) values (?, ?, ?, ?, ?)";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class FuncionarioDAO {
 	
 	public void update(Funcionario funcionario) {
 		
-		String sql = "update funcionario set nome = ?, endereco = ?, telefone = ?, salario = ?, codBib = ? where codFunc = ?";
+		String sql = "update funcionarios set nome = ?, endereco = ?, telefone = ?, salario = ?, codBib = ? where codFunc = ?";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
@@ -55,7 +55,7 @@ public class FuncionarioDAO {
 	
 	public ArrayList<Funcionario> select() {
 		
-		String sql = "select * from funcionario";
+		String sql = "select * from funcionarios";
 		ArrayList<Funcionario> funcionarioList = new ArrayList<Funcionario>();
 		
 		try{
