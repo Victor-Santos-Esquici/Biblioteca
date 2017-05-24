@@ -15,7 +15,7 @@ public class LivroDAO {
 	
 	public void insert(Livro livro) {
 		
-		String sql = "insert into livros (titulo, editora, valor, codCategoria, codLib, situacao) values (?, ?, ?, ?, ?, ?)";
+		String sql = "insert into livros (titulo, editora, valor, codCategoria, codBib, situacao) values (?, ?, ?, ?, ?, ?)";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
@@ -65,7 +65,7 @@ public class LivroDAO {
 			ResultSet rst = preparador.executeQuery();
 			
 			while(rst.next()){
-				Livro livro = new Livro(rst.getInt("codLivro"), rst.getString("titulo"), rst.getString("editora"), rst.getDouble("valor"), rst.getInt("codCategoria"), rst.getInt("codLib"), rst.getBoolean("situacao"));
+				Livro livro = new Livro(rst.getInt("codLivro"), rst.getString("titulo"), rst.getString("editora"), rst.getDouble("valor"), rst.getInt("codCategoria"), rst.getInt("codBib"), rst.getBoolean("situacao"));
 				livrosList.add(livro);
 			}
 			

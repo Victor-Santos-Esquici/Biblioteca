@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Maio-2017 às 01:21
--- Versão do servidor: 5.6.26
--- PHP Version: 5.5.28
+-- Generation Time: 24-Maio-2017 às 08:39
+-- Versão do servidor: 10.1.9-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,60 +26,60 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `alunos`
 --
 
-CREATE TABLE IF NOT EXISTS `alunos` (
+CREATE TABLE `alunos` (
   `codMatricula` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `sobrenome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `endereco` varchar(100) NOT NULL,
   `situacao` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `alunos`
 --
 
 INSERT INTO `alunos` (`codMatricula`, `nome`, `sobrenome`, `email`, `endereco`, `situacao`) VALUES
-(1, 'Maria', 'Paula', 'Assis Brasil, 110', 'maria_paula@email.com', 1),
-(2, 'Mauro', 'Eduardo', 'Carlos Gomes, 150', 'mauro_eduardo@email.com', 1),
-(3, 'Joao', 'Gilberto', 'Andradas, 1200', 'joao_gilberto@email.com', 0),
-(4, 'Paulo', 'Gomes', 'Jose do Patrocinio, 500', 'paulo_gomes@email.com', 1);
+(1, 'Maria', 'Paula', 'maria_paula@email.com', 'Assis Brasil, 110', 1),
+(2, 'Mauro', 'Eduardo', 'mauro_eduardo@email.com', 'Carlos Gomes, 150', 1),
+(3, 'Joao', 'Gilberto', 'joao_gilberto@email.com', 'Andradas, 1200', 0),
+(4, 'Paulo', 'Gomes', 'paulo_gomes@email.com', 'Jose do Patrocinio, 500', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `biblioteca`
+-- Estrutura da tabela `bibliotecas`
 --
 
-CREATE TABLE IF NOT EXISTS `biblioteca` (
-  `codLib` int(11) NOT NULL,
+CREATE TABLE `bibliotecas` (
+  `codBib` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `endereco` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `biblioteca`
+-- Extraindo dados da tabela `bibliotecas`
 --
 
-INSERT INTO `biblioteca` (`codLib`, `nome`, `endereco`) VALUES
+INSERT INTO `bibliotecas` (`codBib`, `nome`, `endereco`) VALUES
 (1, 'Biblioteca Municipal de Canoas', 'XV de Janeiro, 270');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categoria`
+-- Estrutura da tabela `categorias`
 --
 
-CREATE TABLE IF NOT EXISTS `categoria` (
+CREATE TABLE `categorias` (
   `codCategoria` int(11) NOT NULL,
   `descricao` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `categoria`
+-- Extraindo dados da tabela `categorias`
 --
 
-INSERT INTO `categoria` (`codCategoria`, `descricao`) VALUES
+INSERT INTO `categorias` (`codCategoria`, `descricao`) VALUES
 (1, 'Ficcao'),
 (2, 'Romance'),
 (3, 'Literatura'),
@@ -91,14 +91,14 @@ INSERT INTO `categoria` (`codCategoria`, `descricao`) VALUES
 -- Estrutura da tabela `empresta`
 --
 
-CREATE TABLE IF NOT EXISTS `empresta` (
+CREATE TABLE `empresta` (
   `id` int(11) NOT NULL,
   `codMatricula` int(11) NOT NULL,
   `codLivro` int(11) NOT NULL,
   `dataRetirada` date NOT NULL,
   `dataPrevisao` date NOT NULL,
   `dataEntrega` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `empresta`
@@ -113,10 +113,10 @@ INSERT INTO `empresta` (`id`, `codMatricula`, `codLivro`, `dataRetirada`, `dataP
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `funcionario`
+-- Estrutura da tabela `funcionarios`
 --
 
-CREATE TABLE IF NOT EXISTS `funcionario` (
+CREATE TABLE `funcionarios` (
   `codFunc` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `sobrenome` varchar(100) NOT NULL,
@@ -125,17 +125,17 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `telefone` varchar(20) DEFAULT NULL,
   `salario` decimal(15,2) NOT NULL,
   `codBib` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `funcionario`
+-- Extraindo dados da tabela `funcionarios`
 --
 
-INSERT INTO `funcionario` (`codFunc`, `nome`, `sobrenome`, `email`, `endereco`, `telefone`, `salario`, `codBib`) VALUES
-(1, 'Marta', 'Santos', 'marta@marta.com', 'Silva So, 350', '123456', '150.00', 1),
-(2, 'Paula', 'Soares', 'paula@paula.com', 'Dom Pedro II, 200', '890123', '450.00', 1),
-(3, 'Carlos', 'Souza', 'carlos@carlos.com', 'Ipiranga, 700', '456789', '300.00', 1),
-(4, 'Jonas', 'Silva', 'jonas@jonas.com', 'Protasio Alves, 450', '1234567', '450.00', 1);
+INSERT INTO `funcionarios` (`codFunc`, `nome`, `sobrenome`, `email`, `endereco`, `telefone`, `salario`, `codBib`) VALUES
+(1, 'Marta', 'Soares', 'marta@marta.com', 'Silva So, 350', '123456', '150.00', 1),
+(2, 'Paula', 'Silva', 'paula@paula.com', 'Dom Pedro II, 200', '890123', '450.00', 1),
+(3, 'Carlos', 'Andrades', 'carlos@carlos.com', 'Ipiranga, 700', '456789', '300.00', 1),
+(4, 'Jonas', 'Souza', 'jonas@jonas.com', 'Protasio Alves, 450', '1234567', '450.00', 1);
 
 -- --------------------------------------------------------
 
@@ -143,21 +143,21 @@ INSERT INTO `funcionario` (`codFunc`, `nome`, `sobrenome`, `email`, `endereco`, 
 -- Estrutura da tabela `livros`
 --
 
-CREATE TABLE IF NOT EXISTS `livros` (
+CREATE TABLE `livros` (
   `codLivro` int(11) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `editora` varchar(50) NOT NULL,
   `valor` decimal(15,2) NOT NULL,
   `codCategoria` int(11) NOT NULL,
-  `codLib` int(11) NOT NULL,
+  `codBib` int(11) NOT NULL,
   `situacao` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `livros`
 --
 
-INSERT INTO `livros` (`codLivro`, `titulo`, `editora`, `valor`, `codCategoria`, `codLib`, `situacao`) VALUES
+INSERT INTO `livros` (`codLivro`, `titulo`, `editora`, `valor`, `codCategoria`, `codBib`, `situacao`) VALUES
 (1, 'Senhor dos Aneis', 'XYZ', '75.00', 2, 1, 1),
 (2, 'Harry Potter', 'XYZ', '35.00', 2, 1, 1),
 (3, 'O Cortico', 'ABC', '50.00', 3, 1, 1),
@@ -175,15 +175,15 @@ ALTER TABLE `alunos`
   ADD PRIMARY KEY (`codMatricula`);
 
 --
--- Indexes for table `biblioteca`
+-- Indexes for table `bibliotecas`
 --
-ALTER TABLE `biblioteca`
-  ADD PRIMARY KEY (`codLib`);
+ALTER TABLE `bibliotecas`
+  ADD PRIMARY KEY (`codBib`);
 
 --
--- Indexes for table `categoria`
+-- Indexes for table `categorias`
 --
-ALTER TABLE `categoria`
+ALTER TABLE `categorias`
   ADD PRIMARY KEY (`codCategoria`);
 
 --
@@ -195,9 +195,9 @@ ALTER TABLE `empresta`
   ADD KEY `codMatricula` (`codMatricula`);
 
 --
--- Indexes for table `funcionario`
+-- Indexes for table `funcionarios`
 --
-ALTER TABLE `funcionario`
+ALTER TABLE `funcionarios`
   ADD PRIMARY KEY (`codFunc`),
   ADD KEY `codBib` (`codBib`);
 
@@ -207,7 +207,7 @@ ALTER TABLE `funcionario`
 ALTER TABLE `livros`
   ADD PRIMARY KEY (`codLivro`),
   ADD KEY `codCategoria` (`codCategoria`),
-  ADD KEY `codLib` (`codLib`);
+  ADD KEY `codBib` (`codBib`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -217,32 +217,32 @@ ALTER TABLE `livros`
 -- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `codMatricula` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `codMatricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `biblioteca`
+-- AUTO_INCREMENT for table `bibliotecas`
 --
-ALTER TABLE `biblioteca`
-  MODIFY `codLib` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `bibliotecas`
+  MODIFY `codBib` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `categoria`
+-- AUTO_INCREMENT for table `categorias`
 --
-ALTER TABLE `categoria`
-  MODIFY `codCategoria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+ALTER TABLE `categorias`
+  MODIFY `codCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `empresta`
 --
 ALTER TABLE `empresta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `funcionario`
+-- AUTO_INCREMENT for table `funcionarios`
 --
-ALTER TABLE `funcionario`
-  MODIFY `codFunc` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+ALTER TABLE `funcionarios`
+  MODIFY `codFunc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `codLivro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `codLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
@@ -255,17 +255,17 @@ ALTER TABLE `empresta`
   ADD CONSTRAINT `empresta_ibfk_2` FOREIGN KEY (`codMatricula`) REFERENCES `alunos` (`codMatricula`);
 
 --
--- Limitadores para a tabela `funcionario`
+-- Limitadores para a tabela `funcionarios`
 --
-ALTER TABLE `funcionario`
-  ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`codBib`) REFERENCES `biblioteca` (`codLib`);
+ALTER TABLE `funcionarios`
+  ADD CONSTRAINT `funcionarios_ibfk_1` FOREIGN KEY (`codBib`) REFERENCES `bibliotecas` (`codBib`);
 
 --
 -- Limitadores para a tabela `livros`
 --
 ALTER TABLE `livros`
-  ADD CONSTRAINT `livros_ibfk_1` FOREIGN KEY (`codCategoria`) REFERENCES `categoria` (`codCategoria`),
-  ADD CONSTRAINT `livros_ibfk_2` FOREIGN KEY (`codLib`) REFERENCES `biblioteca` (`codLib`);
+  ADD CONSTRAINT `livros_ibfk_1` FOREIGN KEY (`codCategoria`) REFERENCES `categorias` (`codCategoria`),
+  ADD CONSTRAINT `livros_ibfk_2` FOREIGN KEY (`codBib`) REFERENCES `bibliotecas` (`codBib`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

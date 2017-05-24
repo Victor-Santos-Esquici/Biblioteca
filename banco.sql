@@ -1,5 +1,5 @@
 create table bibliotecas (
-	codLib int not null primary key AUTO_INCREMENT,
+	codBib int not null primary key AUTO_INCREMENT,
 	nome varchar(100) not null,
 	endereco varchar(200) not null
 );
@@ -13,7 +13,7 @@ create table funcionarios (
 	telefone varchar(20),
 	salario decimal(15,2) not null,
 	codBib int not null,
-	foreign key (codBib) references biblioteca (codLib)
+	foreign key (codBib) references bibliotecas (codBib)
 );
 
 create table categorias (
@@ -27,10 +27,10 @@ create table livros (
 	editora varchar(50) not null,
 	valor decimal(15,2) not null,
 	codCategoria int not null,
-	codLib int not null,
+	codBib int not null,
 	situacao boolean not null,
-	foreign key (codCategoria) references categoria (codCategoria),
-	foreign key (codLib) references biblioteca (codLib)
+	foreign key (codCategoria) references categorias (codCategoria),
+	foreign key (codBib) references bibliotecas (codBib)
 );
 
 create table alunos (
@@ -76,7 +76,7 @@ insert into alunos values (2, 'Mauro', 'Eduardo', 'mauro_eduardo@email.com', 'Ca
 insert into alunos values (3, 'Joao', 'Gilberto', 'joao_gilberto@email.com', 'Andradas, 1200', false);
 insert into alunos values (4, 'Paulo', 'Gomes', 'paulo_gomes@email.com', 'Jose do Patrocinio, 500', true);
 
-insert into empresta values (1, 3, 1, '2016-11-10', to_date('20 Nov 2016', 'DD Mon YYYY'), to_date('20 Nov 2016', 'DD Mon YYYY'));
-insert into empresta values (2, 3, 2, to_date('10 Nov 2016', 'DD Mon YYYY'), to_date('20 Nov 2016', 'DD Mon YYYY'), to_date('18 Nov 2016', 'DD Mon YYYY'));
-insert into empresta values (3, 3, 1, to_date('11 Nov 2016', 'DD Mon YYYY'), to_date('21 Nov 2016', 'DD Mon YYYY'), to_date('14 Nov 2016', 'DD Mon YYYY'));
-insert into empresta values (4, 3, 5, to_date('21 Nov 2016', 'DD Mon YYYY'), to_date('01 Feb 2016', 'DD Mon YYYY'), to_date('24 Dec 2016', 'DD Mon YYYY'));
+insert into empresta values (1, 3, 1, '2016-11-10', '2016-11-20', '2016-11-20');
+insert into empresta values (2, 3, 2, '2016-11-10', '2016-11-20', '2016-11-18');
+insert into empresta values (3, 3, 1, '2016-11-11', '2016-11-21', '2016-11-14');
+insert into empresta values (4, 3, 5, '2016-11-21', '2016-02-01', '2016-12-24');

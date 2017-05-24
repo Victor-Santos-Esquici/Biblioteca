@@ -145,8 +145,8 @@
 	            	}
 		        })
 		        .on('success.form.bv', function(e) {
-		            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-		                $('#registerForm').data('bootstrapValidator').resetForm();
+		            //$('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+	                $('#registerForm').data('bootstrapValidator').resetForm();
 		
 		            // Prevent form submission
 		            e.preventDefault();
@@ -160,6 +160,7 @@
 		            // Use Ajax to submit form data
 		            $.post($form.attr('action'), $form.serialize(), function(result) {
 		                console.log(result);
+		                
 		            }, 'json');
 		        });
 			});

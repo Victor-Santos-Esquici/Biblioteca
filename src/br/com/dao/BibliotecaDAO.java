@@ -32,7 +32,7 @@ public class BibliotecaDAO {
 	
 	public void update(Biblioteca biblioteca) {
 		
-		String sql = "update bibliotecas set nome = ?, endereco= ? where codLib = ?";
+		String sql = "update bibliotecas set nome = ?, endereco= ? where codBib = ?";
 		
 		try{
 			PreparedStatement preparador = con.prepareStatement(sql);
@@ -58,7 +58,7 @@ public class BibliotecaDAO {
 			ResultSet rst = preparador.executeQuery();
 			
 			while(rst.next()){
-				Biblioteca biblioteca = new Biblioteca(rst.getInt("codLib"), rst.getString("nome"), rst.getString("endereco"));
+				Biblioteca biblioteca = new Biblioteca(rst.getInt("codBib"), rst.getString("nome"), rst.getString("endereco"));
 				bibliotecaList.add(biblioteca);
 			}
 			
