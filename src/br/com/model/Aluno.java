@@ -9,6 +9,8 @@ public class Aluno {
 	String endereco;
 	Boolean situacao;
 	
+	public Aluno(){}
+	
 	public Aluno(Integer codMatricula, String nome, String sobrenome, String email, String endereco, Boolean situacao){
 		this.codMatricula = codMatricula;
 		this.nome = nome;

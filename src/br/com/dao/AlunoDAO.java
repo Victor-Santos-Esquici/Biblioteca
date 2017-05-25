@@ -23,7 +23,7 @@ public class AlunoDAO {
 			preparador.setString(2, aluno.getSobrenome());
 			preparador.setString(3, aluno.getEmail());
 			preparador.setString(4, aluno.getEndereco());
-			preparador.setBoolean(5, aluno.getSituacao());
+			preparador.setBoolean(5, true);
 			
 			preparador.executeQuery();
 			preparador.close();
@@ -78,4 +78,29 @@ public class AlunoDAO {
 		
 		return alunoList;
 	}
+	
+    public Aluno selectID(int alunoID) {
+   
+    	Aluno aluno = new Aluno();
+    	
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from alunos where codMatricula=?");
+            preparedStatement.setInt(1, alunoID);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                aluno.setCodMatricula(rs.getInt("codMatricula"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setSobrenome(rs.getString("sobrenome"));
+                aluno.setEmail(rs.getString("email"));
+                aluno.setEndereco(rs.getString("endereco"));
+                aluno.setSituacao(rs.getBoolean("situacao"));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return aluno;
+    }
 }

@@ -24,63 +24,63 @@
 
 	    <!-- Page Content -->
 	    <div class="container">
-			<form class="well form-horizontal" method="post" id="registerForm">
+			<form action="AlunoController" class="well form-horizontal" method="post" id="registerForm">
 				<fieldset>
 		
-				<!-- Form Name -->
-				<legend class="text-center">Cadastrar Aluno</legend>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Nome</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input name="firstName" placeholder="Nome" class="form-control" type="text">
+					<!-- Form Name -->
+					<legend class="text-center">Cadastrar Aluno</legend>
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Nome</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input name="firstName" placeholder="Nome" class="form-control" type="text">
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Sobrenome</label> 
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input name="lastName" placeholder="Sobrenome" class="form-control" type="text">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Sobrenome</label> 
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input name="lastName" placeholder="Sobrenome" class="form-control" type="text">
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">E-Mail</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-							<input name="email" placeholder="Endereço de e-mail" class="form-control" type="text">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">E-Mail</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+								<input name="email" placeholder="Endereço de e-mail" class="form-control" type="text">
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Endereço</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-							<input name="endereco" placeholder="Endereço físico" class="form-control" type="text">
+					
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Endereço</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+								<input name="endereco" placeholder="Endereço físico" class="form-control" type="text">
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Button -->
-				<div class="form-group">
-					<label class="col-md-4"></label>
-					<div class="col-md-4">
-						<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+			
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4"></label>
+						<div class="col-md-4">
+							<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+						</div>
 					</div>
-				</div>
 				
 				</fieldset>
 			</form>
