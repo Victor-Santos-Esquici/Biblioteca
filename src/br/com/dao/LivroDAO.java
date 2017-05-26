@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.model.Aluno;
 import br.com.model.Livro;
 import br.com.util.DbUtil;
 
@@ -78,4 +79,29 @@ public class LivroDAO {
 		
 		return livrosList;
 	}
+	
+    public Livro selectID(int livroID) {
+    	   
+    	Livro livro = new Livro();
+    	
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from livros where codLivro = ?");
+            preparedStatement.setInt(1, livroID);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+            	livro.setCodLivro(rs.getInt("codLivro"));
+            	livro.setTitulo(rs.getString("nome"));
+            	livro.setEditora(rs.getString("sobrenome"));
+            	livro.setValor(Double.parseDouble(rs.getString("email")));
+            	livro.setCodCategoria(Integer.parseInt(rs.getString("endereco")));
+            	livro.setCodBib(Integer.parseInt(rs.getBoolean("situacao")));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return livro;
+    }
 }
