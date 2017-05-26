@@ -6,12 +6,42 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name></display-name>
-    <servlet-name></servlet-name>
-    <servlet-class></servlet-class>
+    <display-name>AlunoController</display-name>
+    <servlet-name>AlunoController</servlet-name>
+    <servlet-class>br.com.controller.AlunoController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name></servlet-name>
-    <url-pattern></url-pattern>
+    <servlet-name>AlunoController</servlet-name>
+    <url-pattern>/AlunoController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BibliotecaController</display-name>
+    <servlet-name>BibliotecaController</servlet-name>
+    <servlet-class>br.com.controller.BibliotecaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BibliotecaController</servlet-name>
+    <url-pattern>/BibliotecaController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CategoriaController</display-name>
+    <servlet-name>CategoriaController</servlet-name>
+    <servlet-class>br.com.controller.CategoriaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CategoriaController</servlet-name>
+    <url-pattern>/CategoriaController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FuncionarioController</display-name>
+    <servlet-name>FuncionarioController</servlet-name>
+    <servlet-class>br.com.controller.FuncionarioController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FuncionarioController</servlet-name>
+    <url-pattern>/FuncionarioController</url-pattern>
   </servlet-mapping>
 </web-app>

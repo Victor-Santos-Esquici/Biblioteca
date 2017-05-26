@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.model.Aluno;
 import br.com.model.Funcionario;
 import br.com.util.DbUtil;
 
@@ -25,7 +26,7 @@ public class FuncionarioDAO {
 			preparador.setDouble(4, funcionario.getSalario());
 			preparador.setInt(5, funcionario.getCodBib());
 			
-			preparador.executeQuery();
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex){
@@ -76,4 +77,31 @@ public class FuncionarioDAO {
 		
 		return funcionarioList;
 	}
+	
+    public Funcionario selectID(int funcionarioID) {
+    	   
+    	Funcionario funcionario = new Funcionario();
+    	
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from funcionarios where codFunc = ?");
+            preparedStatement.setInt(1, funcionarioID);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                funcionario.setCodFunc(rs.getInt("codFunc"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setSobrenome(rs.getString("sobrenome"));
+                funcionario.setEmail(rs.getString("email"));
+                funcionario.setEndereco(rs.getString("endereco"));
+                funcionario.setTelefone(rs.getString("telefone"));
+                funcionario.setSalario(rs.getDouble("salario"));
+                funcionario.setCodBib(rs.getInt("codBib"));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return funcionario;
+    }
 }

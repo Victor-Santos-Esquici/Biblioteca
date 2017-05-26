@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
     
 <!DOCTYPE html>
 
@@ -26,7 +25,6 @@
 	    <div class="container">
 			<form action="AlunoController" class="well form-horizontal" method="post" id="registerForm">
 				<fieldset>
-		
 					<!-- Form Name -->
 					<legend class="text-center">Cadastrar Aluno</legend>
 			
@@ -69,7 +67,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-								<input name="endereco" placeholder="Endereço físico" class="form-control" type="text">
+								<input name="address" placeholder="Endereço físico" class="form-control" type="text">
 							</div>
 						</div>
 					</div>
@@ -81,7 +79,6 @@
 							<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
 						</div>
 					</div>
-				
 				</fieldset>
 			</form>
 	
@@ -135,7 +132,7 @@
 			                    }
 			                }
 			            },
-			            endereco: {
+			            address: {
 			            	validators: {
 			            		notEmpty: {
 			            			message: 'Preencha o endereço do aluno.'

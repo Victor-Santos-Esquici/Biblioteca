@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="br.com.model.Biblioteca" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <!DOCTYPE html>
 
@@ -38,23 +38,16 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-	    			<jsp:useBean id="dao" class="br.com.dao.BibliotecaDAO"/>
-	    			<%
-		    			ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
-	    				bibliotecas = dao.select();
-	    				for(Biblioteca biblioteca: bibliotecas){
-	    			%>
-	    			<tr>
-	    				<td class="libraryName"><% out.print(biblioteca.getNome()); %></td>
-	    				<td class="libraryAddress"><% out.print(biblioteca.getEndereco()); %></td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
-	    				</td>
-	    			</tr>
-	    			<%
-	    				}
-	    			%>
+	    			<c:forEach items="${bibliotecaList}" var="biblioteca">
+		    			<tr>
+		    				<td class="libraryName"><c:out value="${biblioteca.nome}"/></td>
+		    				<td class="libraryAddress"><c:out value="${biblioteca.endereco}"/></td>
+		    				<td>
+		    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
+		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
+		    				</td>
+		    			</tr>
+	    			</c:forEach>
 	    		</tbody>
 	    	</table>
 	    	

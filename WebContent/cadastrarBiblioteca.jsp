@@ -24,7 +24,7 @@
 
 	    <!-- Page Content -->
 	    <div class="container">
-			<form class="well form-horizontal" method="post"  id="registerForm">
+			<form action="BibliotecaController" class="well form-horizontal" method="post" id="registerForm">
 				<fieldset>
 		
 				<!-- Form Name -->

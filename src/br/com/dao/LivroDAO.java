@@ -25,7 +25,7 @@ public class LivroDAO {
 			preparador.setInt(4, livro.getCodLivro());
 			preparador.setBoolean(5, livro.getSituacao());
 			
-			preparador.executeQuery();
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex){

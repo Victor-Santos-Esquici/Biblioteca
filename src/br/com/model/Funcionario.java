@@ -11,6 +11,8 @@ public class Funcionario {
 	public Double salario;
 	public Integer codBib;
 	
+	public Funcionario(){}
+	
 	public Funcionario(Integer codFunc, String nome, String sobrenome, String email, String endereco, String telefone, Double salario, Integer codBib){
 		this.codFunc = codFunc;
 		this.nome = nome;

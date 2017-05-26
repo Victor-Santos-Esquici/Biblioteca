@@ -2,22 +2,24 @@ package br.com.model;
 
 public class Biblioteca {
 	
-	public Integer codLib;
+	public Integer codBib;
 	public String nome;
 	public String endereco;
 	
-	public Biblioteca(Integer codLib, String nome, String endereco){
-		this.codLib = codLib;
+	public Biblioteca(){}
+	
+	public Biblioteca(Integer codBib, String nome, String endereco){
+		this.codBib = codBib;
 		this.nome = nome;
 		this.endereco = endereco;
 	}
 
 	public Integer getCodBib() {
-		return codLib;
+		return codBib;
 	}
 
-	public void setCodBib(Integer codLib) {
-		this.codLib = codLib;
+	public void setCodBib(Integer codBib) {
+		this.codBib = codBib;
 	}
 
 	public String getNome() {

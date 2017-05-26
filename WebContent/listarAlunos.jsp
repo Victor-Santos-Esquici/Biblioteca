@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="br.com.model.Aluno" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -39,25 +40,18 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-	    			<jsp:useBean id="dao" class="br.com.dao.AlunoDAO"/>
-	    			<%
-	    				ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-	    				alunos = dao.select(true);
-	    				for(Aluno aluno: alunos){
-	    			%>
+	    			<c:forEach items="${alunoList}" var="aluno">
 		    			<tr>
-		    				<td class="studentName"><% out.print(aluno.getNome()); %></td>
-		    				<td class="studentLastName"><% out.print(aluno.getSobrenome()); %></td>
-		    				<td class="studentEmail"><% out.print(aluno.getEmail()); %></td>
-		    				<td class="studentAddress"><% out.print(aluno.getEndereco()); %></td>
+		    				<td class="studentName"><c:out value="${aluno.nome}"/></td>
+		    				<td class="studentLastName"><c:out value="${aluno.sobrenome}"/></td>
+		    				<td class="studentEmail"><c:out value="${aluno.email}"/></td>
+		    				<td class="studentAddress"><c:out value="${aluno.endereco}"/></td>
 		    				<td>
 		    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
 		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
 		    				</td>
 		    			</tr>
-	    			<%
-	    				}
-	    			%>
+		    		</c:forEach>
 	    		</tbody>
 	    	</table>
 	    	

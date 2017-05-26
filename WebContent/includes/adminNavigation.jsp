@@ -23,8 +23,8 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="listarAlunos.jsp">Gerenciar</a></li>
-						<li><a href="cadastrarAluno.jsp">Cadastrar</a></li>
+						<li><a href="AlunoController?action=listarAlunos">Gerenciar</a></li>
+						<li><a href="AlunoController?action=cadastrarAlunos">Cadastrar</a></li>
 					</ul>
 				</li>
 
@@ -47,8 +47,8 @@
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bibliotecas<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="listarBibliotecas.jsp">Gerenciar</a></li>
-						<li><a href="cadastrarBiblioteca.jsp">Cadastrar</a></li>
+						<li><a href="BibliotecaController?action=listarBibliotecas">Gerenciar</a></li>
+						<li><a href="BibliotecaController?action=cadastrarBiblioteca">Cadastrar</a></li>
 					</ul>
 				</li>
 

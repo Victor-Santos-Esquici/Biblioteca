@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.model.Aluno;
 import br.com.model.Biblioteca;
 import br.com.util.DbUtil;
 
@@ -22,7 +23,7 @@ public class BibliotecaDAO {
 			preparador.setString(1, biblioteca.getNome());
 			preparador.setString(2, biblioteca.getEndereco());
 			
-			preparador.executeQuery();
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex){
@@ -71,4 +72,26 @@ public class BibliotecaDAO {
 		
 		return bibliotecaList;
 	}
+	
+    public Biblioteca selectID(int bibliotecaID) {
+    	   
+    	Biblioteca biblioteca = new Biblioteca();
+    	
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from bibliotecas where codBib = ?");
+            preparedStatement.setInt(1, bibliotecaID);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                biblioteca.setCodBib(rs.getInt("codBib"));
+                biblioteca.setNome(rs.getString("nome"));
+                biblioteca.setEndereco(rs.getString("endereco"));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return biblioteca;
+    }
 }

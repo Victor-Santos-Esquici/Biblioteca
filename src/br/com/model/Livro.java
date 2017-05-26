@@ -10,6 +10,8 @@ public class Livro {
 	public Integer codBib;
 	public Boolean situacao;
 	
+	public Livro(){}
+	
 	public Livro(Integer codLivro, String titulo, String editora, Double valor, Integer codCategoria, Integer codBib, Boolean situacao){
 		this.codLivro = codLivro;
 		this.titulo = titulo;

@@ -1,10 +1,6 @@
 package br.com.controller;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +13,7 @@ import br.com.model.Aluno;
 public class AlunoController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/cadastrarAluno.jsp";
-    private static String LIST_USER = "/listarAlunos.jsp";
+	private static String LIST_ALUNO = "/listarAlunos.jsp";
     private AlunoDAO dao;
 
     public AlunoController() {
@@ -38,17 +34,20 @@ public class AlunoController extends HttpServlet {
             int codMatricula = Integer.parseInt(request.getParameter("codMatricula"));
             Aluno aluno = new Aluno(codMatricula, nome, sobrenome, email, endereco, false);
             dao.update(aluno);
-            forward = LIST_USER;
-            request.setAttribute("users", dao.select(true));    
-        } else if (action.equalsIgnoreCase("edit")){
+            forward = LIST_ALUNO;
+            request.setAttribute("alunos", dao.select(true));    
+        } 
+        else if (action.equalsIgnoreCase("edit")){
             forward = INSERT_OR_EDIT;
             int codMatricula = Integer.parseInt(request.getParameter("codMatricula"));
             Aluno aluno = dao.selectID(codMatricula);
             request.setAttribute("aluno", aluno);
-        } else if (action.equalsIgnoreCase("listUser")){
-            forward = LIST_USER;
-            request.setAttribute("users", dao.select(true));
-        } else {
+        } 
+        else if (action.equalsIgnoreCase("listarAlunos")){
+            forward = LIST_ALUNO;
+            request.setAttribute("alunoList", dao.select(true));
+        } 
+        else {
             forward = INSERT_OR_EDIT;
         }
 
@@ -76,8 +75,8 @@ public class AlunoController extends HttpServlet {
             dao.update(aluno);
         }
         
-        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-        request.setAttribute("users", dao.select(true));
+        RequestDispatcher view = request.getRequestDispatcher(LIST_ALUNO);
+        request.setAttribute("alunos", dao.select(true));
         view.forward(request, response);
     }
 }

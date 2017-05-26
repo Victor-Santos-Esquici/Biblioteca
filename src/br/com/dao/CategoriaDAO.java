@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.model.Aluno;
 import br.com.model.Categoria;
 import br.com.util.DbUtil;
 
@@ -21,7 +22,7 @@ public class CategoriaDAO {
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, categoria.getDescricao());
 			
-			preparador.executeQuery();
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex){
@@ -69,4 +70,25 @@ public class CategoriaDAO {
 		
 		return categoriaList;
 	}
+	
+    public Categoria selectID(int categoriaID) {
+    	   
+    	Categoria categoria = new Categoria();
+    	
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("select * from categorias where codCategoria = ?");
+            preparedStatement.setInt(1, categoriaID);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                categoria.setCodCategoria(rs.getInt("codCategoria"));
+                categoria.setDescricao(rs.getString("descricao"));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categoria;
+    }
 }

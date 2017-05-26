@@ -14,7 +14,6 @@ public class DbUtil
 		{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca", "root", "");
-			System.out.println("Conectado com sucesso");
 		} 
 		catch(SQLException e) 
 		{

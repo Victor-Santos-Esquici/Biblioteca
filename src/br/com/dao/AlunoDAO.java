@@ -25,7 +25,7 @@ public class AlunoDAO {
 			preparador.setString(4, aluno.getEndereco());
 			preparador.setBoolean(5, true);
 			
-			preparador.executeQuery();
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex){
@@ -84,7 +84,7 @@ public class AlunoDAO {
     	Aluno aluno = new Aluno();
     	
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("select * from alunos where codMatricula=?");
+            PreparedStatement preparedStatement = con.prepareStatement("select * from alunos where codMatricula = ?");
             preparedStatement.setInt(1, alunoID);
             ResultSet rs = preparedStatement.executeQuery();
 
