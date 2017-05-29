@@ -95,7 +95,7 @@ public class LivroDAO {
             	livro.setEditora(rs.getString("sobrenome"));
             	livro.setValor(Double.parseDouble(rs.getString("email")));
             	livro.setCodCategoria(Integer.parseInt(rs.getString("endereco")));
-            	livro.setCodBib(Integer.parseInt(rs.getBoolean("situacao")));
+            	livro.setSituacao(rs.getBoolean("situacao"));
             }
         }
         catch (SQLException e) {

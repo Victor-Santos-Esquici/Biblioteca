@@ -45,7 +45,7 @@ public class LivroController extends HttpServlet {
         } 
         else if (action.equalsIgnoreCase("listarAlunos")){
             forward = LIST_LIVRO;
-            request.setAttribute("alunoList", dao.select(true));
+            request.setAttribute("alunoList", dao.select());
         } 
         else {
             forward = INSERT_OR_EDIT;
@@ -58,25 +58,25 @@ public class LivroController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
         Livro livro = new Livro();
-        livro.setNome(request.getParameter("firstName"));
-        livro.setSobrenome(request.getParameter("lastName"));
-        livro.setEmail(request.getParameter("email"));
-        livro.setEndereco(request.getParameter("address"));
+        livro.setTitulo(request.getParameter("titulo"));
+        livro.setEditora(request.getParameter("editora"));
+        livro.setValor(Double.parseDouble(request.getParameter("valor")));
+        livro.setCodCategoria(Integer.parseInt(request.getParameter("codCategoria")));
 
-        String alunoID = request.getParameter("alunoID");
+        String livroID = request.getParameter("alunoID");
         
-        if(alunoID == null || alunoID.isEmpty())
+        if(livroID == null || livroID.isEmpty())
         {
             dao.insert(livro);
         }
         else
         {
-            livro.setCodMatricula(Integer.parseInt(alunoID));
+            livro.setCodLivro(Integer.parseInt(livroID));
             dao.update(livro);
         }
         
         RequestDispatcher view = request.getRequestDispatcher(LIST_LIVRO);
-        request.setAttribute("alunos", dao.select(true));
+        request.setAttribute("livros", dao.select());
         view.forward(request, response);
     }
 }
