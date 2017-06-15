@@ -15,8 +15,8 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Livros<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="listarLivros.jsp">Gerenciar</a></li>
-						<li><a href="cadastrarLivro.jsp">Cadastrar</a></li>
+						<li><a href="LivroController?action=listarLivros">Gerenciar</a></li>
+						<li><a href="LivroController?action=cadastrarLivros">Cadastrar</a></li>
 					</ul>
 				</li>
 

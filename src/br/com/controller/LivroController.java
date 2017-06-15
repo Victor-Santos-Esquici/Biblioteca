@@ -24,18 +24,20 @@ public class LivroController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String forward = "";
         String action = request.getParameter("action");
+        
         String titulo = request.getParameter("title");
         String editora = request.getParameter("publisher");
         Double valor = Double.parseDouble(request.getParameter("price"));
         Integer codCategoria = Integer.parseInt(request.getParameter("category"));
         Integer codBib = Integer.parseInt(request.getParameter("library"));
+        //Boolean situacao = Boolean.parseBoolean(request.getParameter("situation"));
 
         if (action.equalsIgnoreCase("delete")){
             int codLivro = Integer.parseInt(request.getParameter("codLivro"));
             Livro livro = new Livro(codLivro, titulo, editora, valor, codCategoria, codBib, false);
             dao.update(livro);
             forward = LIST_LIVRO;
-            request.setAttribute("alunos", dao.select());    
+            request.setAttribute("livros", dao.select());    
         } 
         else if (action.equalsIgnoreCase("edit")){
             forward = INSERT_OR_EDIT;
@@ -43,9 +45,9 @@ public class LivroController extends HttpServlet {
             Livro livro = dao.selectID(codLivro);
             request.setAttribute("livro", livro);
         } 
-        else if (action.equalsIgnoreCase("listarAlunos")){
+        else if (action.equalsIgnoreCase("listarLivros")){
             forward = LIST_LIVRO;
-            request.setAttribute("alunoList", dao.select());
+            request.setAttribute("livroList", dao.select());
         } 
         else {
             forward = INSERT_OR_EDIT;
@@ -63,7 +65,7 @@ public class LivroController extends HttpServlet {
         livro.setValor(Double.parseDouble(request.getParameter("valor")));
         livro.setCodCategoria(Integer.parseInt(request.getParameter("codCategoria")));
 
-        String livroID = request.getParameter("alunoID");
+        String livroID = request.getParameter("livroID");
         
         if(livroID == null || livroID.isEmpty())
         {

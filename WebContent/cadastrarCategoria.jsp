@@ -14,7 +14,7 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/modern-business.css" rel="stylesheet">
 	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+	    <link rel="icon" href="images/favicon.png" type="image/x-icon">
 	</head>
 
 	<body>
@@ -42,7 +42,7 @@
 				</div>
 		
 				<!-- Button -->
-				<div class="form-group">
+				<div class="form-group text-center">
 					<label class="col-md-4"></label>
 					<div class="col-md-4">
 						<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>

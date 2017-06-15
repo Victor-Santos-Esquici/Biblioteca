@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="br.com.model.Livro" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <!DOCTYPE html>
 
@@ -18,7 +18,7 @@
 	    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 	    <link href="css/remodal.css" rel="stylesheet" type="text/css">
 	    <link href="css/remodal-default-theme.css" rel="stylesheet" type="text/css">
-	    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+	    <link rel="icon" href="images/favicon.png" type="image/x-icon">
 	</head>
 
 	<body>
@@ -37,30 +37,23 @@
 	    				<th>Valor</th>
 	    				<th>Categoria</th>
 	    				<th>Biblioteca</th>
-	    				<th>Gerenciar</th>
+	    				<th width="50px">Gerenciar</th>
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-	    			<jsp:useBean id="dao" class="br.com.dao.LivroDAO"/>
-	    			<%    			
-		    			ArrayList<Livro> livros = new ArrayList<Livro>();
-	    				livros = dao.select();
-	    				for(Livro livro: livros){
-	    			%>
-	    			<tr>
-	    				<td class="bookTitle"><% out.print(livro.getTitulo()); %></td>
-	    				<td class="bookPublisher"><% out.print(livro.getEditora()); %></td>
-	    				<td class="bookPrice"><% out.print(livro.getValor()); %></td>
-	    				<td class="bookCategory"><% out.print(livro.getCodCategoria()); %></td>
-	    				<td class="bookLibrary"><% out.print(livro.getCodBib()); %></td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
-	    				</td>
-	    			</tr>
-	    			<%
-	    				}
-	    			%>
+	    			<c:forEach items="${livroList}" var="livro">
+		    			<tr>
+		    				<td class="bookTitle"><c:out value="${livro.titulo}"/></td>
+		    				<td class="bookPublisher"><c:out value="${livro.editora}"/></td>
+		    				<td class="bookPrice"><c:out value="${livro.valor}"/></td>
+		    				<td class="bookCategory"><c:out value="${livro.codCategoria}"/></td>
+		    				<td class="bookLibrary"><c:out value="${livro.codBib}"/></td>
+		    				<td>
+		    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
+		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>
+		    				</td>
+		    			</tr>
+	    			</c:forEach>
 	    		</tbody>
 	    	</table>
 	    	

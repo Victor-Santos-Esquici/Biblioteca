@@ -22,7 +22,7 @@ public class AlunoController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward="";
+        String forward = "";
         String action = request.getParameter("action");
         
         String nome = request.getParameter("firstName");

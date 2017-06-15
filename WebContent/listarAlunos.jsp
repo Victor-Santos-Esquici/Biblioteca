@@ -18,7 +18,7 @@
 	    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 	    <link href="css/remodal.css" rel="stylesheet" type="text/css">
 	    <link href="css/remodal-default-theme.css" rel="stylesheet" type="text/css">
-	    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+	    <link rel="icon" href="images/favicon.png" type="image/x-icon">
 	</head>
 
 	<body>
@@ -36,7 +36,7 @@
 	    				<th>Sobrenome</th>
 	    				<th>E-mail</th>
 	    				<th>Endereço</th>
-	    				<th>Gerenciar</th>
+	    				<th width="50px">Gerenciar</th>
 	    			</tr>
 	    		</thead>
 	    		<tbody>
@@ -46,9 +46,9 @@
 		    				<td class="studentLastName"><c:out value="${aluno.sobrenome}"/></td>
 		    				<td class="studentEmail"><c:out value="${aluno.email}"/></td>
 		    				<td class="studentAddress"><c:out value="${aluno.endereco}"/></td>
-		    				<td>
-		    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
+		    				<td width="50px">
+		    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
+		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>
 		    				</td>
 		    			</tr>
 		    		</c:forEach>

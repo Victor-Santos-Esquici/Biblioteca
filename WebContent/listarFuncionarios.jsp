@@ -18,7 +18,7 @@
 	    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 	    <link href="css/remodal.css" rel="stylesheet" type="text/css">
 	    <link href="css/remodal-default-theme.css" rel="stylesheet" type="text/css">
-	    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+	    <link rel="icon" href="images/favicon.png" type="image/x-icon">
 	</head>
 
 	<body>
@@ -39,7 +39,7 @@
 	    				<th>Telefone</th>
 	    				<th>Salário</th>
 	    				<th>Biblioteca</th>
-	    				<th>Gerenciar</th>
+	    				<th width="50px">Gerenciar</th>
 	    			</tr>
 	    		</thead>
 	    		<tbody>
@@ -58,8 +58,8 @@
 	    				<td class="workerSalary"><% out.print(funcionario.getSalario()); %></td>
 	    				<td class="workerLibrary"><% out.print(funcionario.getCodBib()); %></td>
 	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete">Deletar</a>
+	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
+	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>
 	    				</td>
 	    			</tr>
 	    			<%

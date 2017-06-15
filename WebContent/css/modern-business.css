@@ -99,3 +99,8 @@ footer {
 #registerForm{
 	margin-top: 50px;
 }
+
+.btnSize{
+	width: 60px;
+	margin-bottom: 5px;
+}
