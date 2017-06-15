@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="br.com.model.Categoria" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <!DOCTYPE html>
 
@@ -37,22 +37,15 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>	    		
-	    			<jsp:useBean id="dao" class="br.com.dao.CategoriaDAO"/>
-	    			<%
-		    			ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-	    				categorias = dao.select();
-	    				for(Categoria categoria: categorias){
-	    			%>
-	    			<tr>
-	    				<td class="categoryName"><% out.print(categoria.getDescricao()); %></td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>
-	    				</td>
-	    			</tr>
-	    			<%
-	    				}
-	    			%>
+					<c:forEach items="${categoriaList}" var="categoria">
+		    			<tr>
+		    				<td class="categoryName"><c:out value="${categoria.descricao}"/></td>
+		    				<td>
+		    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
+		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>
+		    				</td>
+		    			</tr>
+					</c:forEach>
 	    		</tbody>
 	    	</table>
 	

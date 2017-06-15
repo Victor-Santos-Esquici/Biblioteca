@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="br.com.model.Funcionario" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <!DOCTYPE html>
 
@@ -43,28 +43,21 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-	    			<jsp:useBean id="dao" class="br.com.dao.FuncionarioDAO"/>
-	    			<%
-		    			ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
-	    				funcionarios = dao.select();
-	    				for(Funcionario funcionario: funcionarios){
-	    			%>
-	    			<tr>
-	    				<td class="workerName"><% out.print(funcionario.getNome()); %></td>
-	    				<td class="workerLastName"><% out.print(funcionario.getSobrenome()); %></td>
-	    				<td class="workerEmail"><% out.print(funcionario.getEmail()); %></td>
-	    				<td class="workerAddress"><% out.print(funcionario.getEndereco()); %></td>
-	    				<td class="workerPhone"><% out.print(funcionario.telefone); %></td>
-	    				<td class="workerSalary"><% out.print(funcionario.getSalario()); %></td>
-	    				<td class="workerLibrary"><% out.print(funcionario.getCodBib()); %></td>
-	    				<td>
-	    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
-	    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>
-	    				</td>
-	    			</tr>
-	    			<%
-	    				}
-	    			%>
+					<c:forEach items="${funcionarioList}" var="funcionario">
+		    			<tr>
+		    				<td class="workerName"><c:out value="${funcionario.nome}"/></td>
+		    				<td class="workerLastName"><c:out value="${funcionario.sobrenome}"/></td>
+		    				<td class="workerEmail"><c:out value="${funcionario.email}"/></td>
+		    				<td class="workerAddress"><c:out value="${funcionario.endereco}"/></td>
+		    				<td class="workerPhone"><c:out value="${funcionario.telefone}"/></td>
+		    				<td class="workerSalary"><c:out value="${funcionario.salario}"/></td>
+		    				<td class="workerLibrary"><c:out value="${funcionario.codBib}"/></td>
+		    				<td>
+		    					<a href="#editModal" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
+		    					<a href="#deleteModal" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>
+		    				</td>
+		    			</tr>
+					</c:forEach>
 	    		</tbody>
 	    	</table>
 	    	

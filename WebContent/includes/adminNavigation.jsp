@@ -31,16 +31,16 @@
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Funcionários<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="listarFuncionarios.jsp">Gerenciar</a></li>
-						<li><a href="cadastrarFuncionario.jsp">Cadastrar</a></li>
+						<li><a href="FuncionarioController?action=listarFuncionarios">Gerenciar</a></li>
+						<li><a href="FuncionarioController?action=cadastrarFuncionario">Cadastrar</a></li>
 					</ul>
 				</li>
 				
 				<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="listarCategorias.jsp">Gerenciar</a></li>
-						<li><a href="cadastrarCategoria.jsp">Cadastrar</a></li>
+						<li><a href="CategoriaController?action=listarCategorias">Gerenciar</a></li>
+						<li><a href="CategoriaController?action=cadastrarCategoria">Cadastrar</a></li>
 					</ul>
 				</li>
 				

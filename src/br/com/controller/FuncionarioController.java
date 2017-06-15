@@ -22,7 +22,7 @@ public class FuncionarioController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward="";
+        String forward = "";
         String action = request.getParameter("action");
         
         String nome = request.getParameter("firstName");
@@ -30,7 +30,7 @@ public class FuncionarioController extends HttpServlet {
         String email = request.getParameter("email");
         String endereco = request.getParameter("address");
         String telefone = request.getParameter("phone");
-        Double salario = Double.parseDouble(request.getParameter("salary"));
+        Double salario = Double.parseDouble(request.getParameter("salary")); //parse tem que verificar nullo
         
         if (action.equalsIgnoreCase("delete")){
             int codFunc = Integer.parseInt(request.getParameter("codFunc"));
