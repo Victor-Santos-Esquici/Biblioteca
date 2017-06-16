@@ -1,7 +1,7 @@
 package br.com.model;
 
-public class Livro {
-
+public class Livro 
+{
 	public Integer codLivro;
 	public String titulo;
 	public String editora;
@@ -12,7 +12,8 @@ public class Livro {
 	
 	public Livro(){}
 	
-	public Livro(Integer codLivro, String titulo, String editora, Double valor, Integer codCategoria, Integer codBib, Boolean situacao){
+	public Livro(Integer codLivro, String titulo, String editora, Double valor, Integer codCategoria, Integer codBib, Boolean situacao)
+	{
 		this.codLivro = codLivro;
 		this.titulo = titulo;
 		this.editora = editora;
@@ -22,59 +23,73 @@ public class Livro {
 		this.situacao = situacao;
 	}
 
-	public Integer getCodLivro() {
+	public Integer getCodLivro() 
+	{
 		return codLivro;
 	}
 
-	public void setCodLivro(Integer codLivro) {
+	public void setCodLivro(Integer codLivro)
+	{
 		this.codLivro = codLivro;
 	}
 
-	public String getTitulo() {
+	public String getTitulo()
+	{
 		return titulo;
 	}
 
-	public void setTitulo(String titulo) {
+	public void setTitulo(String titulo)
+	{
 		this.titulo = titulo;
 	}
 
-	public String getEditora() {
+	public String getEditora()
+	{
 		return editora;
 	}
 
-	public void setEditora(String editora) {
+	public void setEditora(String editora)
+	{
 		this.editora = editora;
 	}
 
-	public Double getValor() {
+	public Double getValor()
+	{
 		return valor;
 	}
 
-	public void setValor(Double valor) {
+	public void setValor(Double valor)
+	{
 		this.valor = valor;
 	}
 
-	public Integer getCodCategoria() {
+	public Integer getCodCategoria()
+	{
 		return codCategoria;
 	}
 
-	public void setCodCategoria(Integer codCategoria) {
+	public void setCodCategoria(Integer codCategoria)
+	{
 		this.codCategoria = codCategoria;
 	}
 
-	public Integer getCodBib() {
+	public Integer getCodBib()
+	{
 		return codBib;
 	}
 
-	public void setCodBib(Integer codBib) {
+	public void setCodBib(Integer codBib)
+	{
 		this.codBib = codBib;
 	}
 
-	public Boolean getSituacao() {
+	public Boolean getSituacao()
+	{
 		return situacao;
 	}
 
-	public void setSituacao(Boolean situacao) {
+	public void setSituacao(Boolean situacao)
+	{
 		this.situacao = situacao;
 	}
 }

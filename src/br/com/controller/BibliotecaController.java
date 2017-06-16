@@ -10,42 +10,49 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.dao.BibliotecaDAO;
 import br.com.model.Biblioteca;
 
-public class BibliotecaController extends HttpServlet {
+public class BibliotecaController extends HttpServlet 
+{
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/cadastrarBiblioteca.jsp";
     private static String LIST_BIBLIOTECA = "/listarBibliotecas.jsp";
     private BibliotecaDAO dao;
 
-    public BibliotecaController() {
+    public BibliotecaController() 
+    {
         super();
         dao = new BibliotecaDAO();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward="";
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        String forward = "";
         String action = request.getParameter("action");
 
         String nome = request.getParameter("name");
         String endereco = request.getParameter("address");
 
-        if (action.equalsIgnoreCase("delete")){
+        if (action.equalsIgnoreCase("delete"))
+        {
             int codBib = Integer.parseInt(request.getParameter("codBib"));
             Biblioteca biblioteca = new Biblioteca(codBib, nome, endereco);
             dao.update(biblioteca);
             forward = LIST_BIBLIOTECA;
-            request.setAttribute("bibliotecas", dao.select());    
+            request.setAttribute("bibliotecaList", dao.select());    
         } 
-        else if (action.equalsIgnoreCase("edit")){
-            forward = INSERT_OR_EDIT;
+        else if (action.equalsIgnoreCase("edit"))
+        {
             int codBib = Integer.parseInt(request.getParameter("codBib"));
             Biblioteca biblioteca = dao.selectID(codBib);
+            forward = INSERT_OR_EDIT;
             request.setAttribute("biblioteca", biblioteca);
         } 
-        else if (action.equalsIgnoreCase("listarBibliotecas")){
+        else if (action.equalsIgnoreCase("listarBibliotecas"))
+        {
             forward = LIST_BIBLIOTECA;
             request.setAttribute("bibliotecaList", dao.select());
         } 
-        else {
+        else 
+        {
             forward = INSERT_OR_EDIT;
         }
 
@@ -53,15 +60,15 @@ public class BibliotecaController extends HttpServlet {
         view.forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
         Biblioteca biblioteca = new Biblioteca();
         biblioteca.setNome(request.getParameter("name"));
         biblioteca.setEndereco(request.getParameter("address"));
 
         String bibliotecaID = request.getParameter("bibliotecaID");
         
-        if(bibliotecaID == null || bibliotecaID.isEmpty())
+        if (bibliotecaID == null || bibliotecaID.isEmpty())
         {
             dao.insert(biblioteca);
         }

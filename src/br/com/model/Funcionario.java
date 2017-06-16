@@ -1,7 +1,7 @@
 package br.com.model;
 
-public class Funcionario {
-
+public class Funcionario 
+{
 	public Integer codFunc;
 	public String nome;
 	public String sobrenome;
@@ -13,7 +13,8 @@ public class Funcionario {
 	
 	public Funcionario(){}
 	
-	public Funcionario(Integer codFunc, String nome, String sobrenome, String email, String endereco, String telefone, Double salario, Integer codBib){
+	public Funcionario(Integer codFunc, String nome, String sobrenome, String email, String endereco, String telefone, Double salario, Integer codBib)
+	{
 		this.codFunc = codFunc;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -24,67 +25,83 @@ public class Funcionario {
 		this.codBib = codBib;
 	}
 
-	public Integer getCodFunc() {
+	public Integer getCodFunc() 
+	{
 		return codFunc;
 	}
 
-	public void setCodFunc(Integer codFunc) {
+	public void setCodFunc(Integer codFunc) 
+	{
 		this.codFunc = codFunc;
 	}
 
-	public String getNome() {
+	public String getNome() 
+	{
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome) 
+	{
 		this.nome = nome;
 	}
 
-	public String getSobrenome() {
+	public String getSobrenome() 
+	{
 		return sobrenome;
 	}
 
-	public void setSobrenome(String sobrenome) {
+	public void setSobrenome(String sobrenome)
+	{
 		this.sobrenome = sobrenome;
 	}
 
-	public String getEmail() {
+	public String getEmail()
+	{
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) 
+	{
 		this.email = email;
 	}
 
-	public String getEndereco() {
+	public String getEndereco() 
+	{
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco(String endereco)
+	{
 		this.endereco = endereco;
 	}
 
-	public String getTelefone() {
+	public String getTelefone() 
+	{
 		return telefone;
 	}
 
-	public void setTelefone(String telefone) {
+	public void setTelefone(String telefone)
+	{
 		this.telefone = telefone;
 	}
 
-	public Double getSalario() {
+	public Double getSalario() 
+	{
 		return salario;
 	}
 
-	public void setSalario(Double salario) {
+	public void setSalario(Double salario) 
+	{
 		this.salario = salario;
 	}
 
-	public Integer getCodBib() {
+	public Integer getCodBib() 
+	{
 		return codBib;
 	}
 
-	public void setCodBib(Integer codBib) {
+	public void setCodBib(Integer codBib) 
+	{
 		this.codBib = codBib;
 	}
 }

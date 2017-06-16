@@ -10,18 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.dao.FuncionarioDAO;
 import br.com.model.Funcionario;
 
-public class FuncionarioController extends HttpServlet {
+public class FuncionarioController extends HttpServlet 
+{
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/cadastrarFuncionario.jsp";
-	private static String LIST_ALUNO = "/listarFuncionarios.jsp";
+	private static String LIST_FUNCIONARIO = "/listarFuncionarios.jsp";
     private FuncionarioDAO dao;
 
-    public FuncionarioController() {
+    public FuncionarioController() 
+    {
         super();
         dao = new FuncionarioDAO();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
         String forward = "";
         String action = request.getParameter("action");
         
@@ -30,27 +33,37 @@ public class FuncionarioController extends HttpServlet {
         String email = request.getParameter("email");
         String endereco = request.getParameter("address");
         String telefone = request.getParameter("phone");
-        Double salario = Double.parseDouble(request.getParameter("salary")); //parse tem que verificar nullo
+        Double salario = null;
         
-        if (action.equalsIgnoreCase("delete")){
+        try
+        {
+        	salario = Double.parseDouble(request.getParameter("salary")); //parse tem que verificar nullo
+        }
+        catch(Exception ex){}
+        
+        if (action.equalsIgnoreCase("delete"))
+        {
             int codFunc = Integer.parseInt(request.getParameter("codFunc"));
             int codBib = Integer.parseInt(request.getParameter("codBib"));
             Funcionario funcionario = new Funcionario(codFunc, nome, sobrenome, email, endereco, telefone, salario, codBib);
             dao.update(funcionario);
-            forward = LIST_ALUNO;
-            request.setAttribute("funcionarios", dao.select());    
+            forward = LIST_FUNCIONARIO;
+            request.setAttribute("funcionarioList", dao.select());    
         } 
-        else if (action.equalsIgnoreCase("edit")){
-            forward = INSERT_OR_EDIT;
-            int codMatricula = Integer.parseInt(request.getParameter("codMatricula"));
-            Funcionario funcionario = dao.selectID(codMatricula);
-            request.setAttribute("funcionario", funcionario);
+        else if (action.equalsIgnoreCase("edit"))
+        {
+        	int codMatricula = Integer.parseInt(request.getParameter("codMatricula"));
+        	Funcionario funcionario = dao.selectID(codMatricula);
+        	forward = INSERT_OR_EDIT;
+        	request.setAttribute("funcionario", funcionario);
         } 
-        else if (action.equalsIgnoreCase("listarFuncionarios")){
-            forward = LIST_ALUNO;
+        else if (action.equalsIgnoreCase("listarFuncionarios"))
+        {
+            forward = LIST_FUNCIONARIO;
             request.setAttribute("funcionarioList", dao.select());
         } 
-        else {
+        else 
+        {
             forward = INSERT_OR_EDIT;
         }
 
@@ -58,17 +71,18 @@ public class FuncionarioController extends HttpServlet {
         view.forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
         Funcionario funcionario = new Funcionario();
         funcionario.setNome(request.getParameter("firstName"));
         funcionario.setSobrenome(request.getParameter("lastName"));
         funcionario.setEmail(request.getParameter("email"));
         funcionario.setEndereco(request.getParameter("address"));
-
+        funcionario.setTelefone(request.getParameter("phone"));
+        
         String funcionarioID = request.getParameter("funcionarioID");
         
-        if(funcionarioID == null || funcionarioID.isEmpty())
+        if (funcionarioID == null || funcionarioID.isEmpty())
         {
             dao.insert(funcionario);
         }
@@ -78,8 +92,8 @@ public class FuncionarioController extends HttpServlet {
             dao.update(funcionario);
         }
         
-        RequestDispatcher view = request.getRequestDispatcher(LIST_ALUNO);
-        request.setAttribute("funcionarios", dao.select());
+        RequestDispatcher view = request.getRequestDispatcher(LIST_FUNCIONARIO);
+        request.setAttribute("funcionarioList", dao.select());
         view.forward(request, response);
     }
 }

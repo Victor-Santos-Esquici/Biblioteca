@@ -6,39 +6,43 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.model.Aluno;
 import br.com.model.Livro;
 import br.com.util.DbUtil;
 
-public class LivroDAO {
+public class LivroDAO 
+{
 
 	private static Connection con = DbUtil.getConnection();
 	
-	public void insert(Livro livro) {
-		
+	public void insert(Livro livro) 
+	{
 		String sql = "insert into livros (titulo, editora, valor, codCategoria, codBib, situacao) values (?, ?, ?, ?, ?, ?)";
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, livro.getTitulo());
 			preparador.setString(2, livro.getEditora());
 			preparador.setDouble(3, livro.getValor());
-			preparador.setInt(4, livro.getCodLivro());
-			preparador.setBoolean(5, livro.getSituacao());
+			preparador.setInt(4, livro.getCodCategoria());
+			preparador.setInt(5, livro.getCodBib());
+			preparador.setBoolean(6, true);
 			
 			preparador.execute();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 	}
 	
-	public void update(Livro livro) {
-		
+	public void update(Livro livro) 
+	{
 		String sql = "update livros set titulo = ?, editora = ?, valor = ?, codCategoria = ?, codLib = ?, situacao = ? where codLivro = ?";
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, livro.getTitulo());
 			preparador.setString(2, livro.getEditora());
@@ -51,54 +55,73 @@ public class LivroDAO {
 			preparador.executeQuery();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 	}
 	
-	public ArrayList<Livro> select() {
+	public ArrayList<Livro> select(boolean situacao)
+	{
+		String sql = "select * from livros where situacao = ?";
+		ArrayList<Livro> livroList = new ArrayList<Livro>();
 		
-		String sql = "select * from livros";
-		ArrayList<Livro> livrosList = new ArrayList<Livro>();
-		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
-			ResultSet rst = preparador.executeQuery();
+			ResultSet rs = preparador.executeQuery();
 			
-			while(rst.next()){
-				Livro livro = new Livro(rst.getInt("codLivro"), rst.getString("titulo"), rst.getString("editora"), rst.getDouble("valor"), rst.getInt("codCategoria"), rst.getInt("codBib"), rst.getBoolean("situacao"));
-				livrosList.add(livro);
+			while(rs.next())
+			{
+				Livro livro = new Livro();
+            	livro.setCodLivro(rs.getInt("codLivro"));
+            	livro.setTitulo(rs.getString("titulo"));
+            	livro.setEditora(rs.getString("editora"));
+            	livro.setValor(Double.parseDouble(rs.getString("valor")));
+            	livro.setCodCategoria(Integer.parseInt(rs.getString("codCategoria")));
+            	livro.setCodBib(Integer.parseInt(rs.getString("codBib")));
+            	livro.setSituacao(rs.getBoolean("situacao"));
+				livroList.add(livro);
 			}
 			
-			rst.close();
+			rs.close();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 		
-		return livrosList;
+		return livroList;
 	}
 	
-    public Livro selectID(int livroID) {
-    	   
+    public Livro selectID(int livroID) 
+    {
+    	String sql = "select * from livros where codLivro = ?";   
     	Livro livro = new Livro();
     	
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement("select * from livros where codLivro = ?");
-            preparedStatement.setInt(1, livroID);
-            ResultSet rs = preparedStatement.executeQuery();
+        try 
+        {
+            PreparedStatement preparador = con.prepareStatement(sql);
+            preparador.setInt(1, livroID);
+            ResultSet rs = preparador.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next())
+            {
             	livro.setCodLivro(rs.getInt("codLivro"));
-            	livro.setTitulo(rs.getString("nome"));
-            	livro.setEditora(rs.getString("sobrenome"));
-            	livro.setValor(Double.parseDouble(rs.getString("email")));
-            	livro.setCodCategoria(Integer.parseInt(rs.getString("endereco")));
+            	livro.setTitulo(rs.getString("titulo"));
+            	livro.setEditora(rs.getString("editora"));
+            	livro.setValor(Double.parseDouble(rs.getString("valor")));
+            	livro.setCodCategoria(Integer.parseInt(rs.getString("codCategoria")));
+            	livro.setCodBib(Integer.parseInt(rs.getString("codBib")));
             	livro.setSituacao(rs.getBoolean("situacao"));
             }
+            
+			rs.close();
+			preparador.close();
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
 

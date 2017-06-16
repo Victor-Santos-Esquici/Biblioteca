@@ -10,41 +10,48 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.dao.CategoriaDAO;
 import br.com.model.Categoria;
 
-public class CategoriaController extends HttpServlet {
+public class CategoriaController extends HttpServlet 
+{
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/cadastrarCategoria.jsp";
 	private static String LIST_CATEGORIA = "/listarCategorias.jsp";
     private CategoriaDAO dao;
 
-    public CategoriaController() {
+    public CategoriaController() 
+    {
         super();
         dao = new CategoriaDAO();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
         String forward = "";
         String action = request.getParameter("action");
         
         String descricao = request.getParameter("descricao");
 
-        if (action.equalsIgnoreCase("delete")){
+        if (action.equalsIgnoreCase("delete"))
+        {
             int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
             Categoria categoria = new Categoria(codCategoria, descricao);
             dao.update(categoria);
             forward = LIST_CATEGORIA;
-            request.setAttribute("categorias", dao.select());    
+            request.setAttribute("categoriaList", dao.select());    
         } 
-        else if (action.equalsIgnoreCase("edit")){
-            forward = INSERT_OR_EDIT;
-            int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
-            Categoria categoria = dao.selectID(codCategoria);
-            request.setAttribute("categoria", categoria);
+        else if (action.equalsIgnoreCase("edit"))
+        {
+        	int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
+        	Categoria categoria = dao.selectID(codCategoria);
+        	forward = INSERT_OR_EDIT;
+        	request.setAttribute("categoria", categoria);
         } 
-        else if (action.equalsIgnoreCase("listarCategorias")){
+        else if (action.equalsIgnoreCase("listarCategorias"))
+        {
             forward = LIST_CATEGORIA;
             request.setAttribute("categoriaList", dao.select());
         } 
-        else {
+        else 
+        {
             forward = INSERT_OR_EDIT;
         }
 
@@ -52,8 +59,8 @@ public class CategoriaController extends HttpServlet {
         view.forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
         Categoria categoria = new Categoria();
         categoria.setDescricao(request.getParameter("name"));
 
@@ -70,7 +77,7 @@ public class CategoriaController extends HttpServlet {
         }
         
         RequestDispatcher view = request.getRequestDispatcher(LIST_CATEGORIA);
-        request.setAttribute("categorias", dao.select());
+        request.setAttribute("categoriaList", dao.select());
         view.forward(request, response);
     }
 }

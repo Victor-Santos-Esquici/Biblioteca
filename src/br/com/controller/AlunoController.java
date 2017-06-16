@@ -10,18 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.dao.AlunoDAO;
 import br.com.model.Aluno;
 
-public class AlunoController extends HttpServlet {
+public class AlunoController extends HttpServlet 
+{
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/cadastrarAluno.jsp";
 	private static String LIST_ALUNO = "/listarAlunos.jsp";
     private AlunoDAO dao;
 
-    public AlunoController() {
+    public AlunoController() 
+    {
         super();
         dao = new AlunoDAO();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
         String forward = "";
         String action = request.getParameter("action");
         
@@ -30,24 +33,28 @@ public class AlunoController extends HttpServlet {
         String email = request.getParameter("email");
         String endereco = request.getParameter("endereco");
 
-        if (action.equalsIgnoreCase("delete")){
+        if (action.equalsIgnoreCase("delete"))
+        {
             int codMatricula = Integer.parseInt(request.getParameter("codMatricula"));
             Aluno aluno = new Aluno(codMatricula, nome, sobrenome, email, endereco, false);
             dao.update(aluno);
             forward = LIST_ALUNO;
-            request.setAttribute("alunos", dao.select(true));    
+            request.setAttribute("alunoList", dao.select(true));    
         } 
-        else if (action.equalsIgnoreCase("edit")){
-            forward = INSERT_OR_EDIT;
+        else if (action.equalsIgnoreCase("edit"))
+        {
             int codMatricula = Integer.parseInt(request.getParameter("codMatricula"));
             Aluno aluno = dao.selectID(codMatricula);
+            forward = INSERT_OR_EDIT;
             request.setAttribute("aluno", aluno);
         } 
-        else if (action.equalsIgnoreCase("listarAlunos")){
+        else if (action.equalsIgnoreCase("listarAlunos"))
+        {
             forward = LIST_ALUNO;
             request.setAttribute("alunoList", dao.select(true));
         } 
-        else {
+        else 
+        {
             forward = INSERT_OR_EDIT;
         }
 
@@ -55,8 +62,8 @@ public class AlunoController extends HttpServlet {
         view.forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
         Aluno aluno = new Aluno();
         aluno.setNome(request.getParameter("firstName"));
         aluno.setSobrenome(request.getParameter("lastName"));
@@ -65,7 +72,7 @@ public class AlunoController extends HttpServlet {
 
         String alunoID = request.getParameter("alunoID");
         
-        if(alunoID == null || alunoID.isEmpty())
+        if (alunoID == null || alunoID.isEmpty())
         {
             dao.insert(aluno);
         }
@@ -76,7 +83,7 @@ public class AlunoController extends HttpServlet {
         }
         
         RequestDispatcher view = request.getRequestDispatcher(LIST_ALUNO);
-        request.setAttribute("alunos", dao.select(true));
+        request.setAttribute("alunoList", dao.select(true));
         view.forward(request, response);
     }
 }

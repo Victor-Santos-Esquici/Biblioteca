@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.model.Aluno;
 import br.com.model.Funcionario;
 import br.com.util.DbUtil;
 
-public class FuncionarioDAO {
-
+public class FuncionarioDAO 
+{
 	private static Connection con = DbUtil.getConnection();
 	
-	public void insert(Funcionario funcionario) {
-		
+	public void insert(Funcionario funcionario) 
+	{
 		String sql = "insert into funcionarios (nome, endereco, telefone, salario, codBib) values (?, ?, ?, ?, ?)";
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, funcionario.getNome());
 			preparador.setString(2, funcionario.getEndereco());
@@ -29,16 +29,18 @@ public class FuncionarioDAO {
 			preparador.execute();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 	}
 	
-	public void update(Funcionario funcionario) {
-		
+	public void update(Funcionario funcionario) 
+	{
 		String sql = "update funcionarios set nome = ?, endereco = ?, telefone = ?, salario = ?, codBib = ? where codFunc = ?";
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, funcionario.getNome());
 			preparador.setString(2, funcionario.getEndereco());
@@ -49,45 +51,60 @@ public class FuncionarioDAO {
 			preparador.executeQuery();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 	}
 	
-	public ArrayList<Funcionario> select() {
-		
+	public ArrayList<Funcionario> select()
+	{	
 		String sql = "select * from funcionarios";
 		ArrayList<Funcionario> funcionarioList = new ArrayList<Funcionario>();
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
-			ResultSet rst = preparador.executeQuery();
+			ResultSet rs = preparador.executeQuery();
 			
-			while(rst.next()){
-				Funcionario funcionario = new Funcionario(rst.getInt("codFunc"), rst.getString("nome"), rst.getString("sobrenome"), rst.getString("email"), rst.getString("endereco"), rst.getString("telefone"), rst.getDouble("salario"), rst.getInt("codBib"));
+			while(rs.next())
+			{
+				Funcionario funcionario = new Funcionario();
+                funcionario.setCodFunc(rs.getInt("codFunc"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setSobrenome(rs.getString("sobrenome"));
+                funcionario.setEmail(rs.getString("email"));
+                funcionario.setEndereco(rs.getString("endereco"));
+                funcionario.setTelefone(rs.getString("telefone"));
+                funcionario.setSalario(rs.getDouble("salario"));
+                funcionario.setCodBib(rs.getInt("codBib"));
 				funcionarioList.add(funcionario);
 			}
 			
-			rst.close();
+			rs.close();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 		
 		return funcionarioList;
 	}
 	
-    public Funcionario selectID(int funcionarioID) {
-    	   
+    public Funcionario selectID(int funcionarioID)
+    {   
+    	String sql = "select * from funcionarios where codFunc = ?";
     	Funcionario funcionario = new Funcionario();
     	
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement("select * from funcionarios where codFunc = ?");
-            preparedStatement.setInt(1, funcionarioID);
-            ResultSet rs = preparedStatement.executeQuery();
+        try 
+        {
+            PreparedStatement preparador = con.prepareStatement(sql);
+            preparador.setInt(1, funcionarioID);
+            ResultSet rs = preparador.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next()) 
+            {
                 funcionario.setCodFunc(rs.getInt("codFunc"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setSobrenome(rs.getString("sobrenome"));
@@ -97,8 +114,12 @@ public class FuncionarioDAO {
                 funcionario.setSalario(rs.getDouble("salario"));
                 funcionario.setCodBib(rs.getInt("codBib"));
             }
+            
+			rs.close();
+			preparador.close();
         }
-        catch (SQLException e) {
+        catch (SQLException e) 
+        {
             e.printStackTrace();
         }
 

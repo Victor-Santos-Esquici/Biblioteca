@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.model.Aluno;
 import br.com.model.Biblioteca;
 import br.com.util.DbUtil;
 
-public class BibliotecaDAO {
-
+public class BibliotecaDAO 
+{
 	private static Connection con = DbUtil.getConnection();
 	
-	public void insert(Biblioteca biblioteca) {
-		
+	public void insert(Biblioteca biblioteca) 
+	{
 		String sql = "insert into bibliotecas (nome, endereco) values (?,?)";
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, biblioteca.getNome());
 			preparador.setString(2, biblioteca.getEndereco());
@@ -26,16 +26,18 @@ public class BibliotecaDAO {
 			preparador.execute();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 	}
 	
-	public void update(Biblioteca biblioteca) {
-		
+	public void update(Biblioteca biblioteca) 
+	{
 		String sql = "update bibliotecas set nome = ?, endereco= ? where codBib = ?";
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, biblioteca.getNome());
 			preparador.setString(2, biblioteca.getEndereco());
@@ -44,51 +46,65 @@ public class BibliotecaDAO {
 			preparador.executeQuery();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 	}
 	
-	public ArrayList<Biblioteca> select() {
-		
+	public ArrayList<Biblioteca> select()
+	{
 		String sql = "select * from bibliotecas";
 		ArrayList<Biblioteca> bibliotecaList = new ArrayList<Biblioteca>();
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
-			ResultSet rst = preparador.executeQuery();
+			ResultSet rs = preparador.executeQuery();
 			
-			while(rst.next()){
-				Biblioteca biblioteca = new Biblioteca(rst.getInt("codBib"), rst.getString("nome"), rst.getString("endereco"));
+			while(rs.next())
+			{
+				Biblioteca biblioteca = new Biblioteca();
+                biblioteca.setCodBib(rs.getInt("codBib"));
+                biblioteca.setNome(rs.getString("nome"));
+                biblioteca.setEndereco(rs.getString("endereco"));
 				bibliotecaList.add(biblioteca);
 			}
 			
-			rst.close();
+			rs.close();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 		
 		return bibliotecaList;
 	}
 	
-    public Biblioteca selectID(int bibliotecaID) {
-    	   
+    public Biblioteca selectID(int bibliotecaID) 
+    {   
+    	String sql = "select * from bibliotecas where codBib = ?";
     	Biblioteca biblioteca = new Biblioteca();
     	
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement("select * from bibliotecas where codBib = ?");
-            preparedStatement.setInt(1, bibliotecaID);
-            ResultSet rs = preparedStatement.executeQuery();
+        try 
+        {
+            PreparedStatement preparador = con.prepareStatement(sql);
+            preparador.setInt(1, bibliotecaID);
+            ResultSet rs = preparador.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next()) 
+            {
                 biblioteca.setCodBib(rs.getInt("codBib"));
                 biblioteca.setNome(rs.getString("nome"));
                 biblioteca.setEndereco(rs.getString("endereco"));
             }
+            
+            rs.close();
+            preparador.close();
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
 

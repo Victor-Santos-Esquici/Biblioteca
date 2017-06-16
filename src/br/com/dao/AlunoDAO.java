@@ -9,15 +9,16 @@ import java.util.ArrayList;
 import br.com.model.Aluno;
 import br.com.util.DbUtil;
 
-public class AlunoDAO {
-	
+public class AlunoDAO 
+{
 	private static Connection con = DbUtil.getConnection();
 	
-	public void insert(Aluno aluno) {
-		
+	public void insert(Aluno aluno) 
+	{
 		String sql = "insert into alunos (nome, sobrenome, email, endereco, situacao) values (?,?,?,?,?)";
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, aluno.getNome());
 			preparador.setString(2, aluno.getSobrenome());
@@ -28,16 +29,18 @@ public class AlunoDAO {
 			preparador.execute();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 	}
 	
-	public void update(Aluno aluno) {
-		
+	public void update(Aluno aluno) 
+	{
 		String sql = "update alunos set nome = ?, sobrenome = ?, email = ?, endereco = ?, situacao = ? where codMatricula = ?";
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, aluno.getNome());
 			preparador.setString(2, aluno.getSobrenome());
@@ -49,46 +52,59 @@ public class AlunoDAO {
 			preparador.executeQuery();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 	}
 	
-	public ArrayList<Aluno> select(boolean situacao) {
-		
+	public ArrayList<Aluno> select(boolean situacao) 
+	{
 		String sql = "select * from alunos where situacao = ?";
 		ArrayList<Aluno> alunoList = new ArrayList<Aluno>();
 		
-		try{
+		try
+		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setBoolean(1, situacao);
-			ResultSet rst = preparador.executeQuery();
+			ResultSet rs = preparador.executeQuery();
 			
-			while(rst.next()){
-				Aluno aluno = new Aluno(rst.getInt("codMatricula"), rst.getString("nome"), rst.getString("sobrenome"), rst.getString("email"),rst.getString("endereco"), rst.getBoolean("situacao"));
+			while(rs.next())
+			{
+				Aluno aluno = new Aluno();
+                aluno.setCodMatricula(rs.getInt("codMatricula"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setSobrenome(rs.getString("sobrenome"));
+                aluno.setEmail(rs.getString("email"));
+                aluno.setEndereco(rs.getString("endereco"));
+                aluno.setSituacao(rs.getBoolean("situacao"));
 				alunoList.add(aluno);
 			}
 			
-			rst.close();
+			rs.close();
 			preparador.close();
 		}
-		catch(SQLException ex){
+		catch(SQLException ex)
+		{
 			ex.printStackTrace();
 		}
 		
 		return alunoList;
 	}
 	
-    public Aluno selectID(int alunoID) {
-   
+    public Aluno selectID(int alunoID) 
+    {
+    	String sql = "select * from alunos where codMatricula = ?";
     	Aluno aluno = new Aluno();
     	
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement("select * from alunos where codMatricula = ?");
-            preparedStatement.setInt(1, alunoID);
-            ResultSet rs = preparedStatement.executeQuery();
+        try 
+        {
+            PreparedStatement preparador = con.prepareStatement(sql);
+            preparador.setInt(1, alunoID);
+            ResultSet rs = preparador.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next()) 
+            {
                 aluno.setCodMatricula(rs.getInt("codMatricula"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setSobrenome(rs.getString("sobrenome"));
@@ -96,8 +112,12 @@ public class AlunoDAO {
                 aluno.setEndereco(rs.getString("endereco"));
                 aluno.setSituacao(rs.getBoolean("situacao"));
             }
+            
+			rs.close();
+			preparador.close(); 
         }
-        catch (SQLException e) {
+        catch (SQLException e) 
+        {
             e.printStackTrace();
         }
 
