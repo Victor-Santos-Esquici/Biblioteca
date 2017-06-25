@@ -46,10 +46,29 @@ public class AlunoDAO
 			preparador.setString(2, aluno.getSobrenome());
 			preparador.setString(3, aluno.getEmail());
 			preparador.setString(4, aluno.getEndereco());
-			preparador.setString(5, aluno.getSituacao().toString());
+			preparador.setBoolean(5, aluno.getSituacao());
 			preparador.setInt(6, aluno.getCodMatricula());
 			
-			preparador.executeQuery();
+			preparador.execute();
+			preparador.close();
+		}
+		catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	public void delete(int codMatricula)
+	{
+		String sql = "update alunos set situacao = ? where codMatricula = ?";
+		
+		try
+		{
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setBoolean(1, false);
+			preparador.setInt(2, codMatricula);
+			
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex)

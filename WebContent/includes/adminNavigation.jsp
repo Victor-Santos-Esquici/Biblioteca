@@ -20,12 +20,8 @@
 					</ul>
 				</li>
 
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Alunos<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="AlunoController?action=listarAlunos">Gerenciar</a></li>
-						<li><a href="AlunoController?action=cadastrarAlunos">Cadastrar</a></li>
-					</ul>
+				<li>
+					<a href="AlunoController?action=listarAlunos">Alunos</a>
 				</li>
 
 				<li class="dropdown">

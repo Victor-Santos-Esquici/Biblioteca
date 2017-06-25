@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <!DOCTYPE html>
 
@@ -17,16 +19,20 @@
 	</head>
 
 	<body>
-	
 	    <!-- Navigation -->
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div class="container">
-			<form action="AlunoController" class="well form-horizontal" method="post" id="registerForm">
+	    <div class="container contentMargin">
+			<a class="btn btn-success" href="AlunoController?action=listarAlunos">Listar</a>
+			<br><br>
+			<form action="AlunoController" id="registerForm" class="well form-horizontal" method="post">
 				<fieldset>
 					<!-- Form Name -->
 					<legend class="text-center">Cadastrar Aluno</legend>
+					
+					<!-- Hidden ID -->
+					<input type="hidden" name="codMatricula" readonly="readonly" value="<c:out value="${aluno.codMatricula}"/>">
 			
 					<!-- Text input-->
 					<div class="form-group">
@@ -34,7 +40,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-								<input name="firstName" placeholder="Nome" class="form-control" type="text">
+								<input name="firstName" placeholder="João" class="form-control" type="text" value="<c:out value="${aluno.nome}"/>">
 							</div>
 						</div>
 					</div>
@@ -45,7 +51,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-								<input name="lastName" placeholder="Sobrenome" class="form-control" type="text">
+								<input name="lastName" placeholder="Silva" class="form-control" type="text" value="<c:out value="${aluno.sobrenome}"/>">
 							</div>
 						</div>
 					</div>
@@ -56,7 +62,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-								<input name="email" placeholder="Endereço de e-mail" class="form-control" type="text">
+								<input name="email" placeholder="joao@joao.com" class="form-control" type="text" value="<c:out value="${aluno.email}"/>">
 							</div>
 						</div>
 					</div>
@@ -67,7 +73,7 @@
 						<div class="col-md-4 inputGroupContainer">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-								<input name="address" placeholder="Endereço físico" class="form-control" type="text">
+								<input name="address" placeholder="Av. Borges de Medeiros" class="form-control" type="text" value="<c:out value="${aluno.endereco}"/>">
 							</div>
 						</div>
 					</div>
@@ -84,7 +90,6 @@
 	
 	        <!-- Footer -->
 			<jsp:include page="includes/footer.jsp"/>
-		
 	    </div>
 
 	    <script src="js/jquery.js"></script>
@@ -144,9 +149,6 @@
 		        .on('success.form.bv', function(e) {
 		            //$('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
 	                $('#registerForm').data('bootstrapValidator').resetForm();
-		
-		            // Prevent form submission
-		            e.preventDefault();
 		
 		            // Get the form instance
 		            var $form = $(e.target);

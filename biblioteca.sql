@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Maio-2017 às 08:39
+-- Generation Time: 26-Jun-2017 às 01:29
 -- Versão do servidor: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -62,7 +62,9 @@ CREATE TABLE `bibliotecas` (
 --
 
 INSERT INTO `bibliotecas` (`codBib`, `nome`, `endereco`) VALUES
-(1, 'Biblioteca Municipal de Canoas', 'XV de Janeiro, 270');
+(1, 'Biblioteca Municipal de Canoas', 'XV de Janeiro, 270'),
+(2, 'asd', 'asd'),
+(3, 'asdqwe', 'asdqwe');
 
 -- --------------------------------------------------------
 
@@ -83,7 +85,9 @@ INSERT INTO `categorias` (`codCategoria`, `descricao`) VALUES
 (1, 'Ficcao'),
 (2, 'Romance'),
 (3, 'Literatura'),
-(4, 'Cientifico');
+(4, 'Cientifico'),
+(5, 'asd'),
+(6, 'asdqwe');
 
 -- --------------------------------------------------------
 
@@ -222,12 +226,12 @@ ALTER TABLE `alunos`
 -- AUTO_INCREMENT for table `bibliotecas`
 --
 ALTER TABLE `bibliotecas`
-  MODIFY `codBib` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codBib` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `codCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `codCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `empresta`
 --

@@ -69,6 +69,7 @@ public class LivroDAO
 		try
 		{
 			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setBoolean(1, situacao);
 			ResultSet rs = preparador.executeQuery();
 			
 			while(rs.next())

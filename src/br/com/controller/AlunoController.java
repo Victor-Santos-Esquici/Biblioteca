@@ -27,17 +27,11 @@ public class AlunoController extends HttpServlet
     {
         String forward = "";
         String action = request.getParameter("action");
-        
-        String nome = request.getParameter("firstName");
-        String sobrenome = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String endereco = request.getParameter("endereco");
 
         if (action.equalsIgnoreCase("delete"))
         {
             int codMatricula = Integer.parseInt(request.getParameter("codMatricula"));
-            Aluno aluno = new Aluno(codMatricula, nome, sobrenome, email, endereco, false);
-            dao.update(aluno);
+            dao.delete(codMatricula);
             forward = LIST_ALUNO;
             request.setAttribute("alunoList", dao.select(true));    
         } 
@@ -47,7 +41,7 @@ public class AlunoController extends HttpServlet
             Aluno aluno = dao.selectID(codMatricula);
             forward = INSERT_OR_EDIT;
             request.setAttribute("aluno", aluno);
-        } 
+        }
         else if (action.equalsIgnoreCase("listarAlunos"))
         {
             forward = LIST_ALUNO;
@@ -69,8 +63,9 @@ public class AlunoController extends HttpServlet
         aluno.setSobrenome(request.getParameter("lastName"));
         aluno.setEmail(request.getParameter("email"));
         aluno.setEndereco(request.getParameter("address"));
+        aluno.setSituacao(true);
 
-        String alunoID = request.getParameter("alunoID");
+        String alunoID = request.getParameter("codMatricula");
         
         if (alunoID == null || alunoID.isEmpty())
         {
