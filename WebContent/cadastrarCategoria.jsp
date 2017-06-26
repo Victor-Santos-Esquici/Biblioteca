@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -18,43 +19,44 @@
 	</head>
 
 	<body>
-	
 	    <!-- Navigation -->
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div class="container">
+	    <div class="container contentMargin">
+			<a class="btn btn-success" href="CategoriaController?action=insert">Adicionar</a>
+			<br><br>
 			<form action="CategoriaController" class="well form-horizontal" method="post" id="registerForm">
 				<fieldset>
-		
-				<!-- Form Name -->
-				<legend class="text-center">Cadastrar Categoria</legend>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Nome</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-							<input  name="name" placeholder="Nome" class="form-control"  type="text">
+					<!-- Form Name -->
+					<legend class="text-center">Cadastrar Categoria</legend>
+					
+					<!-- Hidden ID -->
+					<input type="hidden" name="codCategoria" readonly="readonly" value="<c:out value="${categoria.codCategoria}"/>">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Nome</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+								<input  name="name" placeholder="Nome" class="form-control"  type="text" value="<c:out value="${categoria.descricao}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Button -->
-				<div class="form-group text-center">
-					<label class="col-md-4"></label>
-					<div class="col-md-4">
-						<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+			
+					<!-- Button -->
+					<div class="form-group text-center">
+						<label class="col-md-4"></label>
+						<div class="col-md-4">
+							<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+						</div>
 					</div>
-				</div>
-				
 				</fieldset>
 			</form>
 	
 	        <!-- Footer -->
 			<jsp:include page="includes/footer.jsp"/>
-		
 	    </div>
 
 	    <script src="js/jquery.js"></script>

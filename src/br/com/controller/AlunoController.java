@@ -65,15 +65,15 @@ public class AlunoController extends HttpServlet
         aluno.setEndereco(request.getParameter("address"));
         aluno.setSituacao(true);
 
-        String alunoID = request.getParameter("codMatricula");
+        String codMatricula = request.getParameter("codMatricula");
         
-        if (alunoID == null || alunoID.isEmpty())
+        if (codMatricula == null || codMatricula.isEmpty())
         {
             dao.insert(aluno);
         }
         else
         {
-            aluno.setCodMatricula(Integer.parseInt(alunoID));
+            aluno.setCodMatricula(Integer.parseInt(codMatricula));
             dao.update(aluno);
         }
         

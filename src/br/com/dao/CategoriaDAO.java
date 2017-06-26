@@ -41,7 +41,25 @@ public class CategoriaDAO
 			preparador.setString(1, categoria.getDescricao());
 			preparador.setInt(2, categoria.getCodCategoria());
 			
-			preparador.executeQuery();
+			preparador.execute();
+			preparador.close();
+		}
+		catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	public void delete(int codCategoria) 
+	{
+		String sql = "delete from categorias where codCategoria = ?";
+		
+		try
+		{
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setInt(1, codCategoria);
+			
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex)

@@ -27,14 +27,11 @@ public class CategoriaController extends HttpServlet
     {
         String forward = "";
         String action = request.getParameter("action");
-        
-        String descricao = request.getParameter("descricao");
 
         if (action.equalsIgnoreCase("delete"))
         {
             int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
-            Categoria categoria = new Categoria(codCategoria, descricao);
-            dao.update(categoria);
+            dao.delete(codCategoria);
             forward = LIST_CATEGORIA;
             request.setAttribute("categoriaList", dao.select());    
         } 
@@ -64,15 +61,15 @@ public class CategoriaController extends HttpServlet
         Categoria categoria = new Categoria();
         categoria.setDescricao(request.getParameter("name"));
 
-        String categoriaID = request.getParameter("categoriaID");
+        String codCategoria = request.getParameter("codCategoria");
         
-        if(categoriaID == null || categoriaID.isEmpty())
+        if (codCategoria == null || codCategoria.isEmpty())
         {
             dao.insert(categoria);
         }
         else
         {
-            categoria.setCodCategoria(Integer.parseInt(categoriaID));
+            categoria.setCodCategoria(Integer.parseInt(codCategoria));
             dao.update(categoria);
         }
         

@@ -19,7 +19,6 @@
 	</head>
 
 	<body>
-	
 	    <!-- Navigation -->
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
@@ -69,7 +68,6 @@
 	
 	        <!-- Footer -->
 			<jsp:include page="includes/footer.jsp"/>
-		
 	    </div>
 
 	    <script src="js/jquery.js"></script>

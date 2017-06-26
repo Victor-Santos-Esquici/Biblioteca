@@ -62,15 +62,15 @@ public class BibliotecaController extends HttpServlet
         biblioteca.setNome(request.getParameter("name"));
         biblioteca.setEndereco(request.getParameter("address"));
 
-        String bibliotecaID = request.getParameter("codBib");
+        String codBib = request.getParameter("codBib");
         
-        if (bibliotecaID == null || bibliotecaID.isEmpty())
+        if (codBib == null || codBib.isEmpty())
         {
             dao.insert(biblioteca);
         }
         else
         {
-            biblioteca.setCodBib(Integer.parseInt(bibliotecaID));
+            biblioteca.setCodBib(Integer.parseInt(codBib));
             dao.update(biblioteca);
         }
         
