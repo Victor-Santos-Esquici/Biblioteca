@@ -8,12 +8,12 @@ public class Funcionario
 	public String email;
 	public String endereco;
 	public String telefone;
-	public Double salario;
+	public String salario;
 	public Integer codBib;
 	
 	public Funcionario(){}
 	
-	public Funcionario(Integer codFunc, String nome, String sobrenome, String email, String endereco, String telefone, Double salario, Integer codBib)
+	public Funcionario(Integer codFunc, String nome, String sobrenome, String email, String endereco, String telefone, String salario, Integer codBib)
 	{
 		this.codFunc = codFunc;
 		this.nome = nome;
@@ -85,12 +85,12 @@ public class Funcionario
 		this.telefone = telefone;
 	}
 
-	public Double getSalario() 
+	public String getSalario() 
 	{
 		return salario;
 	}
 
-	public void setSalario(Double salario) 
+	public void setSalario(String salario) 
 	{
 		this.salario = salario;
 	}

@@ -1,6 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="br.com.model.Biblioteca" %>
+<%@ page import="java.util.ArrayList" %>
+  
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -18,113 +21,125 @@
 	</head>
 
 	<body>
-	
 	    <!-- Navigation -->
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div class="container">
+	    <div class="container contentMargin">
+			<a class="btn btn-success" href="FuncionarioController?action=listarFuncionarios">Listar</a>
+			<br><br>
 			<form action="FuncionarioController" class="well form-horizontal" method="post"  id="registerForm">
 				<fieldset>
-		
-				<!-- Form Name -->
-				<legend class="text-center">Cadastrar Funcionário</legend>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Nome</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input  name="firstName" placeholder="Nome" class="form-control"  type="text">
+					<!-- Form Name -->
+					<legend class="text-center">Cadastrar Funcionário</legend>
+					
+					<!-- Hidden ID -->
+					<input type="hidden" name="codFunc" readonly="readonly" value="<c:out value="${funcionario.codFunc}"/>">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Nome</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input  name="firstName" placeholder="Nome" class="form-control"  type="text" value="<c:out value="${funcionario.nome}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Sobrenome</label> 
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input name="lastName" placeholder="Sobrenome" class="form-control"  type="text">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Sobrenome</label> 
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+								<input name="lastName" placeholder="Sobrenome" class="form-control"  type="text" value="<c:out value="${funcionario.sobrenome}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">E-Mail</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-							<input name="email" placeholder="Endereço de e-mail" class="form-control"  type="text">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">E-Mail</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+								<input name="email" placeholder="Endereço de e-mail" class="form-control"  type="text" value="<c:out value="${funcionario.email}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Endereço</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-							<input name="address" placeholder="Endereço físico" class="form-control"  type="text">
+					
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Endereço</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+								<input name="address" placeholder="Endereço físico" class="form-control"  type="text" value="<c:out value="${funcionario.endereco}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Telefone</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-							<input id="phone" name="phone" placeholder="(55) 99999-9999" class="form-control"  type="text" maxlength="15">
+					
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Telefone</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+								<input id="phone" name="phone" placeholder="(55) 99999-9999" class="form-control"  type="text" maxlength="15" value="<c:out value="${funcionario.telefone}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Salário</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-							<input id="salary" name="salary" placeholder="00.000,00" class="form-control"  type="text" maxlength="9">
+					
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Salário</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+								<input id="salary" name="salary" placeholder="00.000,00" class="form-control"  type="text" maxlength="9" value="<c:out value="${funcionario.salario}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<!-- Select Basic -->
-				<div class="form-group"> 
-					<label class="col-md-4 control-label">Biblioteca</label>
-					<div class="col-md-4 selectContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
-							<select name="library" class="form-control selectpicker" >
-								<option value=" " >Selecione a Biblioteca</option>
-								<option>Alabama</option>
-								<option>Alaska</option>
-							</select>
+					
+					<!-- Select Basic -->
+					<div class="form-group"> 
+						<label class="col-md-4 control-label">Biblioteca</label>
+						<div class="col-md-4 selectContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+								<select name="library" class="form-control selectpicker" data-biblioteca="<c:out value="${funcionario.codBib}"/>">
+									<option value=" " >Selecione a Biblioteca</option>
+									
+									<jsp:useBean id="dao" class="br.com.dao.BibliotecaDAO"/>
+									
+									<%
+										ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
+										bibliotecas = dao.select();
+										for (Biblioteca biblioteca: bibliotecas)
+										{
+									%>
+									
+									<option value="<% out.print(biblioteca.getCodBib()); %>"><% out.print(biblioteca.getNome()); %></option>
+									
+									<% } %>
+								</select>
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Button -->
-				<div class="form-group text-center">
-					<label class="col-md-4"></label>
-					<div class="col-md-4">
-						<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+			
+					<!-- Button -->
+					<div class="form-group text-center">
+						<label class="col-md-4"></label>
+						<div class="col-md-4">
+							<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+						</div>
 					</div>
-				</div>
-				
 				</fieldset>
 			</form>
 	
 	        <!-- Footer -->
 			<jsp:include page="includes/footer.jsp"/>
-		
 	    </div>
 	
 	    <script src="js/jquery.js"></script>
@@ -166,7 +181,7 @@
 			            email: {
 			                validators: {
 			                    notEmpty: {
-			                        message: 'Preencha o e-mail do aluno.'
+			                        message: 'Preencha o e-mail do funcionário.'
 			                    },
 			                    emailAddress: {
 			                        message: 'Este endereço de e-mail está inválido.'
@@ -227,6 +242,9 @@
 			$(document).ready(function(){
 				$("#phone").mask("(00) 00000-0000");
 				$("#salary").mask("00.000,00", {reverse: true});
+				
+				var optionID = $("select[name='library']").data("biblioteca");
+				$("option[value='"+optionID+"']").attr("selected", "selected");
 			});	
 		</script>
 	</body>

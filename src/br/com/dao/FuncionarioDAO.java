@@ -15,16 +15,18 @@ public class FuncionarioDAO
 	
 	public void insert(Funcionario funcionario) 
 	{
-		String sql = "insert into funcionarios (nome, endereco, telefone, salario, codBib) values (?, ?, ?, ?, ?)";
+		String sql = "insert into funcionarios (nome, sobrenome, email, endereco, telefone, salario, codBib) values (?, ?, ?, ?, ?, ?, ?)";
 		
 		try
 		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, funcionario.getNome());
-			preparador.setString(2, funcionario.getEndereco());
-			preparador.setString(3, funcionario.getTelefone());
-			preparador.setDouble(4, funcionario.getSalario());
-			preparador.setInt(5, funcionario.getCodBib());
+			preparador.setString(2, funcionario.getSobrenome());
+			preparador.setString(3, funcionario.getEmail());
+			preparador.setString(4, funcionario.getEndereco());
+			preparador.setString(5, funcionario.getTelefone());
+			preparador.setString(6, funcionario.getSalario());
+			preparador.setInt(7, funcionario.getCodBib());
 			
 			preparador.execute();
 			preparador.close();
@@ -37,18 +39,39 @@ public class FuncionarioDAO
 	
 	public void update(Funcionario funcionario) 
 	{
-		String sql = "update funcionarios set nome = ?, endereco = ?, telefone = ?, salario = ?, codBib = ? where codFunc = ?";
+		String sql = "update funcionarios set nome = ?, sobrenome = ?, email = ?, endereco = ?, telefone = ?, salario = ?, codBib = ? where codFunc = ?";
 		
 		try
 		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, funcionario.getNome());
-			preparador.setString(2, funcionario.getEndereco());
-			preparador.setString(3, funcionario.getTelefone());
-			preparador.setDouble(4, funcionario.getSalario());
-			preparador.setInt(5, funcionario.getCodBib());
+			preparador.setString(2, funcionario.getSobrenome());
+			preparador.setString(3, funcionario.getEmail());
+			preparador.setString(4, funcionario.getEndereco());
+			preparador.setString(5, funcionario.getTelefone());
+			preparador.setString(6, funcionario.getSalario());
+			preparador.setInt(7, funcionario.getCodBib());
+			preparador.setInt(8, funcionario.getCodFunc());
 			
-			preparador.executeQuery();
+			preparador.execute();
+			preparador.close();
+		}
+		catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	public void delete(int codFunc) 
+	{
+		String sql = "delete from funcionarios where codFunc = ?";
+		
+		try
+		{
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setInt(1, codFunc);
+			
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex)
@@ -76,7 +99,7 @@ public class FuncionarioDAO
                 funcionario.setEmail(rs.getString("email"));
                 funcionario.setEndereco(rs.getString("endereco"));
                 funcionario.setTelefone(rs.getString("telefone"));
-                funcionario.setSalario(rs.getDouble("salario"));
+                funcionario.setSalario(rs.getString("salario"));
                 funcionario.setCodBib(rs.getInt("codBib"));
 				funcionarioList.add(funcionario);
 			}
@@ -111,7 +134,7 @@ public class FuncionarioDAO
                 funcionario.setEmail(rs.getString("email"));
                 funcionario.setEndereco(rs.getString("endereco"));
                 funcionario.setTelefone(rs.getString("telefone"));
-                funcionario.setSalario(rs.getDouble("salario"));
+                funcionario.setSalario(rs.getString("salario"));
                 funcionario.setCodBib(rs.getInt("codBib"));
             }
             

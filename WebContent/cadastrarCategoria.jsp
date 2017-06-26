@@ -24,7 +24,7 @@
 
 	    <!-- Page Content -->
 	    <div class="container contentMargin">
-			<a class="btn btn-success" href="CategoriaController?action=insert">Adicionar</a>
+			<a class="btn btn-success" href="CategoriaController?action=insert">Listar</a>
 			<br><br>
 			<form action="CategoriaController" class="well form-horizontal" method="post" id="registerForm">
 				<fieldset>

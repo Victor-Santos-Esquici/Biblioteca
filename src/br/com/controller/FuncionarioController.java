@@ -28,32 +28,17 @@ public class FuncionarioController extends HttpServlet
         String forward = "";
         String action = request.getParameter("action");
         
-        String nome = request.getParameter("firstName");
-        String sobrenome = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String endereco = request.getParameter("address");
-        String telefone = request.getParameter("phone");
-        Double salario = null;
-        
-        try
-        {
-        	salario = Double.parseDouble(request.getParameter("salary")); //parse tem que verificar nullo
-        }
-        catch(Exception ex){}
-        
         if (action.equalsIgnoreCase("delete"))
         {
             int codFunc = Integer.parseInt(request.getParameter("codFunc"));
-            int codBib = Integer.parseInt(request.getParameter("codBib"));
-            Funcionario funcionario = new Funcionario(codFunc, nome, sobrenome, email, endereco, telefone, salario, codBib);
-            dao.update(funcionario);
+            dao.delete(codFunc);
             forward = LIST_FUNCIONARIO;
             request.setAttribute("funcionarioList", dao.select());    
         } 
         else if (action.equalsIgnoreCase("edit"))
         {
-        	int codMatricula = Integer.parseInt(request.getParameter("codMatricula"));
-        	Funcionario funcionario = dao.selectID(codMatricula);
+        	int codFunc = Integer.parseInt(request.getParameter("codFunc"));
+        	Funcionario funcionario = dao.selectID(codFunc);
         	forward = INSERT_OR_EDIT;
         	request.setAttribute("funcionario", funcionario);
         } 
@@ -79,16 +64,18 @@ public class FuncionarioController extends HttpServlet
         funcionario.setEmail(request.getParameter("email"));
         funcionario.setEndereco(request.getParameter("address"));
         funcionario.setTelefone(request.getParameter("phone"));
+        funcionario.setSalario(request.getParameter("salary"));
+        funcionario.setCodBib(Integer.parseInt(request.getParameter("library")));
         
-        String funcionarioID = request.getParameter("funcionarioID");
+        String codFunc = request.getParameter("codFunc");
         
-        if (funcionarioID == null || funcionarioID.isEmpty())
+        if (codFunc == null || codFunc.isEmpty())
         {
             dao.insert(funcionario);
         }
         else
         {
-            funcionario.setCodFunc(Integer.parseInt(funcionarioID));
+            funcionario.setCodFunc(Integer.parseInt(codFunc));
             dao.update(funcionario);
         }
         
