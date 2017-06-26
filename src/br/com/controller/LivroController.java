@@ -27,26 +27,11 @@ public class LivroController extends HttpServlet
     {
         String forward = "";
         String action = request.getParameter("action");
-        
-        String titulo = request.getParameter("title");
-        String editora = request.getParameter("publisher");
-        Double valor = null;
-        Integer codCategoria = null;
-        Integer codBib = null;
-        
-        try
-        {
-            valor = Double.parseDouble(request.getParameter("price"));
-            codCategoria = Integer.parseInt(request.getParameter("category"));
-            codBib = Integer.parseInt(request.getParameter("library"));
-        }
-        catch(Exception ex){}
 
         if (action.equalsIgnoreCase("delete"))
         {
             int codLivro = Integer.parseInt(request.getParameter("codLivro"));
-            Livro livro = new Livro(codLivro, titulo, editora, valor, codCategoria, codBib, false);
-            dao.update(livro);
+            dao.delete(codLivro);
             forward = LIST_LIVRO;
             request.setAttribute("livroList", dao.select(true));    
         } 
@@ -76,19 +61,19 @@ public class LivroController extends HttpServlet
         Livro livro = new Livro();
         livro.setTitulo(request.getParameter("title"));
         livro.setEditora(request.getParameter("publisher"));
-        livro.setValor(Double.parseDouble(request.getParameter("price")));
+        livro.setValor(request.getParameter("price"));
         livro.setCodCategoria(Integer.parseInt(request.getParameter("category")));
         livro.setCodBib(Integer.parseInt(request.getParameter("library")));
         
-        String livroID = request.getParameter("livroID");
+        String codLivro = request.getParameter("codLivro");
         
-        if (livroID == null || livroID.isEmpty())
+        if (codLivro == null || codLivro.isEmpty())
         {
             dao.insert(livro);
         }
         else
         {
-            livro.setCodLivro(Integer.parseInt(livroID));
+            livro.setCodLivro(Integer.parseInt(codLivro));
             dao.update(livro);
         }
         

@@ -5,14 +5,14 @@ public class Livro
 	public Integer codLivro;
 	public String titulo;
 	public String editora;
-	public Double valor;
+	public String valor;
 	public Integer codCategoria;
 	public Integer codBib;
 	public Boolean situacao;
 	
 	public Livro(){}
 	
-	public Livro(Integer codLivro, String titulo, String editora, Double valor, Integer codCategoria, Integer codBib, Boolean situacao)
+	public Livro(Integer codLivro, String titulo, String editora, String valor, Integer codCategoria, Integer codBib, Boolean situacao)
 	{
 		this.codLivro = codLivro;
 		this.titulo = titulo;
@@ -53,12 +53,12 @@ public class Livro
 		this.editora = editora;
 	}
 
-	public Double getValor()
+	public String getValor()
 	{
 		return valor;
 	}
 
-	public void setValor(Double valor)
+	public void setValor(String valor)
 	{
 		this.valor = valor;
 	}

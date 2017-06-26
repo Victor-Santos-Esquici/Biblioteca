@@ -23,7 +23,7 @@ public class LivroDAO
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, livro.getTitulo());
 			preparador.setString(2, livro.getEditora());
-			preparador.setDouble(3, livro.getValor());
+			preparador.setString(3, livro.getValor());
 			preparador.setInt(4, livro.getCodCategoria());
 			preparador.setInt(5, livro.getCodBib());
 			preparador.setBoolean(6, true);
@@ -39,20 +39,38 @@ public class LivroDAO
 	
 	public void update(Livro livro) 
 	{
-		String sql = "update livros set titulo = ?, editora = ?, valor = ?, codCategoria = ?, codLib = ?, situacao = ? where codLivro = ?";
+		String sql = "update livros set titulo = ?, editora = ?, valor = ?, codCategoria = ?, codBib = ? where codLivro = ?";
 		
 		try
 		{
 			PreparedStatement preparador = con.prepareStatement(sql);
 			preparador.setString(1, livro.getTitulo());
 			preparador.setString(2, livro.getEditora());
-			preparador.setDouble(3, livro.getValor());
+			preparador.setString(3, livro.getValor());
 			preparador.setInt(4, livro.getCodCategoria());
 			preparador.setInt(5, livro.getCodBib());
-			preparador.setBoolean(6, livro.getSituacao());
-			preparador.setInt(7, livro.getCodLivro());
+			preparador.setInt(6, livro.getCodLivro());
 			
-			preparador.executeQuery();
+			preparador.execute();
+			preparador.close();
+		}
+		catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	public void delete(int codLivro) 
+	{
+		String sql = "update livros set situacao = ? where codLivro = ?";
+		
+		try
+		{
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setBoolean(1, false);
+			preparador.setInt(2, codLivro);
+			
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex)
@@ -78,7 +96,7 @@ public class LivroDAO
             	livro.setCodLivro(rs.getInt("codLivro"));
             	livro.setTitulo(rs.getString("titulo"));
             	livro.setEditora(rs.getString("editora"));
-            	livro.setValor(Double.parseDouble(rs.getString("valor")));
+            	livro.setValor(rs.getString("valor"));
             	livro.setCodCategoria(Integer.parseInt(rs.getString("codCategoria")));
             	livro.setCodBib(Integer.parseInt(rs.getString("codBib")));
             	livro.setSituacao(rs.getBoolean("situacao"));
@@ -112,7 +130,7 @@ public class LivroDAO
             	livro.setCodLivro(rs.getInt("codLivro"));
             	livro.setTitulo(rs.getString("titulo"));
             	livro.setEditora(rs.getString("editora"));
-            	livro.setValor(Double.parseDouble(rs.getString("valor")));
+            	livro.setValor(rs.getString("valor"));
             	livro.setCodCategoria(Integer.parseInt(rs.getString("codCategoria")));
             	livro.setCodBib(Integer.parseInt(rs.getString("codBib")));
             	livro.setSituacao(rs.getBoolean("situacao"));

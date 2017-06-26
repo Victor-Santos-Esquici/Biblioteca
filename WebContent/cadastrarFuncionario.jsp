@@ -122,7 +122,7 @@
 									
 									<option value="<% out.print(biblioteca.getCodBib()); %>"><% out.print(biblioteca.getNome()); %></option>
 									
-									<% } %>
+									<%  } %>
 								</select>
 							</div>
 						</div>

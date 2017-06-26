@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="br.com.model.Biblioteca" %>
+<%@ page import="br.com.model.Categoria" %>
+<%@ page import="java.util.ArrayList" %>
     
 <!DOCTYPE html>
 
@@ -18,95 +22,118 @@
 	</head>
 
 	<body>
-	
 	    <!-- Navigation -->
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div class="container">
-			<form class="well form-horizontal" method="post"  id="registerForm">
+	    <div class="container contentMargin">
+			<a class="btn btn-success" href="LivroController?action=listarLivros">Listar</a>
+			<br><br>
+			<form action="LivroController" class="well form-horizontal" method="post" id="registerForm">
 				<fieldset>
-		
-				<!-- Form Name -->
-				<legend class="text-center">Cadastrar Livro</legend>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Título</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-							<input  name="title" placeholder="Título" class="form-control"  type="text">
+					<!-- Form Name -->
+					<legend class="text-center">Cadastrar Livro</legend>
+					
+					<!-- Hidden ID -->
+					<input type="hidden" name="codLivro" readonly="readonly" value="<c:out value="${livro.codLivro}"/>">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Título</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+								<input  name="title" placeholder="Título" class="form-control"  type="text" value="<c:out value="${livro.titulo}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Editora</label> 
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-							<input name="publisher" placeholder="Editora" class="form-control"  type="text">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Editora</label> 
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+								<input name="publisher" placeholder="Editora" class="form-control"  type="text" value="<c:out value="${livro.editora}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label">Valor</label>  
-					<div class="col-md-4 inputGroupContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-							<input id="price" name="price" placeholder="00.000,00" class="form-control" type="text" maxlength="9">
+			
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label">Valor</label>  
+						<div class="col-md-4 inputGroupContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+								<input id="price" name="price" placeholder="00.000,00" class="form-control" type="text" maxlength="9" value="<c:out value="${livro.valor}"/>">
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<!-- Select Basic -->
-				<div class="form-group"> 
-					<label class="col-md-4 control-label">Categoria</label>
-					<div class="col-md-4 selectContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-							<select name="category" class="form-control selectpicker" >
-								<option value=" " >Selecione uma Categoria</option>
-								<option>Aventura</option>
-								<option>Drama</option>
-							</select>
+					
+					<!-- Select Basic -->
+					<div class="form-group"> 
+						<label class="col-md-4 control-label">Categoria</label>
+						<div class="col-md-4 selectContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+								<select id="category" name="category" class="form-control selectpicker" data-categoria="<c:out value="${livro.codCategoria}"/>">
+									<option value=" " >Selecione uma Categoria</option>
+									
+									<jsp:useBean id="daoCat" class="br.com.dao.CategoriaDAO"/>
+									
+									<%
+										ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+										categorias = daoCat.select();
+										for (Categoria categoria: categorias)
+										{
+									%>
+									
+									<option value="<% out.print(categoria.getCodCategoria()); %>"><% out.print(categoria.getDescricao()); %></option>
+									
+									<%  } %>
+								</select>
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<!-- Select Basic -->
-				<div class="form-group"> 
-					<label class="col-md-4 control-label">Biblioteca</label>
-					<div class="col-md-4 selectContainer">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
-							<select name="library" class="form-control selectpicker" >
-								<option value=" " >Selecione a Biblioteca</option>
-								<option>Alabama</option>
-								<option>Alaska</option>
-							</select>
+					
+					<!-- Select Basic -->
+					<div class="form-group"> 
+						<label class="col-md-4 control-label">Biblioteca</label>
+						<div class="col-md-4 selectContainer">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+								<select id="library" name="library" class="form-control selectpicker" data-biblioteca="<c:out value="${livro.codBib}"/>">
+									<option value=" " >Selecione a Biblioteca</option>
+									
+									<jsp:useBean id="daoBib" class="br.com.dao.BibliotecaDAO"/>
+									
+									<%
+										ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
+										bibliotecas = daoBib.select();
+										for (Biblioteca biblioteca: bibliotecas)
+										{
+									%>
+									
+									<option value="<% out.print(biblioteca.getCodBib()); %>"><% out.print(biblioteca.getNome()); %></option>
+									
+									<%  } %>
+								</select>
+							</div>
 						</div>
 					</div>
-				</div>
-		
-				<!-- Button -->
-				<div class="form-group text-center">
-					<label class="col-md-4"></label>
-					<div class="col-md-4">
-						<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+			
+					<!-- Button -->
+					<div class="form-group text-center">
+						<label class="col-md-4"></label>
+						<div class="col-md-4">
+							<button type="submit" class="btn btn-warning">Enviar <span class="glyphicon glyphicon-send"></span></button>
+						</div>
 					</div>
-				</div>
-				
 				</fieldset>
 			</form>
 	
 	        <!-- Footer -->
 			<jsp:include page="includes/footer.jsp"/>
-		
 	    </div>
 	
 	    <script src="js/jquery.js"></script>
@@ -183,6 +210,12 @@
 		<script>			
 			$(document).ready(function() {
 				$("#price").mask("00.000,00", {reverse: true});
+				
+				var optionID = $("#category").data("categoria");
+				$("#category option[value='"+optionID+"']").attr("selected", "selected");
+				
+				optionID = $("#library").data("biblioteca");
+				$("#library option[value='"+optionID+"']").attr("selected", "selected");
 			});
 		</script>
 	</body>
