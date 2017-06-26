@@ -28,14 +28,10 @@ public class BibliotecaController extends HttpServlet
         String forward = "";
         String action = request.getParameter("action");
 
-        String nome = request.getParameter("name");
-        String endereco = request.getParameter("address");
-
         if (action.equalsIgnoreCase("delete"))
         {
             int codBib = Integer.parseInt(request.getParameter("codBib"));
-            Biblioteca biblioteca = new Biblioteca(codBib, nome, endereco);
-            dao.update(biblioteca);
+            dao.delete(codBib);
             forward = LIST_BIBLIOTECA;
             request.setAttribute("bibliotecaList", dao.select());    
         } 
@@ -66,7 +62,7 @@ public class BibliotecaController extends HttpServlet
         biblioteca.setNome(request.getParameter("name"));
         biblioteca.setEndereco(request.getParameter("address"));
 
-        String bibliotecaID = request.getParameter("bibliotecaID");
+        String bibliotecaID = request.getParameter("codBib");
         
         if (bibliotecaID == null || bibliotecaID.isEmpty())
         {

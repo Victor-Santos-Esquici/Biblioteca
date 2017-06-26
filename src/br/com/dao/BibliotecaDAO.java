@@ -43,7 +43,25 @@ public class BibliotecaDAO
 			preparador.setString(2, biblioteca.getEndereco());
 			preparador.setInt(3, biblioteca.getCodBib());
 			
-			preparador.executeQuery();
+			preparador.execute();
+			preparador.close();
+		}
+		catch(SQLException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	public void delete(int bibliotecaID) 
+	{
+		String sql = "delete from bibliotecas where codBib = ?";
+		
+		try
+		{
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setInt(1, bibliotecaID);
+			
+			preparador.execute();
 			preparador.close();
 		}
 		catch(SQLException ex)
