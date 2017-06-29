@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Jun-2017 às 01:29
+-- Generation Time: 26-Jun-2017 às 05:56
 -- Versão do servidor: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -62,9 +62,7 @@ CREATE TABLE `bibliotecas` (
 --
 
 INSERT INTO `bibliotecas` (`codBib`, `nome`, `endereco`) VALUES
-(1, 'Biblioteca Municipal de Canoas', 'XV de Janeiro, 270'),
-(2, 'asd', 'asd'),
-(3, 'asdqwe', 'asdqwe');
+(1, 'Biblioteca Municipal de Canoas', 'XV de Janeiro, 270');
 
 -- --------------------------------------------------------
 
@@ -85,9 +83,7 @@ INSERT INTO `categorias` (`codCategoria`, `descricao`) VALUES
 (1, 'Ficcao'),
 (2, 'Romance'),
 (3, 'Literatura'),
-(4, 'Cientifico'),
-(5, 'asd'),
-(6, 'asdqwe');
+(4, 'Cientifico');
 
 -- --------------------------------------------------------
 
@@ -127,7 +123,7 @@ CREATE TABLE `funcionarios` (
   `email` varchar(100) NOT NULL,
   `endereco` varchar(200) NOT NULL,
   `telefone` varchar(20) DEFAULT NULL,
-  `salario` decimal(15,2) NOT NULL,
+  `salario` varchar(15) NOT NULL,
   `codBib` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -151,7 +147,7 @@ CREATE TABLE `livros` (
   `codLivro` int(11) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `editora` varchar(50) NOT NULL,
-  `valor` decimal(15,2) NOT NULL,
+  `valor` varchar(15) NOT NULL,
   `codCategoria` int(11) NOT NULL,
   `codBib` int(11) NOT NULL,
   `situacao` tinyint(1) NOT NULL
@@ -226,12 +222,12 @@ ALTER TABLE `alunos`
 -- AUTO_INCREMENT for table `bibliotecas`
 --
 ALTER TABLE `bibliotecas`
-  MODIFY `codBib` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `codBib` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `codCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `codCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `empresta`
 --
@@ -241,7 +237,7 @@ ALTER TABLE `empresta`
 -- AUTO_INCREMENT for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `codFunc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `codFunc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `livros`
 --

@@ -70,36 +70,38 @@
 	            <div class="col-lg-12">
 	                <h2 class="page-header">Acervo</h2>
 	            </div>
+	            
 	            <div class="col-md-4 col-sm-6">
-	                <a href="portfolio-item.html">
-	                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+	                <a href="#">
+	                    <img class="img-responsive img-portfolio img-hover" src="images/books.png" alt="">
 	                </a>
 	            </div>
 	            <div class="col-md-4 col-sm-6">
-	                <a href="portfolio-item.html">
-	                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+	                <a href="#">
+	                    <img class="img-responsive img-portfolio img-hover" src="images/books.png" alt="">
 	                </a>
 	            </div>
 	            <div class="col-md-4 col-sm-6">
-	                <a href="portfolio-item.html">
-	                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+	                <a href="#">
+	                    <img class="img-responsive img-portfolio img-hover" src="images/books.png" alt="">
 	                </a>
 	            </div>
 	            <div class="col-md-4 col-sm-6">
-	                <a href="portfolio-item.html">
-	                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+	                <a href="#">
+	                    <img class="img-responsive img-portfolio img-hover" src="images/books.png" alt="">
 	                </a>
 	            </div>
 	            <div class="col-md-4 col-sm-6">
-	                <a href="portfolio-item.html">
-	                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+	                <a href="#">
+	                    <img class="img-responsive img-portfolio img-hover" src="images/books.png" alt="">
 	                </a>
 	            </div>
 	            <div class="col-md-4 col-sm-6">
-	                <a href="portfolio-item.html">
-	                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+	                <a href="#">
+	                    <img class="img-responsive img-portfolio img-hover" src="images/books.png" alt="">
 	                </a>
 	            </div>
+	            
 	        </div>
 	        <!-- /.row -->
 	
