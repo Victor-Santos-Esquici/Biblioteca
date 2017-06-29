@@ -34,7 +34,6 @@
 	    				<th>Sobrenome</th>
 	    				<th>E-mail</th>
 	    				<th>Endereço</th>
-	    				<th width="50px">Gerenciar</th>
 	    			</tr>
 	    		</thead>
 	    		<tbody>
@@ -44,10 +43,6 @@
 		    				<td class="studentLastName"><c:out value="${aluno.sobrenome}"/></td>
 		    				<td class="studentEmail"><c:out value="${aluno.email}"/></td>
 		    				<td class="studentAddress"><c:out value="${aluno.endereco}"/></td>
-		    				<td width="50px">
-		    					<a href="AlunoController?action=edit&codMatricula=<c:out value="${aluno.codMatricula}"/>" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
-		    					<a href="AlunoController?action=delete&codMatricula=<c:out value="${aluno.codMatricula}"/>" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>
-		    				</td>
 		    			</tr>
 		    		</c:forEach>
 	    		</tbody>

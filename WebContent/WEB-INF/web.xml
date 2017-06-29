@@ -54,4 +54,14 @@
     <servlet-name>LivroController</servlet-name>
     <url-pattern>/LivroController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RelatorioController</display-name>
+    <servlet-name>RelatorioController</servlet-name>
+    <servlet-class>br.com.controller.RelatorioController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RelatorioController</servlet-name>
+    <url-pattern>/RelatorioController</url-pattern>
+  </servlet-mapping>
 </web-app>

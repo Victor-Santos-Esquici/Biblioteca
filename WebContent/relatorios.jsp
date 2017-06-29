@@ -22,13 +22,14 @@
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div class="container">
+	    <div class="container">	    
 	    
 	    	<!-- content -->
+	    	
+	    	
 	
 	        <!-- Footer -->
 			<jsp:include page="includes/footer.jsp"/>
-		
 	    </div>
 	
 	    <script src="js/jquery.js"></script>
