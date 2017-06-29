@@ -70,7 +70,6 @@
 	    			}
 	    		});	
 	    		
-	    		
 	    		$(".studentSituation").each(function(){
 	    			if($(this).text() == "true")
     				{
@@ -81,6 +80,11 @@
 	    				$(this).text("Inativo");
 	    			}
 	    		});
+	    		
+	    		if($("td").hasClass("dataTables_empty"))
+    			{
+	    			$("#alunos_wrapper").hide();
+    			}
 	    	});
 	    </script>
 	</body>
