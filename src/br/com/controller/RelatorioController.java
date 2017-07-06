@@ -12,7 +12,7 @@ import br.com.dao.AlunoDAO;
 public class RelatorioController extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
-	private static String LIST_ALUNO = "/admin.jsp";
+	private static String LIST_ALUNO = "/relatorios.jsp";
     private AlunoDAO dao;
 
     public RelatorioController() 
@@ -43,10 +43,5 @@ public class RelatorioController extends HttpServlet
 
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-    {
-    	
     }
 }

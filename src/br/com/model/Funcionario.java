@@ -10,10 +10,11 @@ public class Funcionario
 	public String telefone;
 	public String salario;
 	public Integer codBib;
+	public String biblioteca;
 	
 	public Funcionario(){}
 	
-	public Funcionario(Integer codFunc, String nome, String sobrenome, String email, String endereco, String telefone, String salario, Integer codBib)
+	public Funcionario(Integer codFunc, String nome, String sobrenome, String email, String endereco, String telefone, String salario, Integer codBib, String biblioteca)
 	{
 		this.codFunc = codFunc;
 		this.nome = nome;
@@ -23,6 +24,7 @@ public class Funcionario
 		this.telefone = telefone;
 		this.salario = salario;
 		this.codBib = codBib;
+		this.biblioteca = biblioteca;
 	}
 
 	public Integer getCodFunc() 
@@ -103,5 +105,15 @@ public class Funcionario
 	public void setCodBib(Integer codBib) 
 	{
 		this.codBib = codBib;
+	}
+	
+	public String getBiblioteca()
+	{
+		return biblioteca;
+	}
+	
+	public void setBiblioteca(String biblioteca)
+	{
+		this.biblioteca = biblioteca;
 	}
 }

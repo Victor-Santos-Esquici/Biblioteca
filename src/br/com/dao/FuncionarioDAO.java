@@ -82,7 +82,7 @@ public class FuncionarioDAO
 	
 	public ArrayList<Funcionario> select()
 	{	
-		String sql = "select * from funcionarios";
+		String sql = "select codFunc, funcionarios.nome, sobrenome, email, funcionarios.endereco, telefone, salario, funcionarios.codBib, bibliotecas.nome from funcionarios inner join bibliotecas on bibliotecas.codBib = funcionarios.codBib";
 		ArrayList<Funcionario> funcionarioList = new ArrayList<Funcionario>();
 		
 		try
@@ -93,14 +93,15 @@ public class FuncionarioDAO
 			while(rs.next())
 			{
 				Funcionario funcionario = new Funcionario();
-                funcionario.setCodFunc(rs.getInt("codFunc"));
-                funcionario.setNome(rs.getString("nome"));
-                funcionario.setSobrenome(rs.getString("sobrenome"));
-                funcionario.setEmail(rs.getString("email"));
-                funcionario.setEndereco(rs.getString("endereco"));
-                funcionario.setTelefone(rs.getString("telefone"));
-                funcionario.setSalario(rs.getString("salario"));
-                funcionario.setCodBib(rs.getInt("codBib"));
+                funcionario.setCodFunc(rs.getInt(1));
+                funcionario.setNome(rs.getString(2));
+                funcionario.setSobrenome(rs.getString(3));
+                funcionario.setEmail(rs.getString(4));
+                funcionario.setEndereco(rs.getString(5));
+                funcionario.setTelefone(rs.getString(6));
+                funcionario.setSalario(rs.getString(7));
+                funcionario.setCodBib(rs.getInt(8));
+                funcionario.setBiblioteca(rs.getString(9));
 				funcionarioList.add(funcionario);
 			}
 			

@@ -45,8 +45,8 @@
 		    				<td class="bookTitle"><c:out value="${livro.titulo}"/></td>
 		    				<td class="bookPublisher"><c:out value="${livro.editora}"/></td>
 		    				<td class="bookPrice"><c:out value="${livro.valor}"/></td>
-		    				<td class="bookCategory"><c:out value="${livro.codCategoria}"/></td>
-		    				<td class="bookLibrary"><c:out value="${livro.codBib}"/></td>
+		    				<td class="bookCategory"><c:out value="${livro.categoria}"/></td>
+		    				<td class="bookLibrary"><c:out value="${livro.biblioteca}"/></td>
 		    				<td>
 		    					<a href="LivroController?action=edit&codLivro=<c:out value="${livro.codLivro}"/>" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
 		    					<a href="LivroController?action=delete&codLivro=<c:out value="${livro.codLivro}"/>" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>

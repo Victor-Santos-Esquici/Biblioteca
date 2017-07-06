@@ -49,7 +49,7 @@
 		    				<td class="workerAddress"><c:out value="${funcionario.endereco}"/></td>
 		    				<td class="workerPhone"><c:out value="${funcionario.telefone}"/></td>
 		    				<td class="workerSalary"><c:out value="${funcionario.salario}"/></td>
-		    				<td class="workerLibrary"><c:out value="${funcionario.codBib}"/></td>
+		    				<td class="workerLibrary"><c:out value="${funcionario.biblioteca}"/></td>
 		    				<td>
 		    					<a href="FuncionarioController?action=edit&codFunc=<c:out value="${funcionario.codFunc}"/>" type="button" class="btn btn-sm btn-warning btnEdit btnSize">Editar</a>
 		    					<a href="FuncionarioController?action=delete&codFunc=<c:out value="${funcionario.codFunc}"/>" type="button" class="btn btn-sm btn-danger btnDelete btnSize">Deletar</a>

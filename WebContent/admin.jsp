@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     
 <!DOCTYPE html>
 
@@ -25,34 +23,15 @@
 	    <jsp:include page="includes/adminNavigation.jsp"/>
 
 	    <!-- Page Content -->
-	    <div class="container contentMargin">
-	    
-	    	<a href="RelatorioController?action=alunosInativos" class="btn btn-success">Alunos ativos</a>
-	    	<a href="RelatorioController?action=alunosAtivos" class="btn btn-danger">Alunos inativos</a>
-	    	<br><br>
-	    	<table id="alunos" class="table table-striped table-bordered">
-	    		<thead>
-	    			<tr>
-	    				<th>Nome</th>
-	    				<th>Sobrenome</th>
-	    				<th>E-mail</th>
-	    				<th>Endereço</th>
-	    				<th width="50px">Situação</th>
-	    			</tr>
-	    		</thead>
-	    		<tbody>
-	    			<c:forEach items="${alunoList}" var="aluno">
-		    			<tr>
-		    				<td class="studentName"><c:out value="${aluno.nome}"/></td>
-		    				<td class="studentLastName"><c:out value="${aluno.sobrenome}"/></td>
-		    				<td class="studentEmail"><c:out value="${aluno.email}"/></td>
-		    				<td class="studentAddress"><c:out value="${aluno.endereco}"/></td>
-		    				<td class="studentSituation"><c:out value="${aluno.situacao}"/></td>
-		    			</tr>
-		    		</c:forEach>
-	    		</tbody>
-	    	</table>
-	    
+	    <div class="container">
+	    	<div class="col-lg-12">
+	    		<h1 class="page-header text-center">Relatórios</h1>
+	    		<div class="text-center">
+		    		<a href="RelatorioController?action=alunosInativos" class="btn btn-success">Alunos ativos</a>
+		    		<a href="RelatorioController?action=alunosAtivos" class="btn btn-danger">Alunos inativos</a>	    		
+	    		</div>
+	    	</div>
+	    	
 	    	<!-- content -->
 	
 	        <!-- Footer -->
@@ -62,30 +41,5 @@
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
 	    <script src="js/jquery.dataTables.min.js"></script>
-	    <script>
-	    	$(document).ready(function(){
-	    		$("#alunos").DataTable({
-	    			"language": {
-	    				"url": "json/Portuguese-Brasil.json"
-	    			}
-	    		});	
-	    		
-	    		$(".studentSituation").each(function(){
-	    			if($(this).text() == "true")
-    				{
-	    				$(this).text("Ativo");
-    				}
-	    			else
-	    			{
-	    				$(this).text("Inativo");
-	    			}
-	    		});
-	    		
-	    		if($("td").hasClass("dataTables_empty"))
-    			{
-	    			$("#alunos_wrapper").hide();
-    			}
-	    	});
-	    </script>
 	</body>
 </html>

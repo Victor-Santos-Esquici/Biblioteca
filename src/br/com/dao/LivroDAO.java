@@ -81,7 +81,7 @@ public class LivroDAO
 	
 	public ArrayList<Livro> select(boolean situacao)
 	{
-		String sql = "select * from livros where situacao = ?";
+		String sql = "select codLivro, titulo, editora, valor, livros.codCategoria, livros.codBib, situacao, categorias.descricao, bibliotecas.nome from livros inner join categorias on livros.codCategoria = categorias.codCategoria inner join bibliotecas on livros.codBib = bibliotecas.codBib where situacao = ?";
 		ArrayList<Livro> livroList = new ArrayList<Livro>();
 		
 		try
@@ -93,13 +93,15 @@ public class LivroDAO
 			while(rs.next())
 			{
 				Livro livro = new Livro();
-            	livro.setCodLivro(rs.getInt("codLivro"));
-            	livro.setTitulo(rs.getString("titulo"));
-            	livro.setEditora(rs.getString("editora"));
-            	livro.setValor(rs.getString("valor"));
-            	livro.setCodCategoria(Integer.parseInt(rs.getString("codCategoria")));
-            	livro.setCodBib(Integer.parseInt(rs.getString("codBib")));
-            	livro.setSituacao(rs.getBoolean("situacao"));
+            	livro.setCodLivro(rs.getInt(1));
+            	livro.setTitulo(rs.getString(2));
+            	livro.setEditora(rs.getString(3));
+            	livro.setValor(rs.getString(4));
+            	livro.setCodCategoria(Integer.parseInt(rs.getString(5)));
+            	livro.setCodBib(Integer.parseInt(rs.getString(6)));
+            	livro.setSituacao(rs.getBoolean(7));
+            	livro.setCategoria(rs.getString(8));
+            	livro.setBiblioteca(rs.getString(9));
 				livroList.add(livro);
 			}
 			
